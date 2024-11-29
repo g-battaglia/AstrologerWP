@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/js/admin.js"],
+  "sourcesContent": ["document.addEventListener('DOMContentLoaded', function() {\n    var nameField = document.getElementById('my_plugin_name');\n    var dateField = document.getElementById('my_plugin_date');\n    var previewName = document.getElementById('previewName');\n    var previewDate = document.getElementById('previewDate');\n\n    if (nameField && previewName) {\n        nameField.addEventListener('input', function() {\n            previewName.textContent = nameField.value;\n        });\n    }\n\n    if (dateField && previewDate) {\n        dateField.addEventListener('input', function() {\n            previewDate.textContent = dateField.value;\n        });\n    }\n});\n"],
+  "mappings": "MAAA,SAAS,iBAAiB,mBAAoB,UAAW,CACrD,IAAIA,EAAY,SAAS,eAAe,gBAAgB,EACpDC,EAAY,SAAS,eAAe,gBAAgB,EACpDC,EAAc,SAAS,eAAe,aAAa,EACnDC,EAAc,SAAS,eAAe,aAAa,EAEnDH,GAAaE,GACbF,EAAU,iBAAiB,QAAS,UAAW,CAC3CE,EAAY,YAAcF,EAAU,KACxC,CAAC,EAGDC,GAAaE,GACbF,EAAU,iBAAiB,QAAS,UAAW,CAC3CE,EAAY,YAAcF,EAAU,KACxC,CAAC,CAET,CAAC",
+  "names": ["nameField", "dateField", "previewName", "previewDate"]
+}

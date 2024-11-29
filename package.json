@@ -1,0 +1,22 @@
+{
+  "name": "wp-learn",
+  "version": "1.0.0",
+  "main": "esbuild.config.js",
+  "scripts": {
+    "dev:js": "node esbuild.config.mjs --watch",
+    "dev:css": "sass --watch assets/src/scss:assets/dist/css",
+    "dev": "npm run dev:js & npm run dev:css",
+    "build:js": "node esbuild.config.mjs",
+    "build:css": "sass assets/src/scss:assets/dist/css --style=compressed",
+    "build": "npm run build:js && npm run build:css"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "prettier": "^3.4.1",
+    "sass": "^1.81.0"
+  },
+  "dependencies": {}
+}

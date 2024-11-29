@@ -1,0 +1,22 @@
+#myPlugin {
+  text-align: center;
+  padding: 20px;
+  background: #f5f5f5;
+}
+#myPlugin tbody {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#myPlugin tbody tr th,
+#myPlugin tbody tr td {
+  padding: 0;
+  margin: 0;
+}
+#myPlugin tbody tr {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*# sourceMappingURL=styles.css.map */

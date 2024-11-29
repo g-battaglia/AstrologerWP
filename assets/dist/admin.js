@@ -1,0 +1,1 @@
+(()=>{document.addEventListener("DOMContentLoaded",function(){var e=document.getElementById("my_plugin_name"),t=document.getElementById("my_plugin_date"),n=document.getElementById("previewName"),d=document.getElementById("previewDate");e&&n&&e.addEventListener("input",function(){n.textContent=e.value}),t&&d&&t.addEventListener("input",function(){d.textContent=t.value})});})();

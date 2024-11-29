@@ -1,0 +1,23 @@
+  #myPlugin {
+      text-align: center;
+      padding: 20px;
+      background: #f5f5f5;
+
+      tbody {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+
+      tbody tr th,
+      tbody tr td {
+          padding: 0;
+          margin: 0;
+      }
+
+      tbody tr {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+      }
+  }

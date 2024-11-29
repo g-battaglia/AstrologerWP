@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/js/frontend.js"],
+  "sourcesContent": ["// Add your custom frontend JavaScript here\ndocument.addEventListener('DOMContentLoaded', function() {\n    console.log('Frontend script loaded.');\n});\n"],
+  "mappings": "MACA,SAAS,iBAAiB,mBAAoB,UAAW,CACrD,QAAQ,IAAI,yBAAyB,CACzC,CAAC",
+  "names": []
+}
