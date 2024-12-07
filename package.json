@@ -4,10 +4,10 @@
   "main": "esbuild.config.js",
   "scripts": {
     "dev:js": "node esbuild.config.mjs --watch",
-    "dev:css": "sass --watch assets/src/scss:assets/dist/css",
+    "dev:css": "sass --quiet --watch assets/src/scss/styles.scss:assets/dist/css/styles.css --style compressed",
     "dev": "npm run dev:js & npm run dev:css",
     "build:js": "node esbuild.config.mjs",
-    "build:css": "sass assets/src/scss:assets/dist/css --style=compressed",
+    "build:css": "sass --quiet assets/src/scss/styles.scss:assets/dist/css/styles.css --style compressed",
     "build": "npm run build:js && npm run build:css"
   },
   "author": "",
@@ -18,5 +18,7 @@
     "prettier": "^3.4.1",
     "sass": "^1.81.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
 }

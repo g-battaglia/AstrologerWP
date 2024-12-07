@@ -1,11 +1,11 @@
 {
-  "tabWidth": 2,
+  "tabWidth": 4,
 
   "overrides": [
     {
-      "files": ["*.html", "*.js"],
+      "files": ["*.html", "*.js", "*.php"],
       "options": {
-        "tabWidth": 2,
+        "tabWidth": 4,
         "printWidth": 120
       }
     }

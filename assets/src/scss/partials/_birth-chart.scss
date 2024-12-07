@@ -1,0 +1,84 @@
+#astrologerWpBirthChart {
+    background-color: var(--kerykeion-color-base-100);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+
+    .astrologer-wp-chart-wrapper {
+        margin-bottom: 1rem;
+    }
+
+    #astrologerWpBirthChartError {
+        font-size: 0.95rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .subject-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--kerykeion-color-base-content);
+    }
+
+    #astrologerWpBirthChartForm {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        .form-control {
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: var(--kerykeion-color-base-100);
+            color: var(--kerykeion-color-neutral-content);
+            border-color: var(--kerykeion-color-neutral-content);
+
+            &::placeholder {
+                color: var(--kerykeion-color-neutral-content);
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 2px var(--kerykeion-color-neutral-content);
+            }
+
+            &.suggestions {
+                display: none;
+            }
+        }
+
+        .astrologer-wp-city-wrapper {
+            width: 100%;
+            position: relative;
+
+            #astrologerWpBirthChartCitySuggestions {
+                position: absolute;
+
+                .dropdown-item {
+                    background-color: var(--kerykeion-color-base-100);
+                    color: var(--kerykeion-color-neutral-content);
+                    border-color: var(--kerykeion-color-neutral-content);
+
+                    &:hover {
+                        background-color: var(--kerykeion-color-base-content);
+                        color: var(--kerykeion-color-base-100);
+                    }
+
+                    &.active {
+                        background-color: var(--kerykeion-color-base-100);
+                    }
+                }
+            }
+        }
+
+        .btn {
+            background-color: var(--kerykeion-color-base-content);
+            color: var(--kerykeion-color-base-100);
+            height: 40px;
+            margin-top: 0.75rem;
+
+            &:focus {
+                box-shadow: 0 0 5px 2px var(--kerykeion-color-neutral-content);
+            }
+        }
+    }
+}

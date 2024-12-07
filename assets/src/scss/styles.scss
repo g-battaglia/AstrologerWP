@@ -1,23 +1,20 @@
-  #myPlugin {
-      text-align: center;
-      padding: 20px;
-      background: #f5f5f5;
+@import "partials/base";
 
-      tbody {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-      }
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/root";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/alert";
 
-      tbody tr th,
-      tbody tr td {
-          padding: 0;
-          margin: 0;
-      }
+@import "themes/light.scss";
+@import "themes/dark.scss";
 
-      tbody tr {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-      }
-  }
+@import "partials/admin";
+@import "partials/birth-chart";
+@import "partials/synastry-chart";
+@import "partials/transit-chart";

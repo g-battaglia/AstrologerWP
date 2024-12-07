@@ -17,13 +17,14 @@ async function build() {
     const context = await esbuild.context({
       ...buildOptions,
       entryPoints: ["assets/src/js/*.js"],
-      outdir: "assets/dist",
+      outdir: "assets/dist/js",
+      sourcemap: true,
     });
 
     console.log("✨ Build succeeded.");
     if (watch) {
       context.watch();
-      console.log("watching...");
+      console.log("🔨 ESBuild is watching for changes!");
       return;
     }
 
