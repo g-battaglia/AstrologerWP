@@ -1,5 +1,5 @@
 === AstrologerWP ===
-Contributors: Giacomo Battaglia (gbattaglia)
+Contributors: gbattaglia
 Tags: astrology, horoscope, birth chart, natal chart, zodiac
 Requires at least: 5.6
 Tested up to: 6.7
