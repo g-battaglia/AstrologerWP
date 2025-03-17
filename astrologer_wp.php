@@ -7,6 +7,7 @@
  *
  * Author: Giacomo Battaglia
  * Author URI: https://www.kerykeion.net/
+ * Author Email: giacomo@kerykeion.net
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
