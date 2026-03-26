@@ -4,7 +4,7 @@ namespace AstrologerWP\Utils;
 
 class AstrologerApiAdapter {
     private string $apiKey;
-    private const API_BASE_URL = 'https://astrologer.p.rapidapi.com';
+    private const DEFAULT_API_BASE_URL = 'https://astrologer.p.rapidapi.com';
     private const X_RAPIDAPI_HOST = 'astrologer.p.rapidapi.com';
 
     /**
@@ -14,6 +14,37 @@ class AstrologerApiAdapter {
      */
     public function __construct(string $apiKey) {
         $this->apiKey = $apiKey;
+    }
+
+    /**
+     * Get the API base URL. Supports override via:
+     * 1. ASTROLOGER_WP_API_BASE_URL environment variable
+     * 2. astrologer_wp__api_base_url WordPress option
+     * 3. Falls back to default RapidAPI URL
+     *
+     * @return string The API base URL.
+     */
+    private function getApiBaseUrl(): string {
+        $envUrl = getenv('ASTROLOGER_WP_API_BASE_URL');
+        if (!empty($envUrl)) {
+            return rtrim($envUrl, '/');
+        }
+
+        $optionUrl = get_option('astrologer_wp__api_base_url', '');
+        if (!empty($optionUrl)) {
+            return rtrim($optionUrl, '/');
+        }
+
+        return self::DEFAULT_API_BASE_URL;
+    }
+
+    /**
+     * Check if using a custom (non-RapidAPI) endpoint.
+     *
+     * @return bool
+     */
+    private function isCustomEndpoint(): bool {
+        return $this->getApiBaseUrl() !== self::DEFAULT_API_BASE_URL;
     }
 
     /**
@@ -83,12 +114,23 @@ class AstrologerApiAdapter {
      * @return array The response data.
      */
     private function makeRequest(string $endpoint, array $body, string $chartType = 'chart'): array {
-        $url = self::API_BASE_URL . $endpoint;
+        $baseUrl = $this->getApiBaseUrl();
+        $url = $baseUrl . $endpoint;
+
         $headers = array(
             'Content-Type' => 'application/json',
-            'x-rapidapi-host' => self::X_RAPIDAPI_HOST,
-            'x-rapidapi-key' => $this->apiKey
         );
+
+        if ($this->isCustomEndpoint()) {
+            // Custom endpoint: send API key as Bearer token or X-API-Key
+            if (!empty($this->apiKey)) {
+                $headers['x-rapidapi-key'] = $this->apiKey;
+            }
+        } else {
+            // RapidAPI: send RapidAPI-specific headers
+            $headers['x-rapidapi-host'] = self::X_RAPIDAPI_HOST;
+            $headers['x-rapidapi-key'] = $this->apiKey;
+        }
 
         $response = wp_remote_post($url, array(
             'headers' => $headers,

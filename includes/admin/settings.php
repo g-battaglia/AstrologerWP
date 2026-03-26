@@ -22,6 +22,7 @@ function astrologer_wp_register_settings() {
     // API Credentials
     register_setting('astrologer_wp_settings', 'astrologer_wp__api_key', 'sanitize_text_field');
     register_setting('astrologer_wp_settings', 'astrologer_wp__geonames_username', 'sanitize_text_field');
+    register_setting('astrologer_wp_settings', 'astrologer_wp__api_base_url', 'esc_url_raw');
 
     // Chart Calculation
     register_setting('astrologer_wp_settings', 'astrologer_wp__zodiac_type', 'sanitize_text_field');
@@ -55,6 +56,7 @@ function astrologer_wp_register_settings() {
 
     add_settings_field('astrologer_wp__api_key', 'Astrologer API Key', 'astrologer_wp_api_key_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
     add_settings_field('astrologer_wp__geonames_username', 'Geonames Username', 'astrologer_wp_geonames_username_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
+    add_settings_field('astrologer_wp__api_base_url', 'API Base URL (Advanced)', 'astrologer_wp_api_base_url_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
 
     // --- Section: Chart Calculation ---
     add_settings_section(
@@ -140,6 +142,17 @@ function astrologer_wp_geonames_username_field_callback() {
         <br>
         Geonames is used to get the timezone and coordinates of the location and has no affiliation with the Astrologer service.
         </p>';
+}
+
+function astrologer_wp_api_base_url_field_callback() {
+    $value = get_option('astrologer_wp__api_base_url', '');
+    $envValue = getenv('ASTROLOGER_WP_API_BASE_URL');
+    echo '<input type="url" id="astrologer_wp__api_base_url" name="astrologer_wp__api_base_url" value="' . esc_attr($value) . '" class="regular-text" placeholder="https://astrologer.p.rapidapi.com"/>';
+    echo '<p class="description">
+        Leave empty to use the default RapidAPI endpoint. Set a custom URL to point to your own API instance (e.g. for local testing).
+        <br>
+        Can also be set via the <code>ASTROLOGER_WP_API_BASE_URL</code> environment variable' . ($envValue ? ' (currently: <code>' . esc_html($envValue) . '</code>)' : '') . '.
+    </p>';
 }
 
 // --- Calculation Fields ---
