@@ -167,9 +167,10 @@ cmd_up() {
     # Install WP-CLI inside the container
     container exec "$WP_CONTAINER" bash -c '
         if ! command -v wp &>/dev/null; then
-            curl -sO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-            chmod +x wp-cli.phar
-            mv wp-cli.phar /usr/local/bin/wp
+            curl -sf -o /tmp/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+                && chmod +x /tmp/wp-cli.phar \
+                && mv /tmp/wp-cli.phar /usr/local/bin/wp \
+                || echo "WP-CLI download failed (no internet?), skipping auto-setup"
         fi
     '
 
