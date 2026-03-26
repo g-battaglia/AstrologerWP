@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astrologer API - Dev</title>
+</head>
+<body>
+  <!--
+    This file is used only for standalone development with Vite.
+    In production, components are mounted inside WordPress containers.
+  -->
+  <div id="root">
+    <h1>Astrologer API - Development Mode</h1>
+    <p>This is the standalone development environment.</p>
+
+    <!-- Example container to test components -->
+    <div
+      data-astrologer-component="birth-form"
+      data-props='{"showChart": true, "showAspects": true, "showElements": true, "showModalities": true}'
+    >
+      <div class="astrologer-loading">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Mock of the WordPress configuration -->
+  <script>
+    window.astrologerApiConfig = {
+      restUrl: 'http://localhost:8000/wp-json/astrologer/v1/',
+      nonce: '',
+      settings: {
+        language: 'EN',
+        houseSystem: 'P',
+        theme: 'classic',
+        sidereal: false,
+      },
+      i18n: {
+        loading: 'Loading...',
+        error: 'Error',
+        submit: 'Calculate Natal Chart',
+        name: 'Name',
+        natalChart: 'Natal Chart',
+        aspects: 'Aspects',
+        elements: 'Elements',
+        modalities: 'Modalities',
+      },
+    };
+  </script>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

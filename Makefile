@@ -1,72 +1,77 @@
-# ============================================================
-# AstrologerWP - Development Commands
-# ============================================================
+# Makefile for Astrologer API Playground development.
+#
+# Targets:
+#   make up        — Start WordPress + MariaDB containers
+#   make down      — Stop and remove containers
+#   make logs      — Tail container logs
+#   make shell     — Open a shell inside the WordPress container
+#   make build-fe  — Build the frontend for production
+#   make dev-fe    — Start Vite dev server (run separately)
+#   make pot       — Regenerate the .pot translation file
+#   make zip       — Create a distributable ZIP archive
+#   make clean     — Remove build artefacts
 
-.PHONY: help build up setup down clean logs shell rebuild \
-        container-up container-down container-clean container-logs container-shell \
-        zip
+.PHONY: up down logs shell build-fe dev-fe pot zip clean
 
-# Default target
-help: ## Show this help
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+# ---------------------------------------------------------------------------
+# Docker
+# ---------------------------------------------------------------------------
 
-# ── Build ────────────────────────────────────────────────────
-
-build: ## Build JS and CSS assets for production
-	npm run build
-
-dev: ## Start JS and CSS watchers for development
-	npm run dev
-
-install: ## Install Node.js dependencies
-	npm install
-
-# ── Docker Compose ───────────────────────────────────────────
-
-up: ## Start WordPress + MariaDB (Docker Compose)
+up:
 	docker compose up -d
 
-setup: ## Auto-configure WordPress (install, activate plugin, create test pages)
-	docker compose exec wordpress setup-wordpress.sh
-
-down: ## Stop containers (keeps data)
+down:
 	docker compose down
 
-clean: ## Stop containers and delete all volumes
-	docker compose down -v
+logs:
+	docker compose logs -f
 
-logs: ## Tail WordPress container logs
-	docker compose logs -f wordpress
-
-shell: ## Open bash shell in WordPress container
+shell:
 	docker compose exec wordpress bash
 
-rebuild: ## Rebuild WordPress image and restart
-	docker compose build --no-cache
-	docker compose up -d
+# ---------------------------------------------------------------------------
+# Frontend
+# ---------------------------------------------------------------------------
 
-restart: ## Restart containers
-	docker compose restart
+build-fe:
+	cd frontend && npm run build
 
-# ── Apple Container (macOS) ──────────────────────────────────
+dev-fe:
+	cd frontend && npm run dev
 
-container-up: ## Start test environment (Apple Container)
-	./container-run.sh
+# ---------------------------------------------------------------------------
+# i18n
+# ---------------------------------------------------------------------------
 
-container-down: ## Stop containers (keeps data)
-	./container-stop.sh
+pot:
+	mkdir -p languages
+	xgettext \
+		--language=PHP \
+		--keyword=__ --keyword=_e --keyword=_n:1,2 \
+		--keyword=_x:1,2c --keyword=_ex:1,2c --keyword=_nx:1,2,4c \
+		--keyword=esc_html__ --keyword=esc_html_e \
+		--keyword=esc_attr__ --keyword=esc_attr_e \
+		--keyword=esc_html_x:1,2c --keyword=esc_attr_x:1,2c \
+		--from-code=UTF-8 \
+		--default-domain=astrologer-api \
+		--package-name="Astrologer API" \
+		--package-version="1.0.0" \
+		--output=languages/astrologer-api.pot \
+		astrologer-api-playground.php \
+		$$(find includes -name '*.php') \
+		uninstall.php
 
-container-clean: ## Stop containers and purge all data
-	./container-stop.sh --purge
+# ---------------------------------------------------------------------------
+# Distribution
+# ---------------------------------------------------------------------------
 
-container-logs: ## Tail WordPress container logs
-	container logs -f astrologerwp-wp
+zip: build-fe
+	bash compress_4_wp.sh
 
-container-shell: ## Open bash shell in WordPress container
-	container exec -it astrologerwp-wp bash
+# ---------------------------------------------------------------------------
+# Cleanup
+# ---------------------------------------------------------------------------
 
-# ── Distribution ─────────────────────────────────────────────
-
-zip: ## Create AstrologerWP.zip for WordPress upload
-	./compress_4_wp.sh
+clean:
+	rm -rf frontend/dist
+	rm -f astrologer-api-playground.zip

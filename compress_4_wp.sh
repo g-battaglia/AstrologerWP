@@ -1,48 +1,61 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# compress_4_wp.sh — Create a distributable ZIP for WordPress.
+#
+# Usage:
+#   bash compress_4_wp.sh
+#
+# The script:
+#   1. Builds the frontend (npm run build)
+#   2. Packages only the files WordPress needs into a ZIP
+#   3. Excludes dev files (node_modules, src, .git, Docker, etc.)
+#
+# Output: astrologer-api-playground.zip (in the repo root)
 
-# ============================================================
-# Create AstrologerWP.zip for WordPress plugin submission.
-# The ZIP contains a single top-level "astrologerwp/" folder.
-# ============================================================
+set -euo pipefail
 
-set -e
+PLUGIN_SLUG="astrologer-api-playground"
+ZIP_FILE="${PLUGIN_SLUG}.zip"
+BUILD_DIR=$(mktemp -d)
 
-OUTPUT_FILE="AstrologerWP.zip"
-PLUGIN_SLUG="astrologerwp"
-TMP_DIR="/tmp/astrologerwp-build"
+echo "==> Building frontend..."
+(cd frontend && npm run build)
 
-# Clean up
-rm -f "$OUTPUT_FILE"
-rm -rf "$TMP_DIR"
+echo "==> Assembling plugin files..."
+mkdir -p "${BUILD_DIR}/${PLUGIN_SLUG}"
 
-# Create temp structure
-mkdir -p "$TMP_DIR/$PLUGIN_SLUG"
+# PHP files (root)
+cp astrologer-api-playground.php "${BUILD_DIR}/${PLUGIN_SLUG}/"
+cp uninstall.php                 "${BUILD_DIR}/${PLUGIN_SLUG}/"
+cp readme.txt                    "${BUILD_DIR}/${PLUGIN_SLUG}/"
 
-# Copy plugin files preserving structure
-cp astrologer_wp.php "$TMP_DIR/$PLUGIN_SLUG/"
-cp readme.txt        "$TMP_DIR/$PLUGIN_SLUG/"
-cp LICENSE           "$TMP_DIR/$PLUGIN_SLUG/"
-cp -R includes  "$TMP_DIR/$PLUGIN_SLUG/includes"
-mkdir -p "$TMP_DIR/$PLUGIN_SLUG/assets"
-cp -R assets/dist "$TMP_DIR/$PLUGIN_SLUG/assets/dist"
-cp -R languages "$TMP_DIR/$PLUGIN_SLUG/languages"
+# PHP includes
+cp -r includes "${BUILD_DIR}/${PLUGIN_SLUG}/includes"
 
-# Remove source maps from dist (not needed in submission)
-find "$TMP_DIR/$PLUGIN_SLUG/assets/dist" -name "*.map" -delete 2>/dev/null
+# Built frontend assets (JS + CSS bundles only)
+mkdir -p "${BUILD_DIR}/${PLUGIN_SLUG}/frontend/dist"
+cp -r frontend/dist/ "${BUILD_DIR}/${PLUGIN_SLUG}/frontend/dist/"
 
-# Remove any .DS_Store
-find "$TMP_DIR" -name ".DS_Store" -delete 2>/dev/null
+# WordPress shim (loaded at runtime)
+if [ -f frontend/wp-react-shim.js ]; then
+    cp frontend/wp-react-shim.js "${BUILD_DIR}/${PLUGIN_SLUG}/frontend/"
+fi
 
-# Create ZIP
-cd "$TMP_DIR"
-zip -r "$OLDPWD/$OUTPUT_FILE" "$PLUGIN_SLUG"
-cd "$OLDPWD"
+# Languages
+if [ -d languages ]; then
+    cp -r languages "${BUILD_DIR}/${PLUGIN_SLUG}/languages"
+fi
 
-# Clean up temp
-rm -rf "$TMP_DIR"
+# Static assets (icons, banners, screenshots)
+if [ -d assets ]; then
+    cp -r assets "${BUILD_DIR}/${PLUGIN_SLUG}/assets"
+fi
 
-echo ""
-echo "Created: $OUTPUT_FILE"
-unzip -l "$OUTPUT_FILE" | head -20
-echo "..."
-unzip -l "$OUTPUT_FILE" | tail -1
+echo "==> Creating ZIP..."
+(cd "${BUILD_DIR}" && zip -r -q "${ZIP_FILE}" "${PLUGIN_SLUG}")
+mv "${BUILD_DIR}/${ZIP_FILE}" .
+
+echo "==> Cleaning up..."
+rm -rf "${BUILD_DIR}"
+
+echo "==> Done! Created ${ZIP_FILE}"
+ls -lh "${ZIP_FILE}"

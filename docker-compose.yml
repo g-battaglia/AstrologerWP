@@ -1,67 +1,48 @@
-##
-# AstrologerWP - Docker Compose Test Environment
+# Docker Compose for local WordPress development with Astrologer API plugin.
 #
 # Usage:
-#   cp .env.example .env    # Edit with your API keys
-#   docker compose up -d    # Start WordPress + MariaDB
-#   docker compose exec wordpress setup-wordpress.sh  # Auto-configure
+#   docker compose up -d
+#   open http://localhost:8080
 #
-# Then open http://localhost:8080
-##
+# The plugin directory is bind-mounted into the WordPress container,
+# so file changes are reflected immediately.
 
 services:
-  db:
-    image: mariadb:11
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-    volumes:
-      - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
+    db:
+        image: mariadb:11
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpass
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wp
+            MYSQL_PASSWORD: wp
+        volumes:
+            - db_data:/var/lib/mysql
+        healthcheck:
+            test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
-  wordpress:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-    restart: unless-stopped
-    ports:
-      - "${WP_PORT:-8080}:80"
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DEBUG: "1"
-      # Plugin configuration (passed to setup script)
-      WORDPRESS_URL: "http://localhost:${WP_PORT:-8080}"
-      WORDPRESS_TITLE: "AstrologerWP Test"
-      WORDPRESS_ADMIN_USER: "${WP_ADMIN_USER:-admin}"
-      WORDPRESS_ADMIN_PASSWORD: "${WP_ADMIN_PASSWORD:-admin}"
-      WORDPRESS_ADMIN_EMAIL: "${WP_ADMIN_EMAIL:-admin@test.local}"
-      ASTROLOGER_API_KEY: "${ASTROLOGER_API_KEY:-}"
-      ASTROLOGER_WP_API_BASE_URL: "${ASTROLOGER_WP_API_BASE_URL:-}"
-      GEONAMES_USERNAME: "${GEONAMES_USERNAME:-}"
-      CHART_THEME: "${CHART_THEME:-classic}"
-      CHART_STYLE: "${CHART_STYLE:-classic}"
-      CHART_LANGUAGE: "${CHART_LANGUAGE:-EN}"
-      ZODIAC_TYPE: "${ZODIAC_TYPE:-Tropical}"
-      HOUSES_SYSTEM: "${HOUSES_SYSTEM:-P}"
-      PERSPECTIVE_TYPE: "${PERSPECTIVE_TYPE:-Apparent Geocentric}"
-    volumes:
-      # Mount the plugin source for live development
-      - .:/var/www/html/wp-content/plugins/astrologerwp
-      - wp_data:/var/www/html
-    depends_on:
-      db:
-        condition: service_healthy
+    wordpress:
+        image: wordpress:6-php8.2-apache
+        restart: unless-stopped
+        depends_on:
+            db:
+                condition: service_healthy
+        ports:
+            - '8080:80'
+        environment:
+            WORDPRESS_DB_HOST: db
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_USER: wp
+            WORDPRESS_DB_PASSWORD: wp
+            WORDPRESS_DEBUG: '1'
+        volumes:
+            # Bind-mount the plugin into the WP plugins directory
+            - .:/var/www/html/wp-content/plugins/astrologer-api-playground
+            - wp_data:/var/www/html
 
 volumes:
-  db_data:
-  wp_data:
+    db_data:
+    wp_data:

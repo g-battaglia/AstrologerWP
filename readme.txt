@@ -1,127 +1,115 @@
-=== AstrologerWP ===
+=== Astrologer API Playground ===
 Contributors: gbattaglia
-Tags: astrology, birth chart, horoscope, zodiac, moon phase
-Requires at least: 5.6
+Tags: astrology, natal chart, horoscope, zodiac, synastry
+Requires at least: 6.0
 Tested up to: 6.7
-Requires PHP: 7.4
-Stable tag: 2.0.0
-License: GPLv2 or later
+Requires PHP: 8.0
+Stable tag: 1.0.0
+License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-AstrologerWP is the official WordPress plugin for the Astrologer API on RapidAPI. Generate professional astrology charts, synastry analysis, transits, solar/lunar returns, moon phases, and more.
+Display natal charts, synastry, transits, composite charts, solar/lunar returns, and compatibility scores on your WordPress site.
 
 == Description ==
 
-AstrologerWP is the official WordPress plugin for the [Astrologer API](https://rapidapi.com/gbattaglia/api/astrologer) on RapidAPI. It provides a complete suite of astrology tools for your WordPress site with professional SVG chart generation.
-
-**Third-Party Services:**
-
-This plugin relies on the following external services to function:
-
-1. **Astrologer API** (via RapidAPI) - Used for all astrology calculations and chart generation. When a user submits a birth chart form, the birth data (name, date, time, location coordinates) is sent to this API to compute planetary positions and generate SVG charts.
-   * Service URL: [https://rapidapi.com/gbattaglia/api/astrologer](https://rapidapi.com/gbattaglia/api/astrologer)
-   * RapidAPI Terms of Use: [https://rapidapi.com/terms/](https://rapidapi.com/terms/)
-   * RapidAPI Privacy Policy: [https://rapidapi.com/privacy/](https://rapidapi.com/privacy/)
-
-2. **GeoNames API** - Used for city search autocomplete and timezone resolution. When a user types a city name, the city name is sent to GeoNames to retrieve coordinates and timezone information.
-   * Service URL: [https://www.geonames.org/](https://www.geonames.org/)
-   * GeoNames Terms: [https://www.geonames.org/export/](https://www.geonames.org/export/)
-
-Both services require user-provided credentials (API keys / usernames) configured in the plugin settings. No data is sent to these services until the user explicitly submits a form or types in the city autocomplete field.
-
-**Chart Types:**
-
-* **Birth Chart** - Generate natal birth charts with planetary positions, aspects, houses, and element/quality distribution
-* **Synastry Chart** - Relationship compatibility analysis between two people with relationship scoring
-* **Transit Chart** - Analyze current or future planetary transits against a natal chart
-* **Composite Chart** - Midpoint composite chart for relationship analysis
-* **Solar Return Chart** - Yearly solar return analysis with optional relocation
-* **Lunar Return Chart** - Monthly lunar return analysis with optional relocation
-* **Moon Phase** - Detailed moon phase information including illumination, upcoming phases, and eclipses
-* **Current Sky** - Real-time chart of the current sky at UTC/Greenwich
+Astrologer API Playground integrates the [Astrologer API](https://rapidapi.com/gbattaglia/api/astrologer) into WordPress with a modern React-based frontend.
 
 **Features:**
 
-* 6 chart themes: classic, light, dark, dark-high-contrast, strawberry, black-and-white
-* 2 chart styles: classic (traditional wheel) and modern (concentric rings)
-* 24 house systems (Placidus, Koch, Whole Sign, and more)
-* 2 zodiac types: Tropical and Sidereal (with 21 ayanamsha modes)
-* 4 astronomical perspectives
-* 10 chart languages: EN, FR, PT, IT, CN, ES, RU, TR, DE, HI
-* City autocomplete with timezone resolution via Geonames
-* Split chart mode (separate wheel and aspect grid)
-* Transparent background option
-* Configurable display elements (degree indicators, aspect icons, zodiac ring, etc.)
-* Dark and light frontend themes
-* Fully responsive SVG charts
-* WordPress security best practices (nonce verification, input sanitization, output escaping)
+* **Natal Chart** -- SVG birth chart with planetary positions
+* **Synastry Chart** -- relationship compatibility between two charts
+* **Transit Chart** -- current planetary transits over a natal chart
+* **Composite Chart** -- midpoint composite for relationships
+* **Solar Return Chart** -- yearly solar return analysis
+* **Lunar Return Chart** -- monthly lunar return analysis
+* **Compatibility Score** -- numerical relationship compatibility
+* **Current Sky (Now)** -- real-time planetary positions
+* **Interactive Forms** -- users can input birth data directly on the frontend
+* **Gutenberg Blocks** -- drag-and-drop blocks for the modern editor
+* **Shortcodes** -- embed charts in any post, page, or widget area
+* **Admin Settings** -- configure API key, language, house system, and chart theme
+
+**Shortcodes:**
+
+* `[astrologer_birth_form]` -- interactive birth data form
+* `[astrologer_natal_chart]` -- static natal chart
+* `[astrologer_aspects_table]` -- planetary aspects table
+* `[astrologer_elements_chart]` -- elements distribution
+* `[astrologer_modalities_chart]` -- modalities distribution
+* `[astrologer_synastry_form]` -- synastry form
+* `[astrologer_transit_form]` -- transit form
+* `[astrologer_composite_form]` -- composite chart form
+* `[astrologer_solar_return_form]` -- solar return form
+* `[astrologer_lunar_return_form]` -- lunar return form
+* `[astrologer_now_form]` -- current sky form
+* `[astrologer_compatibility_form]` -- compatibility score form
 
 == Installation ==
 
-1. Upload the `astrologerwp` folder to `/wp-content/plugins/`
-2. Activate the plugin through the "Plugins" menu in WordPress
-3. Go to the AstrologerWP settings page in the admin menu
-4. Enter your Astrologer API Key (get one at [RapidAPI](https://rapidapi.com/gbattaglia/api/astrologer/pricing))
-5. Enter your Geonames username (free at [geonames.org](http://www.geonames.org/login))
-6. Configure your preferred chart settings
-7. Add shortcodes to your pages or posts
-
-== Shortcodes ==
-
-* `[astrologer_wp_birth_chart]` - Natal birth chart
-* `[astrologer_wp_synastry_chart]` - Synastry (relationship) chart
-* `[astrologer_wp_transit_chart]` - Transit analysis chart
-* `[astrologer_wp_composite_chart]` - Composite (midpoint) chart
-* `[astrologer_wp_solar_return_chart]` - Solar return chart
-* `[astrologer_wp_lunar_return_chart]` - Lunar return chart
-* `[astrologer_wp_moon_phase]` - Moon phase details
-* `[astrologer_wp_now_chart]` - Current sky chart (UTC/Greenwich)
+1. Upload the `astrologer-api-playground` folder to `/wp-content/plugins/`.
+2. Activate the plugin through the **Plugins** menu in WordPress.
+3. Go to **Settings > Astrologer API** and enter your RapidAPI key.
+4. (Optional) Enter a GeoNames username for city autocomplete.
+5. Use shortcodes or Gutenberg blocks to display charts on your site.
 
 == Frequently Asked Questions ==
 
-= How do I get an API key? =
-Subscribe to the [Astrologer API](https://rapidapi.com/gbattaglia/api/astrologer/pricing) on RapidAPI.
+= Where do I get an API key? =
 
-= Does this plugin require any dependencies? =
-Yes, it requires an active API key from the Astrologer API on RapidAPI and a free Geonames username for city/timezone lookup.
+Sign up at [RapidAPI](https://rapidapi.com/gbattaglia/api/astrologer) and subscribe to the Astrologer API. Copy the API key from your RapidAPI dashboard.
 
-= What is the difference between synastry and composite charts? =
-Synastry overlays two natal charts to show how two people's planets interact. Composite creates a single chart from the midpoints of both charts, representing the relationship itself.
+= Is the API key kept secure? =
 
-= What are solar and lunar returns? =
-A Solar Return is a chart cast for the exact moment the Sun returns to its natal position each year. A Lunar Return is the same concept for the Moon, occurring monthly. Both can be calculated for your current location or a different one.
+Yes. The API key is stored in the WordPress database and never exposed to frontend JavaScript. All API calls go through a server-side PHP REST bridge.
 
-= Can I customize which elements appear on the chart? =
-Yes. The settings page allows you to toggle degree indicators, aspect icons, house position comparison, cusp comparison, and zodiac background ring. You can also choose between list and table layout for aspect grids.
+= What house systems are supported? =
+
+Placidus, Koch, Porphyrius, Regiomontanus, Campanus, Equal, Whole Sign, and Morinus.
+
+= Can I use this in languages other than English? =
+
+The API supports English, Italian, French, Spanish, Portuguese, German, Russian, Turkish, Chinese, and Hindi. Select the language in Settings.
+
+= What is the GeoNames username for? =
+
+It enables the city autocomplete feature so users can search for a city and have latitude, longitude, and timezone filled in automatically.
+
+== Screenshots ==
+
+1. Natal chart SVG rendered on the frontend.
+2. Admin settings page with API configuration.
+3. Interactive birth data form with chart output.
+4. Synastry chart comparing two birth charts.
 
 == Changelog ==
 
-= 2.0.0 =
-* Complete rewrite for Astrologer API v5
-* Added composite chart shortcode
-* Added solar return chart shortcode
-* Added lunar return chart shortcode
-* Added moon phase shortcode
-* Added current sky (now) chart shortcode
-* Added new chart themes: strawberry, black-and-white
-* Added modern chart style (concentric rings)
-* Added split chart mode
-* Added transparent background option
-* Added configurable display elements (degree indicators, aspect icons, etc.)
-* Added aspect grid type setting (list/table)
-* Added relationship scoring for synastry charts
-* Reorganized admin settings into logical sections
-* Improved error handling and API response parsing
-* Updated all endpoints to API v5
-
 = 1.0.0 =
 * Initial release.
+* Natal chart, synastry, transits, composite, solar/lunar return, compatibility, and current sky.
+* Gutenberg blocks and shortcodes.
+* Admin settings page with React UI.
 
 == Upgrade Notice ==
 
-= 2.0.0 =
-Major update with 5 new chart types, new themes, modern chart style, and full API v5 support. Review your settings after upgrading.
+= 1.0.0 =
+Initial release.
 
-== License ==
+== Third-Party Services ==
 
-This plugin is released under the GPLv2 license. For details, see [GPL License](https://www.gnu.org/licenses/gpl-2.0.html).
+This plugin connects to external third-party services. By using this plugin, you acknowledge and agree to the terms of service and privacy policies of these providers.
+
+= Astrologer API (via RapidAPI) =
+
+This plugin sends birth data (name, date, time, location) to the Astrologer API to compute astrological charts and data. Requests are made from your server to the API endpoint configured in Settings (default: `https://astrologer.p.rapidapi.com`).
+
+* **Service URL:** [https://rapidapi.com/gbattaglia/api/astrologer](https://rapidapi.com/gbattaglia/api/astrologer)
+* **Terms of Service:** [https://rapidapi.com/terms](https://rapidapi.com/terms)
+* **Privacy Policy:** [https://rapidapi.com/privacy](https://rapidapi.com/privacy)
+
+= GeoNames =
+
+When a GeoNames username is configured and city autocomplete is used, the plugin sends city search queries to the GeoNames API to retrieve geographic coordinates and timezone data.
+
+* **Service URL:** [https://www.geonames.org/](https://www.geonames.org/)
+* **Terms of Service:** [https://www.geonames.org/export/](https://www.geonames.org/export/)
+* **Privacy Policy:** [https://www.geonames.org/privacy.html](https://www.geonames.org/privacy.html)

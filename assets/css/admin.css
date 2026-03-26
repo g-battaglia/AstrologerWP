@@ -1,0 +1,32 @@
+/**
+ * Styles for the Astrologer API plugin admin page.
+ */
+
+.astrologer-api-settings .form-table th {
+  width: 200px;
+}
+
+.astrologer-api-settings .description {
+  color: #666;
+  font-style: italic;
+}
+
+.astrologer-api-settings .regular-text {
+  width: 400px;
+}
+
+.astrologer-api-settings h2 {
+  margin-top: 2em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+.astrologer-api-settings table.widefat {
+  margin-top: 1em;
+}
+
+.astrologer-api-settings code {
+  background: #f0f0f1;
+  padding: 2px 6px;
+  border-radius: 3px;
+}

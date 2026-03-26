@@ -1,431 +1,214 @@
-# AstrologerWP
+# Astrologer API Playground - WordPress Plugin
 
-The official WordPress plugin for the [Astrologer API](https://rapidapi.com/gbattaglia/api/astrologer) on RapidAPI.
-Generate professional astrology charts, synastry analysis, transits, solar/lunar returns, moon phases, and more — directly in WordPress.
+WordPress plugin to integrate the **Astrologer API** into your site. It generates and displays natal charts, planetary aspects, and the distribution of elements and modalities.
 
-![Admin Panel](admin-panel.png)
-![Birth Chart Example](birth-chart.png)
+## 🚀 Features
 
----
+- **Admin Settings Page**: Configure RapidAPI key, GeoNames username, language, house system and chart theme.
+- **Secure REST Bridge**: Plugin REST endpoints proxy requests to the API, keeping the API key safe on the server.
+- **React Components with shadcn**: Modern frontend with TypeScript and shadcn/ui styling.
+- **Shortcodes**: Insert components into any post or page.
+- **Gutenberg Blocks**: Dedicated blocks for the modern editor.
 
-## Table of Contents
+## 📋 Requirements
 
-- [Features](#features)
-- [Quick Start (WordPress Users)](#quick-start-wordpress-users)
-- [Development & Testing](#development--testing)
-  - [Prerequisites](#prerequisites)
-  - [Option A: Docker Compose](#option-a-docker-compose)
-  - [Option B: Apple Container (macOS)](#option-b-apple-container-macos)
-  - [Testing Against a Local API](#testing-against-a-local-api)
-  - [Building Assets](#building-assets)
-- [Shortcodes Reference](#shortcodes-reference)
-- [Configuration Reference](#configuration-reference)
-  - [API Credentials](#api-credentials)
-  - [Chart Calculation](#chart-calculation)
-  - [Chart Rendering](#chart-rendering)
-  - [Chart Display Options](#chart-display-options)
-- [Architecture](#architecture)
-- [Creating a Distribution ZIP](#creating-a-distribution-zip)
-- [License](#license)
+- WordPress 6.0+
+- PHP 8.0+
+- Node.js 18+ (for frontend development)
+- RapidAPI key for Astrologer API
 
----
+## 🛠️ Installation
 
-## Features
+### 1. Copy the plugin
 
-**8 Chart Types:**
-
-| Shortcode | Chart Type | Description |
-|---|---|---|
-| `[astrologer_wp_birth_chart]` | Natal | Birth chart with planetary positions, aspects, houses |
-| `[astrologer_wp_synastry_chart]` | Synastry | Relationship compatibility between two people |
-| `[astrologer_wp_transit_chart]` | Transit | Planetary transits against a natal chart |
-| `[astrologer_wp_composite_chart]` | Composite | Midpoint composite chart for relationships |
-| `[astrologer_wp_solar_return_chart]` | Solar Return | Yearly solar return with optional relocation |
-| `[astrologer_wp_lunar_return_chart]` | Lunar Return | Monthly lunar return with optional relocation |
-| `[astrologer_wp_moon_phase]` | Moon Phase | Illumination, upcoming phases, eclipses |
-| `[astrologer_wp_now_chart]` | Current Sky | Real-time chart at UTC/Greenwich |
-
-**Rendering Options:**
-
-- 6 themes: `classic`, `light`, `dark`, `dark-high-contrast`, `strawberry`, `black-and-white`
-- 2 styles: `classic` (traditional wheel), `modern` (concentric rings)
-- Split chart mode (separate wheel + aspect grid SVGs)
-- Transparent background
-- Configurable display elements (degree indicators, aspect icons, zodiac ring, etc.)
-
-**Astrology Configuration:**
-
-- 24 house systems (Placidus, Koch, Whole Sign, etc.)
-- Tropical & Sidereal zodiac (21 ayanamsha modes including custom USER)
-- 4 perspectives (Apparent Geocentric, Heliocentric, Topocentric, True Geocentric)
-- 10 chart languages (EN, FR, PT, IT, CN, ES, RU, TR, DE, HI)
-- Relationship scoring for synastry charts
-
-**UX:**
-
-- City autocomplete with timezone resolution via Geonames
-- Dark & light frontend themes
-- Fully responsive SVG charts
-- WordPress security best practices (nonce, sanitization, escaping)
-
----
-
-## Quick Start (WordPress Users)
-
-1. Download the plugin ZIP from [Releases](https://github.com/g-battaglia/AstrologerWP/releases) or build it with `./compress_4_wp.sh`
-2. Upload to WordPress via **Plugins > Add New > Upload Plugin**
-3. Activate **AstrologerWP**
-4. Go to **AstrologerWP** in the admin menu
-5. Enter your **Astrologer API Key** — get one at [RapidAPI](https://rapidapi.com/gbattaglia/api/astrologer/pricing)
-6. Enter your **Geonames Username** — free at [geonames.org](http://www.geonames.org/login)
-7. Configure chart preferences (theme, language, house system, etc.)
-8. Add any shortcode to a page or post, e.g. `[astrologer_wp_birth_chart]`
-
----
-
-## Development & Testing
-
-### Prerequisites
-
-- **Node.js** (for building JS/CSS assets)
-- **Docker** or **macOS with Apple Container CLI** (for the test WordPress environment)
-- An **Astrologer API key** from [RapidAPI](https://rapidapi.com/gbattaglia/api/astrologer/pricing)
-- A **Geonames username** from [geonames.org](http://www.geonames.org/login)
-
-### Environment Setup
+Copy the `WP-Plugin` folder into WordPress `wp-content/plugins/` and rename it to `astrologer-api-playground`:
 
 ```bash
-# Clone the repo
-git clone https://github.com/g-battaglia/AstrologerWP.git
-cd AstrologerWP
+cp -r WP-Plugin /path/to/wordpress/wp-content/plugins/astrologer-api-playground
+```
 
-# Install Node dependencies (for asset building)
+### 2. Install frontend dependencies
+
+```bash
+cd wp-content/plugins/astrologer-api-playground/frontend
 npm install
-
-# Create your environment file
-cp .env.example .env
 ```
 
-Edit `.env` with your credentials:
-
-```env
-ASTROLOGER_API_KEY=your_rapidapi_key_here
-GEONAMES_USERNAME=your_geonames_username
-
-# Optional: point to a local API for testing
-# ASTROLOGER_WP_API_BASE_URL=http://host.docker.internal:8000
-```
-
-### Option A: Docker Compose
-
-Best for Linux or users with Docker Desktop installed.
+### 3. Build assets
 
 ```bash
-# Start WordPress + MariaDB
-make up
-
-# Auto-configure WordPress (install, activate plugin, create test pages)
-make setup
-
-# Open in browser
-open http://localhost:8080
+npm run build
 ```
 
-Or without Make:
+This generates the files in `frontend/dist/` that will be loaded by the plugin.
+
+### 4. Activate the plugin
+
+Go to **WordPress Admin → Plugins** and activate "Astrologer API Playground".
+
+### 5. Configure settings
+
+Go to **Settings → Astrologer API** and enter:
+
+- **RapidAPI Key**: Your API key from [RapidAPI](https://rapidapi.com/gbattaglia/api/astrologer)
+- **GeoNames Username** (optional): For automatic location lookup
+- **Base URL API**: Default is `https://astrologer.p.rapidapi.com`
+- **Language, House System, Theme**: Options for charts
+
+## 💻 Frontend Development
+
+### Start the dev server
 
 ```bash
-docker compose up -d
-docker compose exec wordpress setup-wordpress.sh
-```
-
-**Useful commands:**
-
-```bash
-make logs       # Tail WordPress logs
-make shell      # Open a bash shell in the WordPress container
-make down       # Stop containers (keeps data)
-make clean      # Stop containers and delete all data
-make rebuild    # Rebuild the WordPress image and restart
-```
-
-### Option B: Apple Container (macOS)
-
-Native macOS containers, no Docker Desktop required. Requires macOS 26+ with `container` CLI.
-
-```bash
-# Start everything (builds image, creates network, starts MariaDB + WordPress, configures)
-make container-up
-
-# Or directly:
-./container-run.sh
-
-# With inline options:
-./container-run.sh --api-key YOUR_KEY --geonames-user YOUR_USER --api-url http://host.internal:8000
-```
-
-**Useful commands:**
-
-```bash
-make container-logs     # Tail WordPress logs
-make container-shell    # Open a bash shell
-make container-down     # Stop (keeps data)
-make container-clean    # Stop and purge all data
-```
-
-### What the Setup Creates
-
-After running `make setup` or `./container-run.sh`, you get a fully configured WordPress with:
-
-- **Admin panel:** http://localhost:8080/wp-admin/ (admin / admin)
-- **Plugin activated** with your API keys pre-configured
-- **8 test pages**, one for each shortcode:
-
-| URL | Shortcode |
-|---|---|
-| `/birth-chart/` | `[astrologer_wp_birth_chart]` |
-| `/synastry-chart/` | `[astrologer_wp_synastry_chart]` |
-| `/transit-chart/` | `[astrologer_wp_transit_chart]` |
-| `/composite-chart/` | `[astrologer_wp_composite_chart]` |
-| `/solar-return/` | `[astrologer_wp_solar_return_chart]` |
-| `/lunar-return/` | `[astrologer_wp_lunar_return_chart]` |
-| `/moon-phase/` | `[astrologer_wp_moon_phase]` |
-| `/current-sky/` | `[astrologer_wp_now_chart]` |
-
-### Testing Against a Local API
-
-To test against a local instance of the Astrologer API instead of the production RapidAPI endpoint:
-
-**1. Set the environment variable:**
-
-```env
-# In .env:
-# Docker uses host.docker.internal, Apple Container uses host.internal
-ASTROLOGER_WP_API_BASE_URL=http://host.docker.internal:8000   # Docker
-ASTROLOGER_WP_API_BASE_URL=http://host.internal:8000           # Apple Container
-```
-
-**2. Or pass it inline:**
-
-```bash
-# Docker
-ASTROLOGER_WP_API_BASE_URL=http://host.docker.internal:8000 docker compose up -d
-
-# Apple Container
-./container-run.sh --api-url http://host.internal:8000
-```
-
-**3. Or set it from the WordPress admin panel:**
-
-Go to **AstrologerWP > API Base URL (Advanced)** and enter your local URL.
-
-When a custom endpoint is set, RapidAPI-specific headers (`x-rapidapi-host`) are omitted — only the API key is sent as `x-rapidapi-key`. If your local API runs in debug mode, authentication is bypassed entirely.
-
-### Building Assets
-
-The plugin uses **esbuild** for JavaScript and **Sass** for CSS.
-
-```bash
-# Production build
-make build
-# or: npm run build
-
-# Development mode (watch for changes)
+cd frontend
 npm run dev
 ```
 
-Built files go to `assets/dist/`.
+Vite starts on `http://localhost:5173` with hot reload.
 
----
-
-## Shortcodes Reference
-
-### Birth Chart
-
-```
-[astrologer_wp_birth_chart]
-```
-
-Form fields: name, date/time, city (with autocomplete).
-Generates a natal chart SVG with planetary positions, aspects, houses, element and quality distribution.
-
-### Synastry Chart
-
-```
-[astrologer_wp_synastry_chart]
-```
-
-Two-person form (Partner A + Partner B).
-Generates a dual-wheel chart showing planetary interactions between two natal charts. Includes relationship scoring.
-
-### Transit Chart
-
-```
-[astrologer_wp_transit_chart]
-```
-
-Form fields: subject birth data + transit date/time/city.
-Shows how current (or selected) planetary positions affect the natal chart.
-
-### Composite Chart
-
-```
-[astrologer_wp_composite_chart]
-```
-
-Two-person form (Person A + Person B).
-Creates a midpoint chart representing the relationship itself (not how two people interact, but what the relationship _is_).
-
-### Solar Return Chart
-
-```
-[astrologer_wp_solar_return_chart]
-```
-
-Form fields: birth data + return year + optional return location.
-Calculates the exact moment the Sun returns to its natal position for the given year. Optionally relocated to a different city.
-
-### Lunar Return Chart
-
-```
-[astrologer_wp_lunar_return_chart]
-```
-
-Form fields: birth data + return year/month + optional return location.
-Same concept as solar return, but for the Moon (monthly cycle).
-
-### Moon Phase
-
-```
-[astrologer_wp_moon_phase]
-```
-
-Form fields: date/time + city.
-Displays: phase name, illumination %, stage, moon age, next new/full moon, sunrise/sunset, upcoming eclipses.
-
-### Current Sky
-
-```
-[astrologer_wp_now_chart]
-```
-
-No form needed — generates a chart for the current moment at UTC/Greenwich on page load.
-
----
-
-## Configuration Reference
-
-All settings are configured from **WordPress Admin > AstrologerWP**.
-
-### API Credentials
-
-| Setting | Description |
-|---|---|
-| **Astrologer API Key** | Your RapidAPI subscription key. [Get one here](https://rapidapi.com/gbattaglia/api/astrologer/pricing). |
-| **Geonames Username** | Free username for city/timezone lookup. [Register here](http://www.geonames.org/login). |
-| **API Base URL** | Advanced. Override the API endpoint for local testing. Leave empty for production (RapidAPI). Can also be set via `ASTROLOGER_WP_API_BASE_URL` environment variable. |
-
-### Chart Calculation
-
-| Setting | Options | Default |
-|---|---|---|
-| **Zodiac Type** | `Tropical`, `Sidereal` | Tropical |
-| **Sidereal Mode** | 21 modes (FAGAN_BRADLEY, LAHIRI, DELUCE, RAMAN, USER, etc.) | _(only when Sidereal)_ |
-| **Houses System** | 24 systems: `P` Placidus, `K` Koch, `W` Whole Sign, `C` Campanus, `R` Regiomontanus, etc. | P (Placidus) |
-| **Chart Language** | EN, FR, PT, IT, CN, ES, RU, TR, DE, HI | EN |
-| **Perspective Type** | Apparent Geocentric, Heliocentric, Topocentric, True Geocentric | Apparent Geocentric |
-
-### Chart Rendering
-
-| Setting | Type | Default | Description |
-|---|---|---|---|
-| **Chart Theme** | Select | classic | Visual theme: classic, light, dark, dark-high-contrast, strawberry, black-and-white |
-| **Chart Style** | Select | classic | classic = traditional wheel, modern = concentric rings |
-| **Wheel Only** | Checkbox | off | Show only the wheel without the aspect grid |
-| **Split Chart** | Checkbox | off | Render wheel and grid as separate SVGs, stacked vertically |
-| **Transparent Background** | Checkbox | off | Transparent instead of theme background color |
-| **Aspect Grid Type** | Select | list | For dual charts: `list` (vertical) or `table` (grid matrix) |
-
-### Chart Display Options
-
-| Setting | Type | Default | Description |
-|---|---|---|---|
-| **Show House Position Comparison** | Checkbox | on | House comparison table next to the wheel |
-| **Show Cusp Position Comparison** | Checkbox | on | Cusp comparison table (dual charts only) |
-| **Show Degree Indicators** | Checkbox | on | Radial lines and degree numbers for planet positions |
-| **Show Aspect Icons** | Checkbox | on | Aspect symbols on wheel aspect lines |
-| **Show Zodiac Background Ring** | Checkbox | on | Colored zodiac wedges (modern style only) |
-
----
-
-## Architecture
-
-```
-astrologerwp/
-├── astrologer_wp.php                 # Main plugin entry point
-├── includes/
-│   ├── admin/
-│   │   └── settings.php              # Admin panel, settings registration
-│   ├── utils/
-│   │   ├── AstrologerApiAdapter.php  # API v5 client (all endpoints + rendering params)
-│   │   ├── GeonamesAdapter.php       # City search + timezone resolution (cached)
-│   │   ├── KerykeionConstants.php    # All astrology constants and enums
-│   │   ├── Subject.php               # Birth data model
-│   │   └── chart-renderer.php        # Shared SVG rendering (handles split/wheel-only)
-│   ├── shortcodes/                   # 8 shortcode files
-│   ├── ajax-handlers.php             # AJAX endpoint for city autocomplete
-│   ├── enqueue-scripts.php           # JS/CSS asset registration
-│   └── functions.php                 # Dark theme body class
-├── assets/
-│   ├── src/
-│   │   ├── js/
-│   │   │   ├── frontend.js           # City autocomplete for all forms
-│   │   │   └── admin.js              # Sidereal mode toggle, shortcode copy
-│   │   └── scss/                     # Sass sources (Bootstrap subset + custom)
-│   └── dist/                         # Compiled JS/CSS (committed)
-├── docker/                           # Docker test environment
-│   ├── Dockerfile
-│   └── setup-wordpress.sh            # Auto-configuration script
-├── docker-compose.yml                # Docker Compose for testing
-├── container-run.sh                  # Apple Container setup script
-├── container-stop.sh                 # Apple Container teardown script
-├── .env.example                      # Environment template
-├── Makefile                          # Convenience commands
-├── esbuild.config.mjs               # JS bundler config
-├── package.json                      # Node dependencies + build scripts
-├── compress_4_wp.sh                  # Creates distribution ZIP
-├── readme.txt                        # WordPress.org plugin readme
-└── README.md                         # This file
-```
-
-**API Flow:**
-
-1. User fills form in shortcode frontend
-2. Form submits via GET with nonce
-3. Shortcode PHP builds `Subject` objects from sanitized input
-4. `AstrologerApiAdapter` sends POST to Astrologer API v5 with subject data + rendering params from WP settings
-5. API returns SVG chart + `chart_data` JSON
-6. `chart-renderer.php` encodes SVG to base64, outputs to DOM
-7. Client-side JS decodes and injects SVG; chart data is available as `window.astrologer*Data`
-
----
-
-## Creating a Distribution ZIP
-
-To create a clean ZIP for WordPress upload:
+### Production build
 
 ```bash
-make zip
-# or: ./compress_4_wp.sh
+npm run build
 ```
 
-This excludes development files (.git, node_modules, Docker files, build configs, etc.) and creates `AstrologerWP.zip`.
+### Frontend structure
 
----
+```
+frontend/
+├── src/
+│   ├── components/        # Componenti React
+│   │   ├── ui/           # Componenti shadcn (Card, Table, Button, etc.)
+│   │   ├── NatalChart.tsx
+│   │   ├── AspectsTable.tsx
+│   │   ├── ElementsChart.tsx
+│   │   ├── ModalitiesChart.tsx
+│   │   └── BirthForm.tsx
+│   ├── lib/              # Utility e API client
+│   ├── main.tsx          # Entry point
+│   └── index.css         # Stili Tailwind
+├── package.json
+├── vite.config.ts
+└── tsconfig.json
+```
 
-## License
+## 📝 Shortcodes
 
-GPLv2 or later. See [LICENSE](LICENSE).
+### Natal Chart
 
-**Author:** [Giacomo Battaglia](https://www.kerykeion.net/) (giacomo@kerykeion.net)
-**API:** [Astrologer API on RapidAPI](https://rapidapi.com/gbattaglia/api/astrologer)
-**Astrology Engine:** [Kerykeion](https://github.com/g-battaglia/kerykeion)
+```
+[astrologer_natal_chart name="Mario" year="1990" month="5" day="15" hour="14" minute="30" latitude="41.9028" longitude="12.4964" timezone="Europe/Rome"]
+```
+
+### Aspects Table
+
+```
+[astrologer_aspects_table year="1990" month="5" day="15" hour="14" minute="30" latitude="41.9028" longitude="12.4964" timezone="Europe/Rome"]
+```
+
+### Elements Chart
+
+```
+[astrologer_elements_chart year="1990" month="5" day="15" hour="14" minute="30" latitude="41.9028" longitude="12.4964" timezone="Europe/Rome"]
+```
+
+### Modalities Chart
+
+```
+[astrologer_modalities_chart year="1990" month="5" day="15" hour="14" minute="30" latitude="41.9028" longitude="12.4964" timezone="Europe/Rome"]
+```
+
+### Full Interactive Form
+
+```
+[astrologer_birth_form show_chart="true" show_aspects="true" show_elements="true" show_modalities="true"]
+```
+
+## 🧱 Gutenberg Blocks
+
+In the Gutenberg editor, search for "Astrologer" to find the blocks:
+
+- **Natal Chart**: SVG natal chart
+- **Aspects Table**: Planetary aspects table
+- **Elements Chart**: Fire/Earth/Air/Water distribution
+- **Modalities Chart**: Cardinal/Fixed/Mutable distribution
+- **Natal Chart Form**: Interactive form for the user
+
+Each block has a sidebar panel to configure birth data.
+
+## 🔌 REST API Endpoints
+
+The plugin exposes REST endpoints that proxy to the Astrologer API:
+
+| Endpoint                                  | Method | Description         |
+| ----------------------------------------- | ------ | ------------------- |
+| `/wp-json/astrologer/v1/natal-chart`      | POST   | Generates SVG chart |
+| `/wp-json/astrologer/v1/natal-chart-data` | POST   | Natal chart data    |
+| `/wp-json/astrologer/v1/subject`          | POST   | Subject data        |
+| `/wp-json/astrologer/v1/synastry-chart`   | POST   | Synastry chart      |
+| `/wp-json/astrologer/v1/transit-chart`    | POST   | Transit chart       |
+
+### Example call
+
+```javascript
+fetch('/wp-json/astrologer/v1/natal-chart', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': wpApiSettings.nonce, // Se autenticato
+    },
+    body: JSON.stringify({
+        name: 'John',
+        year: 1990,
+        month: 5,
+        day: 15,
+        hour: 14,
+        minute: 30,
+        latitude: 41.9028,
+        longitude: 12.4964,
+        timezone: 'Europe/Rome',
+    }),
+});
+```
+
+## 📁 Plugin Structure
+
+```
+WP-Plugin/
+├── astrologer-api-playground.php  # File principale plugin
+├── includes/
+│   ├── class-astrologer-api-settings.php  # Pagina impostazioni
+│   ├── class-astrologer-api-rest.php      # Endpoint REST
+│   ├── class-astrologer-api-blocks.php    # Shortcodes e blocchi
+│   └── class-astrologer-api-frontend.php  # Gestione asset
+├── assets/
+│   ├── js/
+│   │   └── blocks.js              # Script blocchi Gutenberg
+│   └── css/
+│       └── admin.css              # Stili admin
+├── frontend/                      # App React
+│   ├── src/
+│   ├── dist/                      # Build produzione
+│   ├── package.json
+│   └── vite.config.ts
+└── README.md
+```
+
+## 🔒 Security
+
+- The RapidAPI key is stored in the WordPress database and **never exposed** to frontend JavaScript.
+- All API calls go through the PHP REST bridge.
+- Input data is sanitized using WordPress functions (`sanitize_text_field`, `absint`, etc.).
+
+## 📄 License
+
+This plugin is distributed under the GNU General Public License v2 or later (GPL-2.0-or-later).
+See the LICENSE file for the full license text.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
