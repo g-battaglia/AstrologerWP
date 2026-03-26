@@ -305,6 +305,19 @@ class Astrologer_API_Frontend {
                 'nowPlaceholder'        => __( 'Now', 'astrologer-api' ),
                 'nowSuccess'            => __( 'Chart calculated successfully.', 'astrologer-api' ),
 
+                // Validation errors
+                'errorDay'              => __( 'Day must be between 1 and 31', 'astrologer-api' ),
+                'errorMonth'            => __( 'Month must be between 1 and 12', 'astrologer-api' ),
+                'errorYear'             => __( 'Year must be between 1 and 2200', 'astrologer-api' ),
+                'errorDayMonth'         => __( 'Invalid day for the selected month', 'astrologer-api' ),
+                'errorHour'             => __( 'Hour must be between 0 and 23', 'astrologer-api' ),
+                'errorMinute'           => __( 'Minutes must be between 0 and 59', 'astrologer-api' ),
+                'errorLatitude'         => __( 'Latitude must be between -90 and 90', 'astrologer-api' ),
+                'errorLongitude'        => __( 'Longitude must be between -180 and 180', 'astrologer-api' ),
+                'errorCity'             => __( 'City is required', 'astrologer-api' ),
+                'errorNation'           => __( 'Country code is required', 'astrologer-api' ),
+                'errorTimezone'         => __( 'Time zone is required', 'astrologer-api' ),
+
                 // MoonPhaseDisplay
                 'moonPhase'             => __( 'Moon Phase', 'astrologer-api' ),
                 'moonPhaseNoData'       => __( 'Enter birth data to view the moon phase.', 'astrologer-api' ),

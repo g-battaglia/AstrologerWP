@@ -72,8 +72,48 @@ export interface ChartDataResponse {
     second_subject?: SubjectData;
     elements_distribution?: Distribution[];
     modalities_distribution?: Distribution[];
-    points?: Record<string, any>[];
+    points?: Record<string, unknown>[];
     lunar_phase?: LunarPhase | null;
+}
+
+/**
+ * Raw chart data wrapper returned by API v5.
+ */
+interface RawChartDataResponse {
+    chart_data?: {
+        aspects?: Aspect[];
+        points?: Record<string, unknown>[];
+        element_distribution?: Record<string, number>;
+        quality_distribution?: Record<string, number>;
+        lunar_phase?: LunarPhase | null;
+    };
+    [key: string]: unknown;
+}
+
+/**
+ * Response from chart endpoints that include chart_data alongside the SVG.
+ */
+export interface ChartWithDataResponse extends ChartResponse {
+    chart_data?: Record<string, unknown>;
+}
+
+/**
+ * Synastry data response from the API.
+ */
+export interface SynastryDataResponse {
+    first_subject?: SubjectData;
+    second_subject?: SubjectData;
+    aspects?: Aspect[];
+    [key: string]: unknown;
+}
+
+/**
+ * Compatibility score response from the API.
+ */
+export interface CompatibilityScoreResponse {
+    score?: number;
+    is_destiny?: boolean;
+    [key: string]: unknown;
 }
 
 // ==========================================================================
@@ -115,7 +155,7 @@ export async function fetchNatalChart(
 /**
  * Maps element distribution from API response to Distribution array
  */
-function mapElementDistribution(raw: any): Distribution[] | undefined {
+function mapElementDistribution(raw: Record<string, number> | undefined | null): Distribution[] | undefined {
     if (!raw || typeof raw !== 'object') return undefined;
 
     const result: Distribution[] = [];
@@ -155,7 +195,7 @@ function mapElementDistribution(raw: any): Distribution[] | undefined {
 /**
  * Maps quality distribution from API response to Distribution array
  */
-function mapQualityDistribution(raw: any): Distribution[] | undefined {
+function mapQualityDistribution(raw: Record<string, number> | undefined | null): Distribution[] | undefined {
     if (!raw || typeof raw !== 'object') return undefined;
 
     const result: Distribution[] = [];
@@ -191,7 +231,7 @@ function mapQualityDistribution(raw: any): Distribution[] | undefined {
 export async function fetchNatalChartData(
     props: SubjectProps,
 ): Promise<ChartDataResponse> {
-    const raw = await apiRequest<any>(
+    const raw = await apiRequest<RawChartDataResponse>(
         'natal-chart-data',
         buildSubjectPayload(props),
     );
@@ -209,14 +249,14 @@ export async function fetchNatalChartData(
         : undefined;
 
     const elements_distribution = mapElementDistribution(
-        chartData?.element_distribution,
+        chartData?.element_distribution as Record<string, number> | undefined,
     );
     const modalities_distribution = mapQualityDistribution(
-        chartData?.quality_distribution,
+        chartData?.quality_distribution as Record<string, number> | undefined,
     );
 
     // Extract lunar phase if present
-    const lunar_phase: LunarPhase | null = chartData?.lunar_phase ?? null;
+    const lunar_phase: LunarPhase | null = (chartData?.lunar_phase as LunarPhase | undefined) ?? null;
 
     const result: ChartDataResponse = {
         aspects,
@@ -260,8 +300,8 @@ export async function fetchSynastryChart(
 
 export async function fetchSynastryData(
     body: Record<string, unknown>,
-): Promise<any> {
-    return apiRequest<any>('synastry-chart-data', body);
+): Promise<SynastryDataResponse> {
+    return apiRequest<SynastryDataResponse>('synastry-chart-data', body);
 }
 
 /**
@@ -275,8 +315,8 @@ export async function fetchTransitChart(
 
 export async function fetchTransitData(
     body: Record<string, unknown>,
-): Promise<any> {
-    return apiRequest<any>('transit-chart-data', body);
+): Promise<ChartDataResponse> {
+    return apiRequest<ChartDataResponse>('transit-chart-data', body);
 }
 
 /**
@@ -290,8 +330,8 @@ export async function fetchCompositeChart(
 
 export async function fetchCompositeData(
     body: Record<string, unknown>,
-): Promise<any> {
-    return apiRequest<any>('composite-chart-data', body);
+): Promise<ChartDataResponse> {
+    return apiRequest<ChartDataResponse>('composite-chart-data', body);
 }
 
 /**
@@ -299,14 +339,14 @@ export async function fetchCompositeData(
  */
 export async function fetchNowSubject(
     body: Record<string, unknown> = {},
-): Promise<any> {
-    return apiRequest<any>('now-subject', body);
+): Promise<SubjectData> {
+    return apiRequest<SubjectData>('now-subject', body);
 }
 
 export async function fetchNowChart(
     body: Record<string, unknown> = {},
-): Promise<ChartResponse & { chart_data?: any }> {
-    return apiRequest<ChartResponse & { chart_data?: any }>('now-chart', body);
+): Promise<ChartWithDataResponse> {
+    return apiRequest<ChartWithDataResponse>('now-chart', body);
 }
 
 /**
@@ -314,14 +354,14 @@ export async function fetchNowChart(
  */
 export async function fetchSolarReturnData(
     body: Record<string, unknown>,
-): Promise<any> {
-    return apiRequest<any>('solar-return-chart-data', body);
+): Promise<ChartDataResponse> {
+    return apiRequest<ChartDataResponse>('solar-return-chart-data', body);
 }
 
 export async function fetchSolarReturnChart(
     body: Record<string, unknown>,
-): Promise<ChartResponse & { chart_data?: any }> {
-    return apiRequest<ChartResponse & { chart_data?: any }>(
+): Promise<ChartWithDataResponse> {
+    return apiRequest<ChartWithDataResponse>(
         'solar-return-chart',
         body,
     );
@@ -332,14 +372,14 @@ export async function fetchSolarReturnChart(
  */
 export async function fetchLunarReturnData(
     body: Record<string, unknown>,
-): Promise<any> {
-    return apiRequest<any>('lunar-return-chart-data', body);
+): Promise<ChartDataResponse> {
+    return apiRequest<ChartDataResponse>('lunar-return-chart-data', body);
 }
 
 export async function fetchLunarReturnChart(
     body: Record<string, unknown>,
-): Promise<ChartResponse & { chart_data?: any }> {
-    return apiRequest<ChartResponse & { chart_data?: any }>(
+): Promise<ChartWithDataResponse> {
+    return apiRequest<ChartWithDataResponse>(
         'lunar-return-chart',
         body,
     );
@@ -350,8 +390,8 @@ export async function fetchLunarReturnChart(
  */
 export async function fetchCompatibilityScore(
     body: Record<string, unknown>,
-): Promise<any> {
-    return apiRequest<any>('compatibility-score', body);
+): Promise<CompatibilityScoreResponse> {
+    return apiRequest<CompatibilityScoreResponse>('compatibility-score', body);
 }
 
 // ============================================================================

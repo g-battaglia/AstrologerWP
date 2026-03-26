@@ -161,6 +161,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_transit_chart' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_transit_args(),
             )
         );
 
@@ -175,6 +176,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_transit_chart_data' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_transit_args(),
             )
         );
 
@@ -189,6 +191,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_now_subject' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_now_args(),
             )
         );
 
@@ -199,6 +202,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_now_chart' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_now_args(),
             )
         );
 
@@ -239,6 +243,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_solar_return_chart_data' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_return_args(),
             )
         );
 
@@ -249,6 +254,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_solar_return_chart' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_return_args(),
             )
         );
 
@@ -259,6 +265,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_lunar_return_chart_data' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_return_args(),
             )
         );
 
@@ -269,6 +276,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_lunar_return_chart' ),
                 'permission_callback' => '__return_true',
+                'args'                => $this->get_return_args(),
             )
         );
 
@@ -322,6 +330,7 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_get_settings' ),
                 'permission_callback' => array( $this, 'check_settings_permissions' ),
+                'args'                => array(),
             )
         );
 
@@ -332,6 +341,12 @@ class Astrologer_API_REST {
                 'methods'             => 'POST',
                 'callback'            => array( $this, 'handle_update_settings' ),
                 'permission_callback' => array( $this, 'check_settings_permissions' ),
+                'args'                => array(
+                    'settings' => array(
+                        'type'     => 'object',
+                        'required' => true,
+                    ),
+                ),
             )
         );
     }
@@ -536,9 +551,13 @@ class Astrologer_API_REST {
         $body_raw    = wp_remote_retrieve_body( $response );
 
         if ( $status_code >= 400 ) {
+            $geo_error_msg = wp_strip_all_tags( $body_raw );
+            if ( strlen( $geo_error_msg ) > 200 ) {
+                $geo_error_msg = substr( $geo_error_msg, 0, 200 ) . '...';
+            }
             return new WP_Error(
                 'geonames_error',
-                sprintf( __( 'GeoNames Error %d: %s', 'astrologer-api' ), $status_code, $body_raw ),
+                sprintf( __( 'GeoNames Error %d: %s', 'astrologer-api' ), $status_code, $geo_error_msg ),
                 array( 'status' => $status_code )
             );
         }
@@ -627,9 +646,13 @@ class Astrologer_API_REST {
 
         // If the API returned an error status code
         if ( $status_code >= 400 ) {
+            $error_msg = wp_strip_all_tags( $body_raw );
+            if ( strlen( $error_msg ) > 200 ) {
+                $error_msg = substr( $error_msg, 0, 200 ) . '...';
+            }
             return new WP_Error(
                 'api_error',
-                sprintf( __( 'API Error %d: %s', 'astrologer-api' ), $status_code, $body_raw ),
+                sprintf( __( 'API Error %d: %s', 'astrologer-api' ), $status_code, $error_msg ),
                 array( 'status' => $status_code )
             );
         }
@@ -1272,6 +1295,77 @@ class Astrologer_API_REST {
             'second_subject' => array(
                 'type'     => 'object',
                 'required' => true,
+            ),
+        );
+    }
+
+    /**
+     * Argument definition for transit endpoints.
+     *
+     * @return array
+     */
+    private function get_transit_args(): array {
+        return array(
+            'natal_subject' => array(
+                'type'     => 'object',
+                'required' => true,
+            ),
+            'transit_subject' => array(
+                'type'     => 'object',
+                'required' => true,
+            ),
+            'include_house_comparison' => array(
+                'type' => 'boolean',
+            ),
+        );
+    }
+
+    /**
+     * Argument definition for now (current moment) endpoints.
+     *
+     * @return array
+     */
+    private function get_now_args(): array {
+        return array(
+            'name' => array(
+                'type'              => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+        );
+    }
+
+    /**
+     * Argument definition for solar/lunar return endpoints.
+     *
+     * @return array
+     */
+    private function get_return_args(): array {
+        return array(
+            'subject' => array(
+                'type'     => 'object',
+                'required' => true,
+            ),
+            'year' => array(
+                'type'              => 'integer',
+                'sanitize_callback' => 'absint',
+            ),
+            'month' => array(
+                'type'              => 'integer',
+                'sanitize_callback' => 'absint',
+            ),
+            'iso_datetime' => array(
+                'type'              => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+            'wheel_type' => array(
+                'type'              => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+            'include_house_comparison' => array(
+                'type' => 'boolean',
+            ),
+            'return_location' => array(
+                'type' => 'object',
             ),
         );
     }

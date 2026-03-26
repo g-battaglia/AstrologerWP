@@ -1,6 +1,6 @@
 # AstrologerWP (astrologer-wp) - TODO
 
-All 29 items completed.
+All 37 items completed (29 original + 8 post-audit).
 
 ## CRITICAL - Bloccanti per produzione
 
@@ -170,3 +170,63 @@ All 29 items completed.
     - `icon-128x128.svg`, `icon-256x256.svg`
     - `banner-772x250.svg`, `banner-1544x500.svg`
     - `README.txt` with export instructions
+
+## POST-AUDIT - WP.org compliance & cleanup
+
+### PA1. Aggiungere `args` a tutti i REST endpoint — DONE
+
+- **File:** `class-astrologer-api-rest.php`
+- Added `'args'` validation to 10 routes missing it: transit-chart/data, now-subject, now-chart, solar-return-chart/data, lunar-return-chart/data, settings-get, settings-update.
+- New methods: `get_transit_args()`, `get_now_args()`, `get_return_args()`.
+
+### PA2. Sanitizzare error messages da API esterne — DONE
+
+- **File:** `class-astrologer-api-rest.php`
+- API error responses stripped of HTML tags (`wp_strip_all_tags`) and truncated to 200 chars.
+- Applied to both Astrologer API and GeoNames error paths.
+
+### PA3. Rimuovere file stale — DONE
+
+- Removed: `test.md`, `VITE-WORDPRESS-SETUP.md`, `frontend/bun.lock`.
+- Moved `astrologer-api.json` and `astrologer-api.md` to `docs/`.
+- Added `bun.lock` to `.gitignore`.
+
+### PA4. Tipizzare `any` in api.ts — DONE
+
+- **File:** `frontend/src/lib/api.ts`
+- Replaced all `any` types with proper interfaces: `RawChartDataResponse`, `ChartWithDataResponse`, `SynastryDataResponse`, `CompatibilityScoreResponse`.
+- Zero ESLint warnings in api.ts.
+
+### PA5. i18n per messaggi validazione form — DONE
+
+- **Files:** `frontend/src/lib/types.ts`, `includes/class-astrologer-api-frontend.php`
+- 11 validation error messages wrapped in `t()` with fallbacks.
+- 11 new i18n keys registered in PHP: `errorDay`, `errorMonth`, `errorYear`, `errorDayMonth`, `errorHour`, `errorMinute`, `errorLatitude`, `errorLongitude`, `errorCity`, `errorNation`, `errorTimezone`.
+
+### PA6. ESLint config + fix lint errors — DONE
+
+- **File:** `frontend/eslint.config.js` (created)
+- ESLint 9 flat config with `typescript-eslint`.
+- Fixed 3 errors: stale eslint-disable comment, let→const, unsafe return in finally.
+
+### PA7. Apple Container test environment — DONE
+
+- **File:** `apple-container.sh` (created)
+- Full WP test environment via macOS Apple Containers.
+- Auto WP install + plugin activation via WP-CLI.
+- Makefile targets: `ac-up`, `ac-down`, `ac-logs`, `ac-shell`, `ac-clean`, `ac-status`.
+
+### PA8. Docker auto-setup migliorato — DONE
+
+- **File:** `docker-compose.yml`
+- Added `wp-setup` service for auto WP install + plugin activation.
+- Support for `RAPIDAPI_KEY` and `GEONAMES_USERNAME` env vars.
+
+## REMAINING - Non-code items
+
+### R1. Asset PNG reali per WordPress.org — TODO
+
+- `assets/wporg/` contiene solo SVG placeholder.
+- Servono PNG reali: icon-128x128, icon-256x256, banner-772x250, banner-1544x500.
+- Servono 4 screenshot PNG (~1200x900).
+- **Questo è un task di design, non di codice.**

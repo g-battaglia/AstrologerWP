@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Astrologer API
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Astrologer API package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -7,9 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Astrologer API 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/astrologer-wp/astrologer-api/"
-"issues\n"
-"POT-Creation-Date: 2026-03-26 21:29+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-26 23:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +25,7 @@ msgstr ""
 msgid "Astrology"
 msgstr ""
 
-#: includes/class-astrologer-api-blocks.php:1011
+#: includes/class-astrologer-api-blocks.php:1063
 #: includes/class-astrologer-api-frontend.php:217
 #: includes/class-astrologer-api-settings.php:769
 msgid "Loading..."
@@ -302,26 +301,118 @@ msgstr ""
 msgid "Chart calculated successfully."
 msgstr ""
 
-#: includes/class-astrologer-api-rest.php:486
-msgid "GeoNames username is not configured. Go to Settings > Astrologer API."
+#: includes/class-astrologer-api-frontend.php:309
+msgid "Day must be between 1 and 31"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:310
+msgid "Month must be between 1 and 12"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:311
+msgid "Year must be between 1 and 2200"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:312
+msgid "Invalid day for the selected month"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:313
+msgid "Hour must be between 0 and 23"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:314
+msgid "Minutes must be between 0 and 59"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:315
+msgid "Latitude must be between -90 and 90"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:316
+msgid "Longitude must be between -180 and 180"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:317
+msgid "City is required"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:318
+msgid "Country code is required"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:319
+msgid "Time zone is required"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:322
+msgid "Moon Phase"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:323
+msgid "Enter birth data to view the moon phase."
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:324
+msgid "Sun-Moon angle"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:325
+msgid "New Moon"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:326
+msgid "Waxing Crescent"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:327
+msgid "First Quarter"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:328
+msgid "Waxing Gibbous"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:329
+msgid "Full Moon"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:330
+msgid "Waning Gibbous"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:331
+msgid "Last Quarter"
+msgstr ""
+
+#: includes/class-astrologer-api-frontend.php:332
+msgid "Waning Crescent"
 msgstr ""
 
 #: includes/class-astrologer-api-rest.php:521
+msgid "GeoNames username is not configured. Go to Settings > Astrologer API."
+msgstr ""
+
+#: includes/class-astrologer-api-rest.php:560
 #, php-format
 msgid "GeoNames Error %d: %s"
 msgstr ""
 
-#: includes/class-astrologer-api-rest.php:568
+#: includes/class-astrologer-api-rest.php:613
 msgid "RapidAPI key is not configured. Go to Settings > Astrologer API."
 msgstr ""
 
-#: includes/class-astrologer-api-rest.php:606
+#: includes/class-astrologer-api-rest.php:655
 #, php-format
 msgid "API Error %d: %s"
 msgstr ""
 
-#: includes/class-astrologer-api-rest.php:1066
+#: includes/class-astrologer-api-rest.php:1115
 msgid "Invalid settings payload."
+msgstr ""
+
+#: includes/class-astrologer-api-rest.php:1395
+msgid "Too many requests. Please try again later."
 msgstr ""
 
 #: includes/class-astrologer-api-settings.php:177
