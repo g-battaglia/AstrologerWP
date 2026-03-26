@@ -72,40 +72,30 @@ wp option update astrologer_wp__show_degree_indicators "1" --allow-root
 wp option update astrologer_wp__show_aspect_icons "1" --allow-root
 wp option update astrologer_wp__show_zodiac_background_ring "1" --allow-root
 
-# Create test pages with all shortcodes
+# Create test pages with all shortcodes (idempotent - skips if page already exists)
 echo "==> Creating test pages..."
 
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Birth Chart" \
-    --post_content='[astrologer_wp_birth_chart]' 2>/dev/null || true
+create_page_if_missing() {
+    local title="$1"
+    local content="$2"
+    local slug="$3"
+    if ! wp post list --allow-root --post_type=page --name="$slug" --format=count 2>/dev/null | grep -q '^[1-9]'; then
+        wp post create --allow-root --post_type=page --post_status=publish \
+            --post_title="$title" --post_name="$slug" --post_content="$content"
+        echo "    Created: /$slug/"
+    else
+        echo "    Exists:  /$slug/"
+    fi
+}
 
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Synastry Chart" \
-    --post_content='[astrologer_wp_synastry_chart]' 2>/dev/null || true
-
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Transit Chart" \
-    --post_content='[astrologer_wp_transit_chart]' 2>/dev/null || true
-
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Composite Chart" \
-    --post_content='[astrologer_wp_composite_chart]' 2>/dev/null || true
-
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Solar Return" \
-    --post_content='[astrologer_wp_solar_return_chart]' 2>/dev/null || true
-
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Lunar Return" \
-    --post_content='[astrologer_wp_lunar_return_chart]' 2>/dev/null || true
-
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Moon Phase" \
-    --post_content='[astrologer_wp_moon_phase]' 2>/dev/null || true
-
-wp post create --allow-root --post_type=page --post_status=publish \
-    --post_title="Current Sky" \
-    --post_content='[astrologer_wp_now_chart]' 2>/dev/null || true
+create_page_if_missing "Birth Chart"     '[astrologer_wp_birth_chart]'        "birth-chart"
+create_page_if_missing "Synastry Chart"  '[astrologer_wp_synastry_chart]'     "synastry-chart"
+create_page_if_missing "Transit Chart"   '[astrologer_wp_transit_chart]'      "transit-chart"
+create_page_if_missing "Composite Chart" '[astrologer_wp_composite_chart]'    "composite-chart"
+create_page_if_missing "Solar Return"    '[astrologer_wp_solar_return_chart]' "solar-return"
+create_page_if_missing "Lunar Return"    '[astrologer_wp_lunar_return_chart]' "lunar-return"
+create_page_if_missing "Moon Phase"      '[astrologer_wp_moon_phase]'         "moon-phase"
+create_page_if_missing "Current Sky"     '[astrologer_wp_now_chart]'          "current-sky"
 
 # Set pretty permalinks
 wp rewrite structure '/%postname%/' --allow-root 2>/dev/null || true
