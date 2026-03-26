@@ -138,19 +138,21 @@ class AstrologerApiAdapter {
 
         $response = wp_remote_post($url, array(
             'headers' => $headers,
-            'body' => json_encode($body),
+            'body' => wp_json_encode($body),
             'timeout' => 30
         ));
 
         if (is_wp_error($response)) {
-            error_log('AstrologerWP - Error fetching ' . $chartType . ': ' . $response->get_error_message());
+            if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                error_log('AstrologerWP - Error fetching ' . $chartType . ': ' . $response->get_error_message());
+            }
 
             return [
                 'chart' => null,
                 'chart_wheel' => null,
                 'chart_grid' => null,
                 'chart_data' => null,
-                'error' => 'Unable to retrieve ' . $chartType . '. Contact the site administrator for more information.'
+                'error' => sprintf( __( 'Unable to retrieve %s. Contact the site administrator for more information.', 'astrologerwp' ), $chartType )
             ];
         }
 
@@ -159,16 +161,18 @@ class AstrologerApiAdapter {
         $data = json_decode($responseBody, true);
 
         if ($statusCode !== 200 || empty($data) || (isset($data['status']) && $data['status'] === 'ERROR')) {
-            $errorMessage = isset($data['message']) ? $data['message'] : 'Unknown error';
-            error_log('AstrologerWP - API error for ' . $chartType . ' (HTTP ' . $statusCode . '): ' . $errorMessage);
-            error_log('AstrologerWP - Response: ' . $responseBody);
+            $errorMessage = isset($data['message']) ? $data['message'] : __( 'Unknown error', 'astrologerwp' );
+            if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                error_log('AstrologerWP - API error for ' . $chartType . ' (HTTP ' . $statusCode . '): ' . $errorMessage);
+                error_log('AstrologerWP - Response: ' . $responseBody);
+            }
 
             return [
                 'chart' => null,
                 'chart_wheel' => null,
                 'chart_grid' => null,
                 'chart_data' => null,
-                'error' => 'Unable to retrieve ' . $chartType . '. ' . esc_html($errorMessage)
+                'error' => sprintf( __( 'Unable to retrieve %s. %s', 'astrologerwp' ), $chartType, esc_html($errorMessage) )
             ];
         }
 

@@ -110,21 +110,21 @@ function astrologerWpSynastryChartShortCode() {
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
-        <?php echo $chartHtml; ?>
+        <?php echo wp_kses_post($chartHtml); ?>
         <form id="astrologerWpSynastryChartForm" method="get">
             <?php wp_nonce_field('astrologer_wp_synastry_chart'); ?>
             <div class="subjects-data-wrapper">
                 <div id="astrologerWpSynastryChartFirstSubjectData" class="subject-data first-subject-data">
-                    <p class="subject-title">Partner A</p>
+                    <p class="subject-title"><?php esc_html_e('Partner A', 'astrologerwp'); ?></p>
                     <input id="astrologerWpSynastryChartFirstChartNameInput" class="form-control"
-                        type="text" name="firstChartName" placeholder="Enter first partner name" required value="<?php echo esc_attr($firstChartName); ?>">
+                        type="text" name="firstChartName" placeholder="<?php echo esc_attr__('Enter first partner name', 'astrologerwp'); ?>" required value="<?php echo esc_attr($firstChartName); ?>">
                     <input id="astrologerWpSynastryChartFirstDatetimeInput" class="form-control"
-                        type="datetime-local" name="firstDatetime" placeholder="Enter date and time" required value="<?php echo esc_attr($firstDatetime); ?>"
+                        type="datetime-local" name="firstDatetime" placeholder="<?php echo esc_attr__('Enter date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($firstDatetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
                         <input id="astrologerWpSynastryChartFirstCityInput" class="form-control" autocomplete="off"
-                            type="text" name="firstCity" placeholder="Enter city" required value="<?php echo esc_attr($firstCity); ?>">
+                            type="text" name="firstCity" placeholder="<?php echo esc_attr__('Enter city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($firstCity); ?>">
                         <ul id="astrologerWpSynastryChartFirstCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
@@ -136,16 +136,16 @@ function astrologerWpSynastryChartShortCode() {
                 </div>
 
                 <div id="astrologerWpSynastryChartSecondSubjectData" class="subject-data second-subject-data">
-                    <p class="subject-title">Partner B</p>
+                    <p class="subject-title"><?php esc_html_e('Partner B', 'astrologerwp'); ?></p>
                     <input id="astrologerWpSynastryChartSecondChartNameInput" class="form-control"
-                        type="text" name="secondChartName" placeholder="Enter second partner name" required value="<?php echo esc_attr($secondChartName); ?>">
+                        type="text" name="secondChartName" placeholder="<?php echo esc_attr__('Enter second partner name', 'astrologerwp'); ?>" required value="<?php echo esc_attr($secondChartName); ?>">
                     <input id="astrologerWpSynastryChartSecondDatetimeInput" class="form-control"
-                        type="datetime-local" name="secondDatetime" placeholder="Enter date and time" required value="<?php echo esc_attr($secondDatetime); ?>"
+                        type="datetime-local" name="secondDatetime" placeholder="<?php echo esc_attr__('Enter date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($secondDatetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
                         <input id="astrologerWpSynastryChartSecondCityInput" class="form-control" autocomplete="off"
-                            type="text" name="secondCity" placeholder="Enter city" required value="<?php echo esc_attr($secondCity); ?>">
+                            type="text" name="secondCity" placeholder="<?php echo esc_attr__('Enter city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($secondCity); ?>">
                         <ul id="astrologerWpSynastryChartSecondCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
@@ -158,7 +158,7 @@ function astrologerWpSynastryChartShortCode() {
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn">Get Synastry Chart</button>
+            <button type="submit" class="btn"><?php esc_html_e('Get Synastry Chart', 'astrologerwp'); ?></button>
         </form>
     </div>
 <?php

@@ -23,7 +23,7 @@ function astrologerWpNowChartShortCode() {
             $chartHtml = astrologer_wp_render_chart($data, 'astrologerWpNowChartWrapper', 'astrologerNowChart');
         }
     } else {
-        $error = 'API key is not configured. Please set it in the AstrologerWP settings.';
+        $error = __('API key is not configured. Please set it in the AstrologerWP settings.', 'astrologerwp');
     }
 
     ob_start();
@@ -34,8 +34,8 @@ function astrologerWpNowChartShortCode() {
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
-        <?php echo $chartHtml; ?>
-        <p class="astrologer-wp-now-chart-info">Current sky at UTC/Greenwich. Chart is generated at page load time.</p>
+        <?php echo wp_kses_post($chartHtml); ?>
+        <p class="astrologer-wp-now-chart-info"><?php esc_html_e('Current sky at UTC/Greenwich. Chart is generated at page load time.', 'astrologerwp'); ?></p>
     </div>
 <?php
     $output = ob_get_clean();

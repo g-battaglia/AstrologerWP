@@ -53,75 +53,75 @@ function astrologer_wp_register_settings() {
     // --- Section: API Credentials ---
     add_settings_section(
         'astrologer_wp_section_credentials',
-        'API Credentials',
+        __( 'API Credentials', 'astrologerwp' ),
         'astrologer_wp_section_credentials_callback',
         'astrologer-wp'
     );
 
-    add_settings_field('astrologer_wp__api_key', 'Astrologer API Key', 'astrologer_wp_api_key_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
-    add_settings_field('astrologer_wp__geonames_username', 'Geonames Username', 'astrologer_wp_geonames_username_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
-    add_settings_field('astrologer_wp__api_base_url', 'API Base URL (Advanced)', 'astrologer_wp_api_base_url_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
+    add_settings_field('astrologer_wp__api_key', __( 'Astrologer API Key', 'astrologerwp' ), 'astrologer_wp_api_key_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
+    add_settings_field('astrologer_wp__geonames_username', __( 'Geonames Username', 'astrologerwp' ), 'astrologer_wp_geonames_username_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
+    add_settings_field('astrologer_wp__api_base_url', __( 'API Base URL (Advanced)', 'astrologerwp' ), 'astrologer_wp_api_base_url_field_callback', 'astrologer-wp', 'astrologer_wp_section_credentials');
 
     // --- Section: Chart Calculation ---
     add_settings_section(
         'astrologer_wp_section_calculation',
-        'Chart Calculation',
+        __( 'Chart Calculation', 'astrologerwp' ),
         'astrologer_wp_section_calculation_callback',
         'astrologer-wp'
     );
 
-    add_settings_field('astrologer_wp__zodiac_type', 'Zodiac Type', 'astrologer_wp_zodiac_type_field_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
-    add_settings_field('astrologer_wp__sidereal_mode', 'Sidereal Mode', 'astrologer_wp_sidereal_mode_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
-    add_settings_field('astrologer_wp__houses_system', 'Houses System', 'astrologer_wp_houses_system_field_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
-    add_settings_field('astrologer_wp__chart_language', 'Chart Language', 'astrologer_wp_chart_language_field_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
-    add_settings_field('astrologer_wp__perspective_type', 'Perspective Type', 'astrologer_wp_perspective_type_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
+    add_settings_field('astrologer_wp__zodiac_type', __( 'Zodiac Type', 'astrologerwp' ), 'astrologer_wp_zodiac_type_field_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
+    add_settings_field('astrologer_wp__sidereal_mode', __( 'Sidereal Mode', 'astrologerwp' ), 'astrologer_wp_sidereal_mode_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
+    add_settings_field('astrologer_wp__houses_system', __( 'Houses System', 'astrologerwp' ), 'astrologer_wp_houses_system_field_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
+    add_settings_field('astrologer_wp__chart_language', __( 'Chart Language', 'astrologerwp' ), 'astrologer_wp_chart_language_field_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
+    add_settings_field('astrologer_wp__perspective_type', __( 'Perspective Type', 'astrologerwp' ), 'astrologer_wp_perspective_type_callback', 'astrologer-wp', 'astrologer_wp_section_calculation');
 
     // --- Section: Chart Rendering ---
     add_settings_section(
         'astrologer_wp_section_rendering',
-        'Chart Rendering',
+        __( 'Chart Rendering', 'astrologerwp' ),
         'astrologer_wp_section_rendering_callback',
         'astrologer-wp'
     );
 
-    add_settings_field('astrologer_wp__chart_theme', 'Chart Theme', 'astrologer_wp_chart_theme_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
-    add_settings_field('astrologer_wp__chart_style', 'Chart Style', 'astrologer_wp_chart_style_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
-    add_settings_field('astrologer_wp__wheel_only_chart', 'Wheel Only Chart', 'astrologer_wp_wheel_only_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
-    add_settings_field('astrologer_wp__split_chart', 'Split Chart', 'astrologer_wp_split_chart_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
-    add_settings_field('astrologer_wp__transparent_background', 'Transparent Background', 'astrologer_wp_transparent_background_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
-    add_settings_field('astrologer_wp__double_chart_aspect_grid_type', 'Aspect Grid Type', 'astrologer_wp_double_chart_aspect_grid_type_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
+    add_settings_field('astrologer_wp__chart_theme', __( 'Chart Theme', 'astrologerwp' ), 'astrologer_wp_chart_theme_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
+    add_settings_field('astrologer_wp__chart_style', __( 'Chart Style', 'astrologerwp' ), 'astrologer_wp_chart_style_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
+    add_settings_field('astrologer_wp__wheel_only_chart', __( 'Wheel Only Chart', 'astrologerwp' ), 'astrologer_wp_wheel_only_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
+    add_settings_field('astrologer_wp__split_chart', __( 'Split Chart', 'astrologerwp' ), 'astrologer_wp_split_chart_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
+    add_settings_field('astrologer_wp__transparent_background', __( 'Transparent Background', 'astrologerwp' ), 'astrologer_wp_transparent_background_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
+    add_settings_field('astrologer_wp__double_chart_aspect_grid_type', __( 'Aspect Grid Type', 'astrologerwp' ), 'astrologer_wp_double_chart_aspect_grid_type_field_callback', 'astrologer-wp', 'astrologer_wp_section_rendering');
 
     // --- Section: Chart Display Options ---
     add_settings_section(
         'astrologer_wp_section_display',
-        'Chart Display Options',
+        __( 'Chart Display Options', 'astrologerwp' ),
         'astrologer_wp_section_display_callback',
         'astrologer-wp'
     );
 
-    add_settings_field('astrologer_wp__show_house_position_comparison', 'Show House Position Comparison', 'astrologer_wp_show_house_position_comparison_callback', 'astrologer-wp', 'astrologer_wp_section_display');
-    add_settings_field('astrologer_wp__show_cusp_position_comparison', 'Show Cusp Position Comparison', 'astrologer_wp_show_cusp_position_comparison_callback', 'astrologer-wp', 'astrologer_wp_section_display');
-    add_settings_field('astrologer_wp__show_degree_indicators', 'Show Degree Indicators', 'astrologer_wp_show_degree_indicators_callback', 'astrologer-wp', 'astrologer_wp_section_display');
-    add_settings_field('astrologer_wp__show_aspect_icons', 'Show Aspect Icons', 'astrologer_wp_show_aspect_icons_callback', 'astrologer-wp', 'astrologer_wp_section_display');
-    add_settings_field('astrologer_wp__show_zodiac_background_ring', 'Show Zodiac Background Ring', 'astrologer_wp_show_zodiac_background_ring_callback', 'astrologer-wp', 'astrologer_wp_section_display');
+    add_settings_field('astrologer_wp__show_house_position_comparison', __( 'Show House Position Comparison', 'astrologerwp' ), 'astrologer_wp_show_house_position_comparison_callback', 'astrologer-wp', 'astrologer_wp_section_display');
+    add_settings_field('astrologer_wp__show_cusp_position_comparison', __( 'Show Cusp Position Comparison', 'astrologerwp' ), 'astrologer_wp_show_cusp_position_comparison_callback', 'astrologer-wp', 'astrologer_wp_section_display');
+    add_settings_field('astrologer_wp__show_degree_indicators', __( 'Show Degree Indicators', 'astrologerwp' ), 'astrologer_wp_show_degree_indicators_callback', 'astrologer-wp', 'astrologer_wp_section_display');
+    add_settings_field('astrologer_wp__show_aspect_icons', __( 'Show Aspect Icons', 'astrologerwp' ), 'astrologer_wp_show_aspect_icons_callback', 'astrologer-wp', 'astrologer_wp_section_display');
+    add_settings_field('astrologer_wp__show_zodiac_background_ring', __( 'Show Zodiac Background Ring', 'astrologerwp' ), 'astrologer_wp_show_zodiac_background_ring_callback', 'astrologer-wp', 'astrologer_wp_section_display');
 }
 
 // --- Section Callbacks ---
 
 function astrologer_wp_section_credentials_callback() {
-    echo '<p>Enter your API credentials to connect to the Astrologer API and Geonames location services.</p>';
+    echo '<p>' . esc_html__( 'Enter your API credentials to connect to the Astrologer API and Geonames location services.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_section_calculation_callback() {
-    echo '<p>Configure the astrological calculation parameters used for all charts.</p>';
+    echo '<p>' . esc_html__( 'Configure the astrological calculation parameters used for all charts.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_section_rendering_callback() {
-    echo '<p>Customize how the SVG charts are rendered visually.</p>';
+    echo '<p>' . esc_html__( 'Customize how the SVG charts are rendered visually.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_section_display_callback() {
-    echo '<p>Toggle individual display elements on the chart.</p>';
+    echo '<p>' . esc_html__( 'Toggle individual display elements on the chart.', 'astrologerwp' ) . '</p>';
 }
 
 // --- Credential Fields ---
@@ -129,34 +129,64 @@ function astrologer_wp_section_display_callback() {
 function astrologer_wp_api_key_field_callback() {
     $value = get_option('astrologer_wp__api_key');
     echo '<input type="text" id="astrologer_wp__api_key" name="astrologer_wp__api_key" value="' . esc_attr($value) . '" class="regular-text" required/>';
-    echo '<p class="description">
-        Enter your Astrologer API Key here.
-        <br>
-        You can get your API Key by <a href="https://rapidapi.com/gbattaglia/api/astrologer/pricing" target="_blank">signing up here</a>.
-    </p>';
+    echo '<p class="description">';
+    echo wp_kses(
+        sprintf(
+            /* translators: %s: signup link URL */
+            __( 'Enter your Astrologer API Key here.<br>You can get your API Key by <a href="%s" target="_blank">signing up here</a>.', 'astrologerwp' ),
+            'https://rapidapi.com/gbattaglia/api/astrologer/pricing'
+        ),
+        array(
+            'br' => array(),
+            'a'  => array( 'href' => array(), 'target' => array() ),
+        )
+    );
+    echo '</p>';
 }
 
 function astrologer_wp_geonames_username_field_callback() {
     $value = get_option('astrologer_wp__geonames_username');
     echo '<input type="text" id="astrologer_wp__geonames_username" name="astrologer_wp__geonames_username" value="' . esc_attr($value) . '" class="regular-text" required/>';
-    echo '<p class="description">
-        Enter your Geonames username for location services.
-        <br>
-        You can get your username for free by <a href="http://www.geonames.org/login" target="_blank">signing up here</a>.
-        <br>
-        Geonames is used to get the timezone and coordinates of the location and has no affiliation with the Astrologer service.
-        </p>';
+    echo '<p class="description">';
+    echo wp_kses(
+        sprintf(
+            /* translators: %s: signup link URL */
+            __( 'Enter your Geonames username for location services.<br>You can get your username for free by <a href="%s" target="_blank">signing up here</a>.<br>Geonames is used to get the timezone and coordinates of the location and has no affiliation with the Astrologer service.', 'astrologerwp' ),
+            'http://www.geonames.org/login'
+        ),
+        array(
+            'br' => array(),
+            'a'  => array( 'href' => array(), 'target' => array() ),
+        )
+    );
+    echo '</p>';
 }
 
 function astrologer_wp_api_base_url_field_callback() {
     $value = get_option('astrologer_wp__api_base_url', '');
     $envValue = getenv('ASTROLOGER_WP_API_BASE_URL');
     echo '<input type="url" id="astrologer_wp__api_base_url" name="astrologer_wp__api_base_url" value="' . esc_attr($value) . '" class="regular-text" placeholder="https://astrologer.p.rapidapi.com"/>';
-    echo '<p class="description">
-        Leave empty to use the default RapidAPI endpoint. Set a custom URL to point to your own API instance (e.g. for local testing).
-        <br>
-        Can also be set via the <code>ASTROLOGER_WP_API_BASE_URL</code> environment variable' . ($envValue ? ' (currently: <code>' . esc_html($envValue) . '</code>)' : '') . '.
-    </p>';
+    echo '<p class="description">';
+    $env_notice = $envValue
+        ? ' ' . sprintf(
+            /* translators: %s: current environment variable value */
+            __( '(currently: %s)', 'astrologerwp' ),
+            '<code>' . esc_html($envValue) . '</code>'
+        )
+        : '';
+    echo wp_kses(
+        sprintf(
+            /* translators: %1$s: environment variable name with code tag, %2$s: optional current value notice */
+            __( 'Leave empty to use the default RapidAPI endpoint. Set a custom URL to point to your own API instance (e.g. for local testing).<br>Can also be set via the %1$s environment variable%2$s.', 'astrologerwp' ),
+            '<code>ASTROLOGER_WP_API_BASE_URL</code>',
+            $env_notice
+        ),
+        array(
+            'br'   => array(),
+            'code' => array(),
+        )
+    );
+    echo '</p>';
 }
 
 // --- Calculation Fields ---
@@ -170,26 +200,21 @@ function astrologer_wp_zodiac_type_field_callback() {
         echo '<option value="' . esc_attr($zodiacType) . '" ' . selected($zodiacType, $value, false) . '>' . esc_html($zodiacType) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Choose the type of zodiac to use. Tropical is the most common in Western astrology.</p>';
+    echo '<p class="description">' . esc_html__( 'Choose the type of zodiac to use. Tropical is the most common in Western astrology.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_sidereal_mode_callback() {
     $value = get_option('astrologer_wp__sidereal_mode', '');
     $siderealModes = KerykeionConstants::SIDEREAL_MODES;
 
-    echo '<p id="siderealModeDisabledMessage">Sidereal modes are only available when the zodiac type is set to Sidereal.</p>';
+    echo '<p id="siderealModeDisabledMessage">' . esc_html__( 'Sidereal modes are only available when the zodiac type is set to Sidereal.', 'astrologerwp' ) . '</p>';
     echo '<div id="siderealModeSelectWrapper">';
     echo '<select id="astrologer_wp__sidereal_mode" name="astrologer_wp__sidereal_mode">';
     foreach ($siderealModes as $mode) {
         echo '<option value="' . esc_attr($mode) . '" ' . selected($mode, $value, false) . '>' . esc_html($mode) . '</option>';
     }
     echo '</select>';
-    echo '
-    <p class="description">
-        Select the sidereal mode (ayanamsha) to use.
-        The most common sidereal modes are Fagan-Bradley or Lahiri.
-        Select USER if you need a custom ayanamsha.
-    </p>';
+    echo '<p class="description">' . esc_html__( 'Select the sidereal mode (ayanamsha) to use. The most common sidereal modes are Fagan-Bradley or Lahiri. Select USER if you need a custom ayanamsha.', 'astrologerwp' ) . '</p>';
     echo '</div>';
 }
 
@@ -202,7 +227,7 @@ function astrologer_wp_houses_system_field_callback() {
         echo '<option value="' . esc_attr($system_key) . '" ' . selected($system_key, $value, false) . '>' . esc_html($system_key . ' - ' . $system_name) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Select the house system to use for the chart. Placidus (P) is the most commonly used.</p>';
+    echo '<p class="description">' . esc_html__( 'Select the house system to use for the chart. Placidus (P) is the most commonly used.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_chart_language_field_callback() {
@@ -214,7 +239,7 @@ function astrologer_wp_chart_language_field_callback() {
         echo '<option value="' . esc_attr($language) . '" ' . selected($language, $value, false) . '>' . esc_html($language) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Select the language for the chart labels.</p>';
+    echo '<p class="description">' . esc_html__( 'Select the language for the chart labels.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_perspective_type_callback() {
@@ -226,7 +251,7 @@ function astrologer_wp_perspective_type_callback() {
         echo '<option value="' . esc_attr($perspectiveType) . '" ' . selected($perspectiveType, $value, false) . '>' . esc_html($perspectiveType) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Select the astronomical perspective type. Apparent Geocentric is the standard for most astrology traditions.</p>';
+    echo '<p class="description">' . esc_html__( 'Select the astronomical perspective type. Apparent Geocentric is the standard for most astrology traditions.', 'astrologerwp' ) . '</p>';
 }
 
 // --- Rendering Fields ---
@@ -240,7 +265,7 @@ function astrologer_wp_chart_theme_field_callback() {
         echo '<option value="' . esc_attr($themeName) . '" ' . selected($themeName, $value, false) . '>' . esc_html($themeName) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Select the visual theme for the chart SVG.</p>';
+    echo '<p class="description">' . esc_html__( 'Select the visual theme for the chart SVG.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_chart_style_field_callback() {
@@ -252,25 +277,25 @@ function astrologer_wp_chart_style_field_callback() {
         echo '<option value="' . esc_attr($styleName) . '" ' . selected($styleName, $value, false) . '>' . esc_html($styleName) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Classic is the traditional wheel layout. Modern uses concentric rings.</p>';
+    echo '<p class="description">' . esc_html__( 'Classic is the traditional wheel layout. Modern uses concentric rings.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_wheel_only_field_callback() {
     $value = get_option('astrologer_wp__wheel_only_chart');
     echo '<input type="checkbox" id="astrologer_wp__wheel_only_chart" name="astrologer_wp__wheel_only_chart" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Display only the wheel chart without the aspect grid.</p>';
+    echo '<p class="description">' . esc_html__( 'Display only the wheel chart without the aspect grid.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_split_chart_field_callback() {
     $value = get_option('astrologer_wp__split_chart');
     echo '<input type="checkbox" id="astrologer_wp__split_chart" name="astrologer_wp__split_chart" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Return wheel and aspect grid as separate SVGs, displayed one below the other.</p>';
+    echo '<p class="description">' . esc_html__( 'Return wheel and aspect grid as separate SVGs, displayed one below the other.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_transparent_background_field_callback() {
     $value = get_option('astrologer_wp__transparent_background');
     echo '<input type="checkbox" id="astrologer_wp__transparent_background" name="astrologer_wp__transparent_background" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Render chart with transparent background instead of the theme default.</p>';
+    echo '<p class="description">' . esc_html__( 'Render chart with transparent background instead of the theme default.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_double_chart_aspect_grid_type_field_callback() {
@@ -282,7 +307,7 @@ function astrologer_wp_double_chart_aspect_grid_type_field_callback() {
         echo '<option value="' . esc_attr($type) . '" ' . selected($type, $value, false) . '>' . esc_html($type) . '</option>';
     }
     echo '</select>';
-    echo '<p class="description">Layout for double-chart (synastry/transit) aspect display: list (vertical) or table (grid matrix).</p>';
+    echo '<p class="description">' . esc_html__( 'Layout for double-chart (synastry/transit) aspect display: list (vertical) or table (grid matrix).', 'astrologerwp' ) . '</p>';
 }
 
 // --- Display Option Fields ---
@@ -290,31 +315,31 @@ function astrologer_wp_double_chart_aspect_grid_type_field_callback() {
 function astrologer_wp_show_house_position_comparison_callback() {
     $value = get_option('astrologer_wp__show_house_position_comparison', '1');
     echo '<input type="checkbox" id="astrologer_wp__show_house_position_comparison" name="astrologer_wp__show_house_position_comparison" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Display the house comparison table next to the chart wheel.</p>';
+    echo '<p class="description">' . esc_html__( 'Display the house comparison table next to the chart wheel.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_show_cusp_position_comparison_callback() {
     $value = get_option('astrologer_wp__show_cusp_position_comparison', '1');
     echo '<input type="checkbox" id="astrologer_wp__show_cusp_position_comparison" name="astrologer_wp__show_cusp_position_comparison" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Display the cusp position comparison table (for dual charts like synastry and transits).</p>';
+    echo '<p class="description">' . esc_html__( 'Display the cusp position comparison table (for dual charts like synastry and transits).', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_show_degree_indicators_callback() {
     $value = get_option('astrologer_wp__show_degree_indicators', '1');
     echo '<input type="checkbox" id="astrologer_wp__show_degree_indicators" name="astrologer_wp__show_degree_indicators" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Display radial lines and degree numbers for planet positions on the chart wheel.</p>';
+    echo '<p class="description">' . esc_html__( 'Display radial lines and degree numbers for planet positions on the chart wheel.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_show_aspect_icons_callback() {
     $value = get_option('astrologer_wp__show_aspect_icons', '1');
     echo '<input type="checkbox" id="astrologer_wp__show_aspect_icons" name="astrologer_wp__show_aspect_icons" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Display aspect icons on the chart wheel aspect lines.</p>';
+    echo '<p class="description">' . esc_html__( 'Display aspect icons on the chart wheel aspect lines.', 'astrologerwp' ) . '</p>';
 }
 
 function astrologer_wp_show_zodiac_background_ring_callback() {
     $value = get_option('astrologer_wp__show_zodiac_background_ring', '1');
     echo '<input type="checkbox" id="astrologer_wp__show_zodiac_background_ring" name="astrologer_wp__show_zodiac_background_ring" value="1" ' . checked(1, $value, false) . ' />';
-    echo '<p class="description">Show colored zodiac sign wedges on the wheel. Only affects the modern chart style.</p>';
+    echo '<p class="description">' . esc_html__( 'Show colored zodiac sign wedges on the wheel. Only affects the modern chart style.', 'astrologerwp' ) . '</p>';
 }
 
 // --- Admin Page ---
@@ -323,47 +348,58 @@ function astrologer_wp_admin_page() {
 ?>
     <div class="wrap">
         <h1>
-            AstrologerWP
+            <?php esc_html_e( 'AstrologerWP', 'astrologerwp' ); ?>
         </h1>
 
-        <h2>Shortcodes Recap</h2>
-        <p>Use the following shortcodes to display various astrology elements on your pages:</p>
+        <h2><?php esc_html_e( 'Shortcodes Recap', 'astrologerwp' ); ?></h2>
+        <p><?php esc_html_e( 'Use the following shortcodes to display various astrology elements on your pages:', 'astrologerwp' ); ?></p>
         <ul>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_birth_chart]</code>
-                - Natal birth chart
+                - <?php esc_html_e( 'Natal birth chart', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_synastry_chart]</code>
-                - Synastry (relationship) chart
+                - <?php esc_html_e( 'Synastry (relationship) chart', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_transit_chart]</code>
-                - Transit analysis chart
+                - <?php esc_html_e( 'Transit analysis chart', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_composite_chart]</code>
-                - Composite (midpoint) chart
+                - <?php esc_html_e( 'Composite (midpoint) chart', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_solar_return_chart]</code>
-                - Solar return chart
+                - <?php esc_html_e( 'Solar return chart', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_lunar_return_chart]</code>
-                - Lunar return chart
+                - <?php esc_html_e( 'Lunar return chart', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_moon_phase]</code>
-                - Moon phase details
+                - <?php esc_html_e( 'Moon phase details', 'astrologerwp' ); ?>
             </li>
             <li>
                 <code class="astrologer-wp-admin-shortcode">[astrologer_wp_now_chart]</code>
-                - Current sky chart (UTC/Greenwich)
+                - <?php esc_html_e( 'Current sky chart (UTC/Greenwich)', 'astrologerwp' ); ?>
             </li>
         </ul>
         <p>
-            <a href="https://wordpress.com/support/wordpress-editor/blocks/shortcode-block/" target="_blank"> Here's a guide</a> on how to use the shortcodes with the Block editor.
+            <?php
+            echo wp_kses(
+                sprintf(
+                    /* translators: %s: URL to WordPress shortcode block guide */
+                    __( '<a href="%s" target="_blank">Here\'s a guide</a> on how to use the shortcodes with the Block editor.', 'astrologerwp' ),
+                    'https://wordpress.com/support/wordpress-editor/blocks/shortcode-block/'
+                ),
+                array(
+                    'a' => array( 'href' => array(), 'target' => array() ),
+                )
+            );
+            ?>
         </p>
         <br>
 

@@ -107,21 +107,21 @@ function astrologerWpTransitChartShortCode() {
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
-        <?php echo $chartHtml; ?>
+        <?php echo wp_kses_post($chartHtml); ?>
         <form id="astrologerWpTransitChartForm" method="get">
             <?php wp_nonce_field('astrologer_wp_transit_chart'); ?>
             <div class="subjects-data-wrapper">
                 <div id="astrologerWpTransitChartSubjectSubjectData" class="subject-data subject-subject-data">
-                    <p class="subject-title">Subject</p>
+                    <p class="subject-title"><?php esc_html_e('Subject', 'astrologerwp'); ?></p>
                     <input id="astrologerWpTransitChartSubjectChartNameInput" class="form-control"
-                        type="text" name="subjectChartName" placeholder="Enter name" required value="<?php echo esc_attr($subjectChartName); ?>">
+                        type="text" name="subjectChartName" placeholder="<?php echo esc_attr__('Enter name', 'astrologerwp'); ?>" required value="<?php echo esc_attr($subjectChartName); ?>">
                     <input id="astrologerWpTransitChartSubjectDatetimeInput" class="form-control"
-                        type="datetime-local" name="subjectDatetime" placeholder="Enter date and time" required value="<?php echo esc_attr($subjectDatetime); ?>"
+                        type="datetime-local" name="subjectDatetime" placeholder="<?php echo esc_attr__('Enter date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($subjectDatetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
                         <input id="astrologerWpTransitChartSubjectCityInput" class="form-control" autocomplete="off"
-                            type="text" name="subjectCity" placeholder="Enter city" required value="<?php echo esc_attr($subjectCity); ?>">
+                            type="text" name="subjectCity" placeholder="<?php echo esc_attr__('Enter city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($subjectCity); ?>">
                         <ul id="astrologerWpTransitChartSubjectCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
@@ -133,14 +133,14 @@ function astrologerWpTransitChartShortCode() {
                 </div>
 
                 <div id="astrologerWpTransitChartTransitSubjectData" class="subject-data transit-subject-data">
-                    <p class="subject-title">Transit</p>
+                    <p class="subject-title"><?php esc_html_e('Transit', 'astrologerwp'); ?></p>
                     <input id="astrologerWpTransitChartTransitDatetimeInput" class="form-control"
-                        type="datetime-local" name="transitDatetime" placeholder="Enter transit date and time" required value="<?php echo esc_attr($transitDatetime); ?>"
+                        type="datetime-local" name="transitDatetime" placeholder="<?php echo esc_attr__('Enter transit date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($transitDatetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
                         <input id="astrologerWpTransitChartTransitCityInput" class="form-control" autocomplete="off"
-                            type="text" name="transitCity" placeholder="Enter transit city" required value="<?php echo esc_attr($transitCity); ?>">
+                            type="text" name="transitCity" placeholder="<?php echo esc_attr__('Enter transit city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($transitCity); ?>">
                         <ul id="astrologerWpTransitChartTransitCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
@@ -153,7 +153,7 @@ function astrologerWpTransitChartShortCode() {
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn">Get Transit Chart</button>
+            <button type="submit" class="btn"><?php esc_html_e('Get Transit Chart', 'astrologerwp'); ?></button>
         </form>
     </div>
 <?php

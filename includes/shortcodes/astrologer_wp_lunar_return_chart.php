@@ -107,21 +107,21 @@ function astrologerWpLunarReturnChartShortCode() {
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
-        <?php echo $chartHtml; ?>
+        <?php echo wp_kses_post($chartHtml); ?>
         <form id="astrologerWpLunarReturnChartForm" method="get">
             <?php wp_nonce_field('astrologer_wp_lunar_return_chart'); ?>
             <div class="subjects-data-wrapper">
                 <div id="astrologerWpLunarReturnChartSubjectData" class="subject-data birth-subject-data">
-                    <p class="subject-title">Birth Data</p>
+                    <p class="subject-title"><?php esc_html_e('Birth Data', 'astrologerwp'); ?></p>
                     <input id="astrologerWpLunarReturnChartNameInput" class="form-control"
-                        type="text" name="chartName" placeholder="Enter name" required value="<?php echo esc_attr($chartName); ?>">
+                        type="text" name="chartName" placeholder="<?php echo esc_attr__('Enter name', 'astrologerwp'); ?>" required value="<?php echo esc_attr($chartName); ?>">
                     <input id="astrologerWpLunarReturnChartDatetimeInput" class="form-control"
-                        type="datetime-local" name="datetime" placeholder="Enter birth date and time" required value="<?php echo esc_attr($datetime); ?>"
+                        type="datetime-local" name="datetime" placeholder="<?php echo esc_attr__('Enter birth date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($datetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
                         <input id="astrologerWpLunarReturnChartCityInput" class="form-control" autocomplete="off"
-                            type="text" name="city" placeholder="Enter birth city" required value="<?php echo esc_attr($city); ?>">
+                            type="text" name="city" placeholder="<?php echo esc_attr__('Enter birth city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($city); ?>">
                         <ul id="astrologerWpLunarReturnChartCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
@@ -133,23 +133,23 @@ function astrologerWpLunarReturnChartShortCode() {
                 </div>
 
                 <div id="astrologerWpLunarReturnChartReturnData" class="subject-data return-subject-data">
-                    <p class="subject-title">Lunar Return</p>
+                    <p class="subject-title"><?php esc_html_e('Lunar Return', 'astrologerwp'); ?></p>
                     <input id="astrologerWpLunarReturnChartReturnYearInput" class="form-control"
-                        type="number" name="returnYear" placeholder="Return year" required
+                        type="number" name="returnYear" placeholder="<?php echo esc_attr__('Return year', 'astrologerwp'); ?>" required
                         value="<?php echo esc_attr($returnYear ? $returnYear : $currentYear); ?>"
                         min="1801" max="2100">
                     <select id="astrologerWpLunarReturnChartReturnMonthInput" class="form-control" name="returnMonth" required>
                         <?php for ($m = 1; $m <= 12; $m++): ?>
-                            <option value="<?php echo $m; ?>" <?php selected($m, $returnMonth ? $returnMonth : $currentMonth); ?>>
-                                <?php echo date('F', mktime(0, 0, 0, $m, 1)); ?>
+                            <option value="<?php echo esc_attr($m); ?>" <?php selected($m, $returnMonth ? $returnMonth : $currentMonth); ?>>
+                                <?php echo esc_html(date_i18n('F', mktime(0, 0, 0, $m, 1))); ?>
                             </option>
                         <?php endfor; ?>
                     </select>
 
-                    <p class="subject-subtitle">Return Location (optional)</p>
+                    <p class="subject-subtitle"><?php esc_html_e('Return Location (optional)', 'astrologerwp'); ?></p>
                     <div class="astrologer-wp-city-wrapper">
                         <input id="astrologerWpLunarReturnChartReturnCityInput" class="form-control" autocomplete="off"
-                            type="text" name="returnCity" placeholder="Enter return location city" value="<?php echo esc_attr($returnCity); ?>">
+                            type="text" name="returnCity" placeholder="<?php echo esc_attr__('Enter return location city', 'astrologerwp'); ?>" value="<?php echo esc_attr($returnCity); ?>">
                         <ul id="astrologerWpLunarReturnChartReturnCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
@@ -162,7 +162,7 @@ function astrologerWpLunarReturnChartShortCode() {
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn">Get Lunar Return Chart</button>
+            <button type="submit" class="btn"><?php esc_html_e('Get Lunar Return Chart', 'astrologerwp'); ?></button>
         </form>
     </div>
 <?php

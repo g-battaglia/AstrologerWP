@@ -1,0 +1,527 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR AstrologerWP
+# This file is distributed under the same license as the AstrologerWP package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AstrologerWP 2.0.0\n"
+"Report-Msgid-Bugs-To: support@astrologerstudio.com\n"
+"POT-Creation-Date: 2026-03-26 14:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/admin/settings.php:56
+msgid "API Credentials"
+msgstr ""
+
+#: includes/admin/settings.php:61
+msgid "Astrologer API Key"
+msgstr ""
+
+#: includes/admin/settings.php:62
+msgid "Geonames Username"
+msgstr ""
+
+#: includes/admin/settings.php:63
+msgid "API Base URL (Advanced)"
+msgstr ""
+
+#: includes/admin/settings.php:68
+msgid "Chart Calculation"
+msgstr ""
+
+#: includes/admin/settings.php:73
+msgid "Zodiac Type"
+msgstr ""
+
+#: includes/admin/settings.php:74
+msgid "Sidereal Mode"
+msgstr ""
+
+#: includes/admin/settings.php:75
+msgid "Houses System"
+msgstr ""
+
+#: includes/admin/settings.php:76
+msgid "Chart Language"
+msgstr ""
+
+#: includes/admin/settings.php:77
+msgid "Perspective Type"
+msgstr ""
+
+#: includes/admin/settings.php:82
+msgid "Chart Rendering"
+msgstr ""
+
+#: includes/admin/settings.php:87
+msgid "Chart Theme"
+msgstr ""
+
+#: includes/admin/settings.php:88
+msgid "Chart Style"
+msgstr ""
+
+#: includes/admin/settings.php:89
+msgid "Wheel Only Chart"
+msgstr ""
+
+#: includes/admin/settings.php:90
+msgid "Split Chart"
+msgstr ""
+
+#: includes/admin/settings.php:91
+msgid "Transparent Background"
+msgstr ""
+
+#: includes/admin/settings.php:92
+msgid "Aspect Grid Type"
+msgstr ""
+
+#: includes/admin/settings.php:97
+msgid "Chart Display Options"
+msgstr ""
+
+#: includes/admin/settings.php:102
+msgid "Show House Position Comparison"
+msgstr ""
+
+#: includes/admin/settings.php:103
+msgid "Show Cusp Position Comparison"
+msgstr ""
+
+#: includes/admin/settings.php:104
+msgid "Show Degree Indicators"
+msgstr ""
+
+#: includes/admin/settings.php:105
+msgid "Show Aspect Icons"
+msgstr ""
+
+#: includes/admin/settings.php:106
+msgid "Show Zodiac Background Ring"
+msgstr ""
+
+#: includes/admin/settings.php:112
+msgid ""
+"Enter your API credentials to connect to the Astrologer API and Geonames "
+"location services."
+msgstr ""
+
+#: includes/admin/settings.php:116
+msgid "Configure the astrological calculation parameters used for all charts."
+msgstr ""
+
+#: includes/admin/settings.php:120
+msgid "Customize how the SVG charts are rendered visually."
+msgstr ""
+
+#: includes/admin/settings.php:124
+msgid "Toggle individual display elements on the chart."
+msgstr ""
+
+#. translators: %s: signup link URL
+#: includes/admin/settings.php:136
+#, php-format
+msgid ""
+"Enter your Astrologer API Key here.<br>You can get your API Key by <a "
+"href=\"%s\" target=\"_blank\">signing up here</a>."
+msgstr ""
+
+#. translators: %s: signup link URL
+#: includes/admin/settings.php:154
+#, php-format
+msgid ""
+"Enter your Geonames username for location services.<br>You can get your "
+"username for free by <a href=\"%s\" target=\"_blank\">signing up here</a>."
+"<br>Geonames is used to get the timezone and coordinates of the location and "
+"has no affiliation with the Astrologer service."
+msgstr ""
+
+#. translators: %s: current environment variable value
+#: includes/admin/settings.php:173
+#, php-format
+msgid "(currently: %s)"
+msgstr ""
+
+#. translators: %1$s: environment variable name with code tag, %2$s: optional current value notice
+#: includes/admin/settings.php:180
+#, php-format
+msgid ""
+"Leave empty to use the default RapidAPI endpoint. Set a custom URL to point "
+"to your own API instance (e.g. for local testing).<br>Can also be set via "
+"the %1$s environment variable%2$s."
+msgstr ""
+
+#: includes/admin/settings.php:203
+msgid ""
+"Choose the type of zodiac to use. Tropical is the most common in Western "
+"astrology."
+msgstr ""
+
+#: includes/admin/settings.php:210
+msgid ""
+"Sidereal modes are only available when the zodiac type is set to Sidereal."
+msgstr ""
+
+#: includes/admin/settings.php:217
+msgid ""
+"Select the sidereal mode (ayanamsha) to use. The most common sidereal modes "
+"are Fagan-Bradley or Lahiri. Select USER if you need a custom ayanamsha."
+msgstr ""
+
+#: includes/admin/settings.php:230
+msgid ""
+"Select the house system to use for the chart. Placidus (P) is the most "
+"commonly used."
+msgstr ""
+
+#: includes/admin/settings.php:242
+msgid "Select the language for the chart labels."
+msgstr ""
+
+#: includes/admin/settings.php:254
+msgid ""
+"Select the astronomical perspective type. Apparent Geocentric is the "
+"standard for most astrology traditions."
+msgstr ""
+
+#: includes/admin/settings.php:268
+msgid "Select the visual theme for the chart SVG."
+msgstr ""
+
+#: includes/admin/settings.php:280
+msgid "Classic is the traditional wheel layout. Modern uses concentric rings."
+msgstr ""
+
+#: includes/admin/settings.php:286
+msgid "Display only the wheel chart without the aspect grid."
+msgstr ""
+
+#: includes/admin/settings.php:292
+msgid ""
+"Return wheel and aspect grid as separate SVGs, displayed one below the other."
+msgstr ""
+
+#: includes/admin/settings.php:298
+msgid "Render chart with transparent background instead of the theme default."
+msgstr ""
+
+#: includes/admin/settings.php:310
+msgid ""
+"Layout for double-chart (synastry/transit) aspect display: list (vertical) "
+"or table (grid matrix)."
+msgstr ""
+
+#: includes/admin/settings.php:318
+msgid "Display the house comparison table next to the chart wheel."
+msgstr ""
+
+#: includes/admin/settings.php:324
+msgid ""
+"Display the cusp position comparison table (for dual charts like synastry "
+"and transits)."
+msgstr ""
+
+#: includes/admin/settings.php:330
+msgid ""
+"Display radial lines and degree numbers for planet positions on the chart "
+"wheel."
+msgstr ""
+
+#: includes/admin/settings.php:336
+msgid "Display aspect icons on the chart wheel aspect lines."
+msgstr ""
+
+#: includes/admin/settings.php:342
+msgid ""
+"Show colored zodiac sign wedges on the wheel. Only affects the modern chart "
+"style."
+msgstr ""
+
+#: includes/admin/settings.php:351
+msgid "AstrologerWP"
+msgstr ""
+
+#: includes/admin/settings.php:354
+msgid "Shortcodes Recap"
+msgstr ""
+
+#: includes/admin/settings.php:355
+msgid ""
+"Use the following shortcodes to display various astrology elements on your "
+"pages:"
+msgstr ""
+
+#: includes/admin/settings.php:359
+msgid "Natal birth chart"
+msgstr ""
+
+#: includes/admin/settings.php:363
+msgid "Synastry (relationship) chart"
+msgstr ""
+
+#: includes/admin/settings.php:367
+msgid "Transit analysis chart"
+msgstr ""
+
+#: includes/admin/settings.php:371
+msgid "Composite (midpoint) chart"
+msgstr ""
+
+#: includes/admin/settings.php:375
+msgid "Solar return chart"
+msgstr ""
+
+#: includes/admin/settings.php:379
+msgid "Lunar return chart"
+msgstr ""
+
+#: includes/admin/settings.php:383
+msgid "Moon phase details"
+msgstr ""
+
+#: includes/admin/settings.php:387
+msgid "Current sky chart (UTC/Greenwich)"
+msgstr ""
+
+#. translators: %s: URL to WordPress shortcode block guide
+#: includes/admin/settings.php:395
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Here's a guide</a> on how to use the "
+"shortcodes with the Block editor."
+msgstr ""
+
+#: includes/ajax-handlers.php:13
+msgid "City parameter is missing."
+msgstr ""
+
+#: includes/ajax-handlers.php:21
+msgid "Geonames username is not configured."
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_birth_chart.php:91
+msgid "Subject Data"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_birth_chart.php:95
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:117
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:113
+#: includes/shortcodes/astrologer_wp_transit_chart.php:117
+msgid "Enter name"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_birth_chart.php:97
+#: includes/shortcodes/astrologer_wp_composite_chart.php:122
+#: includes/shortcodes/astrologer_wp_composite_chart.php:143
+#: includes/shortcodes/astrologer_wp_moon_phase.php:141
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:122
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:143
+#: includes/shortcodes/astrologer_wp_transit_chart.php:119
+msgid "Enter date and time"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_birth_chart.php:102
+#: includes/shortcodes/astrologer_wp_composite_chart.php:127
+#: includes/shortcodes/astrologer_wp_composite_chart.php:148
+#: includes/shortcodes/astrologer_wp_moon_phase.php:146
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:127
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:148
+#: includes/shortcodes/astrologer_wp_transit_chart.php:124
+msgid "Enter city"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_birth_chart.php:118
+msgid "Get Birth Chart"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_composite_chart.php:118
+msgid "Person A"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_composite_chart.php:120
+msgid "Enter first person name"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_composite_chart.php:139
+msgid "Person B"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_composite_chart.php:141
+msgid "Enter second person name"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_composite_chart.php:161
+msgid "Get Composite Chart"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:115
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:111
+msgid "Birth Data"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:119
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:115
+msgid "Enter birth date and time"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:124
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:120
+msgid "Enter birth city"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:136
+msgid "Lunar Return"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:138
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:134
+msgid "Return year"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:149
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:138
+msgid "Return Location (optional)"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:152
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:141
+msgid "Enter return location city"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_lunar_return_chart.php:165
+msgid "Get Lunar Return Chart"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:68
+msgid "Unknown"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:73
+msgid "Illumination"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:79
+msgid "Stage"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:85
+msgid "Moon Age"
+msgstr ""
+
+#. translators: %s: number of days
+#: includes/shortcodes/astrologer_wp_moon_phase.php:87
+#, php-format
+msgid "%s days"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:92
+msgid "Next New Moon"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:98
+msgid "Next Full Moon"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:104
+msgid "Sunrise"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:110
+msgid "Sunset"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:116
+msgid "Next Lunar Eclipse"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:122
+msgid "Next Solar Eclipse"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:137
+msgid "Moon Phase Data"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_moon_phase.php:156
+msgid "Get Moon Phase"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_now_chart.php:26
+msgid "API key is not configured. Please set it in the AstrologerWP settings."
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_now_chart.php:38
+msgid "Current sky at UTC/Greenwich. Chart is generated at page load time."
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:132
+msgid "Solar Return"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_solar_return_chart.php:154
+msgid "Get Solar Return Chart"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:118
+msgid "Partner A"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:120
+msgid "Enter first partner name"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:139
+msgid "Partner B"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:141
+msgid "Enter second partner name"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_synastry_chart.php:161
+msgid "Get Synastry Chart"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_transit_chart.php:115
+msgid "Subject"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_transit_chart.php:136
+msgid "Transit"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_transit_chart.php:138
+msgid "Enter transit date and time"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_transit_chart.php:143
+msgid "Enter transit city"
+msgstr ""
+
+#: includes/shortcodes/astrologer_wp_transit_chart.php:156
+msgid "Get Transit Chart"
+msgstr ""
+
+#: includes/utils/AstrologerApiAdapter.php:155
+#, php-format
+msgid ""
+"Unable to retrieve %s. Contact the site administrator for more information."
+msgstr ""
+
+#: includes/utils/AstrologerApiAdapter.php:164
+msgid "Unknown error"
+msgstr ""
+
+#: includes/utils/AstrologerApiAdapter.php:175
+#, php-format
+msgid "Unable to retrieve %s. %s"
+msgstr ""

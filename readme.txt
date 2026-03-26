@@ -1,6 +1,6 @@
 === AstrologerWP ===
 Contributors: gbattaglia
-Tags: astrology, horoscope, birth chart, natal chart, zodiac, synastry, transit, moon phase, solar return
+Tags: astrology, birth chart, horoscope, zodiac, moon phase
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.4

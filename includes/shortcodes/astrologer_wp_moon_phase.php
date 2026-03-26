@@ -65,60 +65,61 @@ function astrologerWpMoonPhaseShortCode() {
             <div class="astrologer-wp-moon-phase-result">
                 <div class="moon-phase-header">
                     <span class="moon-phase-emoji"><?php echo esc_html($moonPhaseData['phase_emoji'] ?? ''); ?></span>
-                    <h3 class="moon-phase-name"><?php echo esc_html($moonPhaseData['phase_name'] ?? 'Unknown'); ?></h3>
+                    <h3 class="moon-phase-name"><?php echo esc_html($moonPhaseData['phase_name'] ?? __('Unknown', 'astrologerwp')); ?></h3>
                 </div>
                 <div class="moon-phase-details">
                     <?php if (isset($moonPhaseData['illumination'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Illumination</span>
+                            <span class="detail-label"><?php esc_html_e('Illumination', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html(round($moonPhaseData['illumination'], 1)); ?>%</span>
                         </div>
                     <?php endif; ?>
                     <?php if (isset($moonPhaseData['stage'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Stage</span>
+                            <span class="detail-label"><?php esc_html_e('Stage', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html(ucfirst($moonPhaseData['stage'])); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (isset($moonPhaseData['moon_age_days'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Moon Age</span>
-                            <span class="detail-value"><?php echo esc_html(round($moonPhaseData['moon_age_days'], 1)); ?> days</span>
+                            <span class="detail-label"><?php esc_html_e('Moon Age', 'astrologerwp'); ?></span>
+                            <?php /* translators: %s: number of days */ ?>
+                            <span class="detail-value"><?php echo esc_html(sprintf(__('%s days', 'astrologerwp'), round($moonPhaseData['moon_age_days'], 1))); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (isset($moonPhaseData['next_new_moon'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Next New Moon</span>
+                            <span class="detail-label"><?php esc_html_e('Next New Moon', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html($moonPhaseData['next_new_moon']); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (isset($moonPhaseData['next_full_moon'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Next Full Moon</span>
+                            <span class="detail-label"><?php esc_html_e('Next Full Moon', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html($moonPhaseData['next_full_moon']); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($moonPhaseData['sunrise'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Sunrise</span>
+                            <span class="detail-label"><?php esc_html_e('Sunrise', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html($moonPhaseData['sunrise']); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($moonPhaseData['sunset'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Sunset</span>
+                            <span class="detail-label"><?php esc_html_e('Sunset', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html($moonPhaseData['sunset']); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($moonPhaseData['next_lunar_eclipse'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Next Lunar Eclipse</span>
+                            <span class="detail-label"><?php esc_html_e('Next Lunar Eclipse', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html($moonPhaseData['next_lunar_eclipse']); ?></span>
                         </div>
                     <?php endif; ?>
                     <?php if (!empty($moonPhaseData['next_solar_eclipse'])): ?>
                         <div class="moon-phase-detail">
-                            <span class="detail-label">Next Solar Eclipse</span>
+                            <span class="detail-label"><?php esc_html_e('Next Solar Eclipse', 'astrologerwp'); ?></span>
                             <span class="detail-value"><?php echo esc_html($moonPhaseData['next_solar_eclipse']); ?></span>
                         </div>
                     <?php endif; ?>
@@ -133,16 +134,16 @@ function astrologerWpMoonPhaseShortCode() {
             ?>
         <?php endif; ?>
 
-        <p class="subject-title">Moon Phase Data</p>
+        <p class="subject-title"><?php esc_html_e('Moon Phase Data', 'astrologerwp'); ?></p>
         <form id="astrologerWpMoonPhaseForm" method="get">
             <?php wp_nonce_field('astrologer_wp_moon_phase'); ?>
             <input id="astrologerWpMoonPhaseDatetimeInput" class="form-control"
-                type="datetime-local" name="datetime" placeholder="Enter date and time" required value="<?php echo esc_attr($datetime); ?>"
+                type="datetime-local" name="datetime" placeholder="<?php echo esc_attr__('Enter date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($datetime); ?>"
                 min="1801-01-01T00:00" max="2100-12-31T23:59">
 
             <div class="astrologer-wp-city-wrapper">
                 <input id="astrologerWpMoonPhaseCityInput" class="form-control" autocomplete="off"
-                    type="text" name="city" placeholder="Enter city" required value="<?php echo esc_attr($city); ?>">
+                    type="text" name="city" placeholder="<?php echo esc_attr__('Enter city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($city); ?>">
                 <ul id="astrologerWpMoonPhaseCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                 </ul>
             </div>
@@ -152,7 +153,7 @@ function astrologerWpMoonPhaseShortCode() {
             <input id="astrologerWpMoonPhaseNationInput" type="hidden" name="nation" value="<?php echo esc_attr($nation); ?>">
             <input id="astrologerWpMoonPhaseTimezoneInput" type="hidden" name="timezone" required value="<?php echo esc_attr($timezone); ?>">
 
-            <button type="submit" class="btn">Get Moon Phase</button>
+            <button type="submit" class="btn"><?php esc_html_e('Get Moon Phase', 'astrologerwp'); ?></button>
         </form>
     </div>
 <?php

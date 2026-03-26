@@ -22,10 +22,9 @@ mkdir -p "$TMP_DIR/$PLUGIN_SLUG"
 cp astrologer_wp.php "$TMP_DIR/$PLUGIN_SLUG/"
 cp readme.txt        "$TMP_DIR/$PLUGIN_SLUG/"
 cp LICENSE           "$TMP_DIR/$PLUGIN_SLUG/"
-cp package.json      "$TMP_DIR/$PLUGIN_SLUG/"
-
 cp -R includes  "$TMP_DIR/$PLUGIN_SLUG/includes"
-cp -R assets    "$TMP_DIR/$PLUGIN_SLUG/assets"
+mkdir -p "$TMP_DIR/$PLUGIN_SLUG/assets"
+cp -R assets/dist "$TMP_DIR/$PLUGIN_SLUG/assets/dist"
 cp -R languages "$TMP_DIR/$PLUGIN_SLUG/languages"
 
 # Remove source maps from dist (not needed in submission)

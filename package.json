@@ -1,7 +1,7 @@
 {
-  "name": "wp-learn",
-  "version": "1.0.0",
-  "main": "esbuild.config.js",
+  "name": "astrologerwp",
+  "version": "2.0.0",
+  "main": "esbuild.config.mjs",
   "scripts": {
     "dev:js": "node esbuild.config.mjs --watch",
     "dev:css": "sass --quiet --watch assets/src/scss/styles.scss:assets/dist/css/styles.css --style compressed",
@@ -11,7 +11,7 @@
     "build": "npm run build:js && npm run build:css"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-2.0-or-later",
   "description": "",
   "devDependencies": {
     "esbuild": "^0.24.0",

@@ -87,19 +87,19 @@ function astrologerWpBirthChartShortCode() {
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
-        <?php echo $chartHtml; ?>
-        <p class="subject-title">Subject Data</p>
+        <?php echo wp_kses_post($chartHtml); ?>
+        <p class="subject-title"><?php esc_html_e('Subject Data', 'astrologerwp'); ?></p>
         <form id="astrologerWpBirthChartForm" method="get">
             <?php wp_nonce_field('astrologer_wp_birth_chart'); ?>
             <input id="astrologerWpBirthChartNameInput" class="form-control"
-                type="text" name="chartName" placeholder="Enter name" required value="<?php echo esc_attr($chartName); ?>">
+                type="text" name="chartName" placeholder="<?php echo esc_attr__('Enter name', 'astrologerwp'); ?>" required value="<?php echo esc_attr($chartName); ?>">
             <input id="astrologerWpBirthChartDatetimeInput" class="form-control"
-                type="datetime-local" name="datetime" placeholder="Enter date and time" required value="<?php echo esc_attr($datetime); ?>"
+                type="datetime-local" name="datetime" placeholder="<?php echo esc_attr__('Enter date and time', 'astrologerwp'); ?>" required value="<?php echo esc_attr($datetime); ?>"
                 min="1801-01-01T00:00" max="2100-12-31T23:59">
 
             <div class="astrologer-wp-city-wrapper">
                 <input id="astrologerWpBirthChartCityInput" class="form-control" autocomplete="off"
-                    type="text" name="city" placeholder="Enter city" required value="<?php echo esc_attr($city); ?>">
+                    type="text" name="city" placeholder="<?php echo esc_attr__('Enter city', 'astrologerwp'); ?>" required value="<?php echo esc_attr($city); ?>">
                 <ul id="astrologerWpBirthChartCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                 </ul>
             </div>
@@ -115,7 +115,7 @@ function astrologerWpBirthChartShortCode() {
                 type="hidden" name="timezone" required value="<?php echo esc_attr($timezone); ?>">
 
             <!-- Submit button -->
-            <button type="submit" class="btn">Get Birth Chart</button>
+            <button type="submit" class="btn"><?php esc_html_e('Get Birth Chart', 'astrologerwp'); ?></button>
         </form>
     </div>
 <?php

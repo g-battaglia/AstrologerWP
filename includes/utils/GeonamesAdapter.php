@@ -46,7 +46,9 @@ class GeonamesAdapter {
         $timezoneData = [];
         $url = $this->timezoneUrl . "?lat=$lat&lng=$lng&username=" . $this->username;
 
-        error_log("Requesting data from GeoName timezones: $url");
+        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+            error_log("Requesting data from GeoName timezones: $url");
+        }
 
         try {
             $response = wp_remote_get($url, [
@@ -64,7 +66,9 @@ class GeonamesAdapter {
             // Cache the response for 1 hour
             set_transient($cacheKey, $timezoneData, HOUR_IN_SECONDS);
         } catch (\Exception $e) {
-            error_log("Error fetching {$this->timezoneUrl}: " . $e->getMessage());
+            if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                error_log("Error fetching {$this->timezoneUrl}: " . $e->getMessage());
+            }
             return [];
         }
 
@@ -114,7 +118,9 @@ class GeonamesAdapter {
             // Cache the response for 1 hour
             set_transient($cacheKey, $cityDataWithoutTz, HOUR_IN_SECONDS);
         } catch (\Exception $e) {
-            error_log("Error fetching {$this->baseUrl}: " . $e->getMessage());
+            if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                error_log("Error fetching {$this->baseUrl}: " . $e->getMessage());
+            }
             return [];
         }
 
@@ -130,7 +136,9 @@ class GeonamesAdapter {
         $cityDataResponse = $this->getBasicCityData($this->cityName, $this->countryCode);
 
         if (empty($cityDataResponse)) {
-            error_log("City data is empty");
+            if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                error_log("City data is empty");
+            }
             return [];
         }
 
@@ -139,7 +147,9 @@ class GeonamesAdapter {
                 $timezoneResponse = $this->getTimezoneData($cityData["lat"], $cityData["lng"]);
                 $cityDataResponse[$key] = array_merge($timezoneResponse, $cityData);
             } catch (\Exception $e) {
-                error_log("Error fetching timezone: " . $e->getMessage());
+                if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+                    error_log("Error fetching timezone: " . $e->getMessage());
+                }
                 return [];
             }
         }
