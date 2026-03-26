@@ -112,7 +112,7 @@ export function MoonPhaseDisplay({
         } else if (hasSubjectData) {
             loadFromSubject(subjectProps);
         }
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Card className={cn('astrologer-moon-phase', className)}>

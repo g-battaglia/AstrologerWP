@@ -163,7 +163,7 @@ function mapSettingsToForm(settings: RawSettingsResponse): SettingsFormState {
     });
 
     // Map Distribution Weights
-    let weights: Record<string, number> = getSafeDefaultWeights();
+    const weights: Record<string, number> = getSafeDefaultWeights();
     if (
         settings.custom_distribution_weights &&
         typeof settings.custom_distribution_weights === 'object'
@@ -311,8 +311,9 @@ export function SettingsPage() {
                         : 'Error while loading settings',
                 );
             } finally {
-                if (!mounted) return;
-                setLoading(false);
+                if (mounted) {
+                    setLoading(false);
+                }
             }
         };
 
