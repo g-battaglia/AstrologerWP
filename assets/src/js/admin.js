@@ -9,12 +9,8 @@ function init_siderealModeValidator() {
     const siderealModeDisabledMessage = document.getElementById("siderealModeDisabledMessage");
     const siderealModeSelectWrapper = document.getElementById("siderealModeSelectWrapper");
 
-    function upadateSiderealModeSelect() {
-        console.log(zodiacTypeSelect.value);
-        console.log(siderealModeSelect.value);
-        console.log(siderealModeSelect.disabled);
-
-        if (zodiacTypeSelect.value === "Tropic") {
+    function updateSiderealModeSelect() {
+        if (zodiacTypeSelect.value === "Tropical") {
             siderealModeSelect.value = "none";
             siderealModeSelect.disabled = true;
             siderealModeSelect.style.display = "none";
@@ -29,18 +25,18 @@ function init_siderealModeValidator() {
 
     if (zodiacTypeSelect && siderealModeSelect) {
         zodiacTypeSelect.addEventListener("change", () => {
-            upadateSiderealModeSelect();
+            updateSiderealModeSelect();
         });
     }
 
-    upadateSiderealModeSelect();
+    updateSiderealModeSelect();
 }
 
-
 function init_adminShortcodeCopyOnClick() {
-    const astrologerWpBirthChartAdminShortCodes = document.querySelectorAll(".astrologer-wp-birth-chart-admin-shortcode");
+    const shortcodes = document.querySelectorAll(".astrologer-wp-admin-shortcode");
 
-    astrologerWpBirthChartAdminShortCodes.forEach((shortcode) => {
+    shortcodes.forEach((shortcode) => {
+        shortcode.style.cursor = "pointer";
         shortcode.addEventListener("click", () => {
             navigator.clipboard.writeText(shortcode.innerText).then(() => {
                 shortcode.classList.add("copied");

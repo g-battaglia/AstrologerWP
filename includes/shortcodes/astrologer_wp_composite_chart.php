@@ -3,8 +3,8 @@
 use AstrologerWP\Utils\AstrologerApiAdapter;
 use AstrologerWP\Utils\Subject;
 
-add_shortcode('astrologer_wp_synastry_chart', 'astrologerWpSynastryChartShortCode');
-function astrologerWpSynastryChartShortCode() {
+add_shortcode('astrologer_wp_composite_chart', 'astrologerWpCompositeChartShortCode');
+function astrologerWpCompositeChartShortCode() {
     $apiKey = get_option('astrologer_wp__api_key');
     $firstChartName = '';
     $firstDatetime = '';
@@ -44,7 +44,7 @@ function astrologerWpSynastryChartShortCode() {
         && isset($_GET['secondNation'])
         && isset($_GET['secondTimezone'])
         && isset($_GET['_wpnonce'])
-        && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'astrologer_wp_synastry_chart')
+        && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['_wpnonce'])), 'astrologer_wp_composite_chart')
     ) {
         $firstChartName = sanitize_text_field(wp_unslash($_GET['firstChartName']));
         $firstDatetime = sanitize_text_field(wp_unslash($_GET['firstDatetime']));
@@ -89,72 +89,72 @@ function astrologerWpSynastryChartShortCode() {
         );
 
         $astrologerApiAdapter = new AstrologerApiAdapter($apiKey);
-        $data = $astrologerApiAdapter->getSynastryChart($firstSubject, $secondSubject);
+        $data = $astrologerApiAdapter->getCompositeChart($firstSubject, $secondSubject);
 
         if (!empty($data['error'])) {
             $error = $data['error'];
         } else {
-            $chartHtml = astrologer_wp_render_chart($data, 'astrologerWpSynastryChartWrapper', 'astrologerSynastryChart');
+            $chartHtml = astrologer_wp_render_chart($data, 'astrologerWpCompositeChartWrapper', 'astrologerCompositeChart');
         }
     }
 
     ob_start();
 ?>
-    <div id="astrologerWpSynastryChart" data-bs-theme="dark" class="bg-primary">
+    <div id="astrologerWpCompositeChart" data-bs-theme="dark" class="bg-primary">
         <?php if (!empty($error)): ?>
-            <div id="astrologerWpSynastryChartError" class="alert alert-danger" role="alert">
+            <div id="astrologerWpCompositeChartError" class="alert alert-danger" role="alert">
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
         <?php echo $chartHtml; ?>
-        <form id="astrologerWpSynastryChartForm" method="get">
-            <?php wp_nonce_field('astrologer_wp_synastry_chart'); ?>
+        <form id="astrologerWpCompositeChartForm" method="get">
+            <?php wp_nonce_field('astrologer_wp_composite_chart'); ?>
             <div class="subjects-data-wrapper">
-                <div id="astrologerWpSynastryChartFirstSubjectData" class="subject-data first-subject-data">
-                    <p class="subject-title">Partner A</p>
-                    <input id="astrologerWpSynastryChartFirstChartNameInput" class="form-control"
-                        type="text" name="firstChartName" placeholder="Enter first partner name" required value="<?php echo esc_attr($firstChartName); ?>">
-                    <input id="astrologerWpSynastryChartFirstDatetimeInput" class="form-control"
+                <div id="astrologerWpCompositeChartFirstSubjectData" class="subject-data first-subject-data">
+                    <p class="subject-title">Person A</p>
+                    <input id="astrologerWpCompositeChartFirstChartNameInput" class="form-control"
+                        type="text" name="firstChartName" placeholder="Enter first person name" required value="<?php echo esc_attr($firstChartName); ?>">
+                    <input id="astrologerWpCompositeChartFirstDatetimeInput" class="form-control"
                         type="datetime-local" name="firstDatetime" placeholder="Enter date and time" required value="<?php echo esc_attr($firstDatetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
-                        <input id="astrologerWpSynastryChartFirstCityInput" class="form-control" autocomplete="off"
+                        <input id="astrologerWpCompositeChartFirstCityInput" class="form-control" autocomplete="off"
                             type="text" name="firstCity" placeholder="Enter city" required value="<?php echo esc_attr($firstCity); ?>">
-                        <ul id="astrologerWpSynastryChartFirstCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
+                        <ul id="astrologerWpCompositeChartFirstCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
 
-                    <input id="astrologerWpSynastryChartFirstLongitudeInput" type="hidden" name="firstLongitude" required value="<?php echo esc_attr($firstLongitude); ?>">
-                    <input id="astrologerWpSynastryChartFirstLatitudeInput" type="hidden" name="firstLatitude" required value="<?php echo esc_attr($firstLatitude); ?>">
-                    <input id="astrologerWpSynastryChartFirstNationInput" type="hidden" name="firstNation" required value="<?php echo esc_attr($firstNation); ?>">
-                    <input id="astrologerWpSynastryChartFirstTimezoneInput" type="hidden" name="firstTimezone" required value="<?php echo esc_attr($firstTimezone); ?>">
+                    <input id="astrologerWpCompositeChartFirstLongitudeInput" type="hidden" name="firstLongitude" required value="<?php echo esc_attr($firstLongitude); ?>">
+                    <input id="astrologerWpCompositeChartFirstLatitudeInput" type="hidden" name="firstLatitude" required value="<?php echo esc_attr($firstLatitude); ?>">
+                    <input id="astrologerWpCompositeChartFirstNationInput" type="hidden" name="firstNation" required value="<?php echo esc_attr($firstNation); ?>">
+                    <input id="astrologerWpCompositeChartFirstTimezoneInput" type="hidden" name="firstTimezone" required value="<?php echo esc_attr($firstTimezone); ?>">
                 </div>
 
-                <div id="astrologerWpSynastryChartSecondSubjectData" class="subject-data second-subject-data">
-                    <p class="subject-title">Partner B</p>
-                    <input id="astrologerWpSynastryChartSecondChartNameInput" class="form-control"
-                        type="text" name="secondChartName" placeholder="Enter second partner name" required value="<?php echo esc_attr($secondChartName); ?>">
-                    <input id="astrologerWpSynastryChartSecondDatetimeInput" class="form-control"
+                <div id="astrologerWpCompositeChartSecondSubjectData" class="subject-data second-subject-data">
+                    <p class="subject-title">Person B</p>
+                    <input id="astrologerWpCompositeChartSecondChartNameInput" class="form-control"
+                        type="text" name="secondChartName" placeholder="Enter second person name" required value="<?php echo esc_attr($secondChartName); ?>">
+                    <input id="astrologerWpCompositeChartSecondDatetimeInput" class="form-control"
                         type="datetime-local" name="secondDatetime" placeholder="Enter date and time" required value="<?php echo esc_attr($secondDatetime); ?>"
                         min="1801-01-01T00:00" max="2100-12-31T23:59">
 
                     <div class="astrologer-wp-city-wrapper">
-                        <input id="astrologerWpSynastryChartSecondCityInput" class="form-control" autocomplete="off"
+                        <input id="astrologerWpCompositeChartSecondCityInput" class="form-control" autocomplete="off"
                             type="text" name="secondCity" placeholder="Enter city" required value="<?php echo esc_attr($secondCity); ?>">
-                        <ul id="astrologerWpSynastryChartSecondCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
+                        <ul id="astrologerWpCompositeChartSecondCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                         </ul>
                     </div>
 
-                    <input id="astrologerWpSynastryChartSecondLongitudeInput" type="hidden" name="secondLongitude" required value="<?php echo esc_attr($secondLongitude); ?>">
-                    <input id="astrologerWpSynastryChartSecondLatitudeInput" type="hidden" name="secondLatitude" required value="<?php echo esc_attr($secondLatitude); ?>">
-                    <input id="astrologerWpSynastryChartSecondNationInput" type="hidden" name="secondNation" required value="<?php echo esc_attr($secondNation); ?>">
-                    <input id="astrologerWpSynastryChartSecondTimezoneInput" type="hidden" name="secondTimezone" required value="<?php echo esc_attr($secondTimezone); ?>">
+                    <input id="astrologerWpCompositeChartSecondLongitudeInput" type="hidden" name="secondLongitude" required value="<?php echo esc_attr($secondLongitude); ?>">
+                    <input id="astrologerWpCompositeChartSecondLatitudeInput" type="hidden" name="secondLatitude" required value="<?php echo esc_attr($secondLatitude); ?>">
+                    <input id="astrologerWpCompositeChartSecondNationInput" type="hidden" name="secondNation" required value="<?php echo esc_attr($secondNation); ?>">
+                    <input id="astrologerWpCompositeChartSecondTimezoneInput" type="hidden" name="secondTimezone" required value="<?php echo esc_attr($secondTimezone); ?>">
                 </div>
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn">Get Synastry Chart</button>
+            <button type="submit" class="btn">Get Composite Chart</button>
         </form>
     </div>
 <?php

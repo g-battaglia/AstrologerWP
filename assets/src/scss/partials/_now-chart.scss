@@ -1,0 +1,26 @@
+#astrologerWpNowChart {
+    background-color: var(--kerykeion-color-base-100);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+
+    .astrologer-wp-chart-wrapper {
+        margin-bottom: 1rem;
+    }
+
+    .astrologer-wp-chart-grid-wrapper {
+        margin-bottom: 1rem;
+    }
+
+    #astrologerWpNowChartError {
+        font-size: 0.95rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .astrologer-wp-now-chart-info {
+        font-size: 0.85rem;
+        color: var(--kerykeion-color-neutral-content);
+        margin-top: 0.5rem;
+        font-style: italic;
+    }
+}

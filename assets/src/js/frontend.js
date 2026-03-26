@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Birth Chart
     if (document.getElementById("astrologerWpBirthChartForm")) {
         init_searchCityOnInput(
             "astrologerWpBirthChartForm",
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
+    // Synastry Chart
     if (document.getElementById("astrologerWpSynastryChartForm")) {
         init_searchCityOnInput(
             "astrologerWpSynastryChartForm",
@@ -33,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
+    // Transit Chart
     if (document.getElementById("astrologerWpTransitChartForm")) {
         init_searchCityOnInput(
             "astrologerWpTransitChartForm",
@@ -54,6 +57,88 @@ document.addEventListener("DOMContentLoaded", () => {
             "astrologerWpTransitChartTransitCitySuggestions",
         );
     }
+
+    // Composite Chart
+    if (document.getElementById("astrologerWpCompositeChartForm")) {
+        init_searchCityOnInput(
+            "astrologerWpCompositeChartForm",
+            "astrologerWpCompositeChartFirstCityInput",
+            "astrologerWpCompositeChartFirstNationInput",
+            "astrologerWpCompositeChartFirstLatitudeInput",
+            "astrologerWpCompositeChartFirstLongitudeInput",
+            "astrologerWpCompositeChartFirstTimezoneInput",
+            "astrologerWpCompositeChartFirstCitySuggestions",
+        );
+
+        init_searchCityOnInput(
+            "astrologerWpCompositeChartForm",
+            "astrologerWpCompositeChartSecondCityInput",
+            "astrologerWpCompositeChartSecondNationInput",
+            "astrologerWpCompositeChartSecondLatitudeInput",
+            "astrologerWpCompositeChartSecondLongitudeInput",
+            "astrologerWpCompositeChartSecondTimezoneInput",
+            "astrologerWpCompositeChartSecondCitySuggestions",
+        );
+    }
+
+    // Solar Return Chart
+    if (document.getElementById("astrologerWpSolarReturnChartForm")) {
+        init_searchCityOnInput(
+            "astrologerWpSolarReturnChartForm",
+            "astrologerWpSolarReturnChartCityInput",
+            "astrologerWpSolarReturnChartNationInput",
+            "astrologerWpSolarReturnChartLatitudeInput",
+            "astrologerWpSolarReturnChartLongitudeInput",
+            "astrologerWpSolarReturnChartTimezoneInput",
+            "astrologerWpSolarReturnChartCitySuggestions",
+        );
+
+        init_searchCityOnInput(
+            "astrologerWpSolarReturnChartForm",
+            "astrologerWpSolarReturnChartReturnCityInput",
+            "astrologerWpSolarReturnChartReturnNationInput",
+            "astrologerWpSolarReturnChartReturnLatitudeInput",
+            "astrologerWpSolarReturnChartReturnLongitudeInput",
+            "astrologerWpSolarReturnChartReturnTimezoneInput",
+            "astrologerWpSolarReturnChartReturnCitySuggestions",
+        );
+    }
+
+    // Lunar Return Chart
+    if (document.getElementById("astrologerWpLunarReturnChartForm")) {
+        init_searchCityOnInput(
+            "astrologerWpLunarReturnChartForm",
+            "astrologerWpLunarReturnChartCityInput",
+            "astrologerWpLunarReturnChartNationInput",
+            "astrologerWpLunarReturnChartLatitudeInput",
+            "astrologerWpLunarReturnChartLongitudeInput",
+            "astrologerWpLunarReturnChartTimezoneInput",
+            "astrologerWpLunarReturnChartCitySuggestions",
+        );
+
+        init_searchCityOnInput(
+            "astrologerWpLunarReturnChartForm",
+            "astrologerWpLunarReturnChartReturnCityInput",
+            "astrologerWpLunarReturnChartReturnNationInput",
+            "astrologerWpLunarReturnChartReturnLatitudeInput",
+            "astrologerWpLunarReturnChartReturnLongitudeInput",
+            "astrologerWpLunarReturnChartReturnTimezoneInput",
+            "astrologerWpLunarReturnChartReturnCitySuggestions",
+        );
+    }
+
+    // Moon Phase
+    if (document.getElementById("astrologerWpMoonPhaseForm")) {
+        init_searchCityOnInput(
+            "astrologerWpMoonPhaseForm",
+            "astrologerWpMoonPhaseCityInput",
+            "astrologerWpMoonPhaseNationInput",
+            "astrologerWpMoonPhaseLatitudeInput",
+            "astrologerWpMoonPhaseLongitudeInput",
+            "astrologerWpMoonPhaseTimezoneInput",
+            "astrologerWpMoonPhaseCitySuggestions",
+        );
+    }
 });
 
 async function init_searchCityOnInput(
@@ -72,6 +157,10 @@ async function init_searchCityOnInput(
     const longitudeInput = document.getElementById(longitudeInputId);
     const timezoneInput = document.getElementById(timezoneInputId);
     const suggestions = document.getElementById(suggestionsId);
+
+    if (!cityInput || !suggestions) {
+        return;
+    }
 
     function debounce(func, wait) {
         let timeout;
@@ -105,12 +194,10 @@ async function init_searchCityOnInput(
                 )
                 .join("");
 
-            // Append the suggestions to the form
             suggestions.innerHTML = suggestionsHtml;
             suggestions.style.display = "block";
 
-            // Add event listeners to the new dropdown items
-            const dropdownItems = form.querySelectorAll(".dropdown-item");
+            const dropdownItems = suggestions.querySelectorAll(".dropdown-item");
             dropdownItems.forEach((item) => {
                 item.addEventListener("click", (event) => {
                     event.preventDefault();
@@ -127,9 +214,7 @@ async function init_searchCityOnInput(
             dropdownItems.forEach((item) => {
                 item.addEventListener("keydown", (event) => {
                     if (event.key === "Tab") {
-                        // Remove aria-selected from all items
                         dropdownItems.forEach((el) => el.setAttribute("aria-selected", "false"));
-                        // Set aria-selected to true for the focused item
                         item.setAttribute("aria-selected", "true");
 
                         latitudeInput.value = event.target.getAttribute("data-value-lat");
@@ -139,7 +224,6 @@ async function init_searchCityOnInput(
                         nationInput.value = event.target.getAttribute("data-value-country-code");
                         cityInput.value = `${event.target.getAttribute("data-value-city")}, ${event.target.getAttribute("data-value-country-code")}`;
                     } else if (event.key === "Enter") {
-                        // Hide the suggestions menu when "Enter" is pressed
                         suggestions.style.display = "none";
                     }
                 });
@@ -155,7 +239,7 @@ async function searchCity(city, nation) {
     if (city.length > 2) {
         try {
             const response = await fetch(
-                `${astrologerWpAjax.ajaxurl}?action=search_city&city=${city}&nation=${nation}`,
+                `${astrologerWpAjax.ajaxurl}?action=search_city&city=${encodeURIComponent(city)}&nation=${encodeURIComponent(nation)}`,
             );
             data = await response.json();
         } catch (error) {

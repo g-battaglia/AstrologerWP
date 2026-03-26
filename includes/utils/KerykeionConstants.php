@@ -4,7 +4,7 @@ namespace AstrologerWP\Constants;
 
 class KerykeionConstants {
     public const ZODIAC_TYPES = [
-        'Tropic',
+        'Tropical',
         'Sidereal'
     ];
 
@@ -79,10 +79,10 @@ class KerykeionConstants {
         'Uranus',
         'Neptune',
         'Pluto',
-        'Mean_Node',
-        'True_Node',
-        'Mean_South_Node',
-        'True_South_Node',
+        'Mean_North_Lunar_Node',
+        'True_North_Lunar_Node',
+        'Mean_South_Lunar_Node',
+        'True_South_Lunar_Node',
         'Chiron',
         'Mean_Lilith'
     ];
@@ -104,7 +104,10 @@ class KerykeionConstants {
         'Natal',
         'ExternalNatal',
         'Synastry',
-        'Transit'
+        'Transit',
+        'Composite',
+        'SolarReturn',
+        'LunarReturn'
     ];
 
     public const POINT_TYPES = [
@@ -154,7 +157,8 @@ class KerykeionConstants {
         'SASSANIAN',
         'J2000',
         'J1900',
-        'B1950'
+        'B1950',
+        'USER'
     ];
 
     public const HOUSES_SYSTEM_IDENTIFIERS = [
@@ -206,10 +210,12 @@ class KerykeionConstants {
     ];
 
     public const KERYKEION_CHART_THEMES = [
+        'classic',
         'light',
         'dark',
         'dark-high-contrast',
-        'classic'
+        'strawberry',
+        'black-and-white'
     ];
 
     public const KERYKEION_CHART_LANGUAGES = [
@@ -223,6 +229,21 @@ class KerykeionConstants {
         'TR',
         'DE',
         'HI'
+    ];
+
+    public const KERYKEION_CHART_STYLES = [
+        'classic',
+        'modern'
+    ];
+
+    public const WHEEL_TYPES = [
+        'dual',
+        'single'
+    ];
+
+    public const DOUBLE_CHART_ASPECT_GRID_TYPES = [
+        'list',
+        'table'
     ];
 
     public const RELATIONSHIP_SCORE_DESCRIPTIONS = [

@@ -13,17 +13,13 @@ function astrologerWpBirthChartShortCode() {
     $city = '';
     $nation = '';
     $timezone = '';
-    $zodiacType = get_option('astrologer_wp__zodiac_type');
-    $wheelOnly = get_option('astrologer_wp__wheel_only_chart');
-    $theme = get_option('astrologer_wp__chart_theme');
-    $houseSystem = get_option('astrologer_wp__houses_system');
-    $language = get_option('astrologer_wp__chart_language');
-    $siderealMode = get_option('astrologer_wp__sidereal_mode');
-    $perspectiveType = get_option('astrologer_wp__perspective_type');
+    $zodiacType = get_option('astrologer_wp__zodiac_type', 'Tropical');
+    $houseSystem = get_option('astrologer_wp__houses_system', 'P');
+    $siderealMode = get_option('astrologer_wp__sidereal_mode', '');
+    $perspectiveType = get_option('astrologer_wp__perspective_type', 'Apparent Geocentric');
 
-    $chart = null;
-    $chartData = null;
-    $chartAspects = null;
+    $chartHtml = '';
+    $error = null;
 
     if (
         isset($_GET['chartName'])
@@ -44,7 +40,6 @@ function astrologerWpBirthChartShortCode() {
         $nation = sanitize_text_field(wp_unslash($_GET['nation']));
         $timezone = sanitize_text_field(wp_unslash($_GET['timezone']));
 
-        // Estrai data e ora dal campo datetime
         $datetimeObject = new DateTime($datetime);
         $year = (int) $datetimeObject->format('Y');
         $month = (int) $datetimeObject->format('m');
@@ -71,21 +66,12 @@ function astrologerWpBirthChartShortCode() {
         );
 
         $astrologerApiAdapter = new AstrologerApiAdapter($apiKey);
+        $data = $astrologerApiAdapter->getBirthChart($subject);
 
-        $data = $astrologerApiAdapter->getBirthChart(
-            $subject,
-            $wheelOnly,
-            $theme,
-            $language,
-        );
-
-        $chart = base64_encode(mb_convert_encoding($data['chart'], 'UTF-8', 'auto'));
-        $chartData = $data['data'];
-        $chartAspects = $data['aspects'];
-        $error = null;
-
-        if (empty($chart)) {
+        if (!empty($data['error'])) {
             $error = $data['error'];
+        } else {
+            $chartHtml = astrologer_wp_render_chart($data, 'astrologerWpBirthChartWrapper', 'astrologerBirthChart');
         }
     }
 
@@ -97,56 +83,36 @@ function astrologerWpBirthChartShortCode() {
                 <?php echo esc_html($error); ?>
             </div>
         <?php endif; ?>
-        <?php if (!empty($chart)): ?>
-            <div class="astrologer-wp-chart-wrapper" id="astrologerWpBirthChartWrapper">
-            </div>
-        <?php endif; ?>
+        <?php echo $chartHtml; ?>
         <p class="subject-title">Subject Data</p>
         <form id="astrologerWpBirthChartForm" method="get">
             <?php wp_nonce_field('astrologer_wp_birth_chart'); ?>
             <input id="astrologerWpBirthChartNameInput" class="form-control"
-                type="text" name="chartName" placeholder="Enter name" required value="<?php echo esc_html($chartName); ?>">
+                type="text" name="chartName" placeholder="Enter name" required value="<?php echo esc_attr($chartName); ?>">
             <input id="astrologerWpBirthChartDatetimeInput" class="form-control"
-                type="datetime-local" name="datetime" placeholder="Enter date and time" required value="<?php echo esc_html($datetime); ?>"
+                type="datetime-local" name="datetime" placeholder="Enter date and time" required value="<?php echo esc_attr($datetime); ?>"
                 min="1801-01-01T00:00" max="2100-12-31T23:59">
 
             <div class="astrologer-wp-city-wrapper">
                 <input id="astrologerWpBirthChartCityInput" class="form-control" autocomplete="off"
-                    type="text" name="city" placeholder="Enter city" required value="<?php echo esc_html($city); ?>">
+                    type="text" name="city" placeholder="Enter city" required value="<?php echo esc_attr($city); ?>">
                 <ul id="astrologerWpBirthChartCitySuggestions" class="suggestions dropdown-menu form-control" role="listbox">
                 </ul>
             </div>
 
             <!-- Hidden inputs -->
             <input id="astrologerWpBirthChartLongitudeInput" class="form-control"
-                type="hidden" name="longitude" placeholder="Enter longitude" required value="<?php echo esc_html($longitude); ?>">
+                type="hidden" name="longitude" required value="<?php echo esc_attr($longitude); ?>">
             <input id="astrologerWpBirthChartLatitudeInput" class="form-control"
-                type="hidden" name="latitude" placeholder="Enter latitude" required value="<?php echo esc_html($latitude); ?>">
+                type="hidden" name="latitude" required value="<?php echo esc_attr($latitude); ?>">
             <input id="astrologerWpBirthChartNationInput" class="form-control"
-                type="hidden" name="nation" placeholder="Enter nation" required value="<?php echo esc_html($nation); ?>">
+                type="hidden" name="nation" required value="<?php echo esc_attr($nation); ?>">
             <input id="astrologerWpBirthChartTimezoneInput" class="form-control"
-                type="hidden" name="timezone" placeholder="Enter timezone" required value="<?php echo esc_html($timezone); ?>">
+                type="hidden" name="timezone" required value="<?php echo esc_attr($timezone); ?>">
 
             <!-- Submit button -->
             <button type="submit" class="btn">Get Birth Chart</button>
         </form>
-
-        <script>
-            (() => {
-                const astrologerWpBirthChartWrapper = document.getElementById('astrologerWpBirthChartWrapper');
-                const encodedChart = '<?php echo esc_js($chart ? htmlspecialchars($chart, ENT_QUOTES, 'UTF-8') : null); ?>';
-
-                if (!encodedChart) {
-                    return;
-                }
-
-                const decodedChart = new TextDecoder("utf-8").decode(Uint8Array.from(atob(encodedChart), c => c.charCodeAt(0)));
-                astrologerWpBirthChartWrapper.innerHTML = decodedChart;
-
-                window.astrologerBirthChartData = <?php echo json_encode($chartData); ?>;
-                window.astrologerBirthChartAspects = <?php echo json_encode($chartAspects); ?>;
-            })();
-        </script>
     </div>
 <?php
     $output = ob_get_clean();

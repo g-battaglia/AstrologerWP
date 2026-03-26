@@ -14,6 +14,7 @@ class Subject {
     public int $day;
     public int $hour;
     public int $minute;
+    public int $second;
     public float $longitude;
     public float $latitude;
     public string $city;
@@ -42,6 +43,7 @@ class Subject {
      * @param string $houseSystem
      * @param string $siderealMode
      * @param string $perspectiveType
+     * @param int $second
      */
     public function __construct(
         string $name,
@@ -58,11 +60,11 @@ class Subject {
         string $zodiacType,
         string $houseSystem,
         string $siderealMode,
-        string $perspectiveType
+        string $perspectiveType,
+        int $second = 0
     ) {
 
-        if ($zodiacType === 'Tropic' && isset($siderealMode)) {
-            error_log('Zodiac type is Tropic, unsetting sidereal mode');
+        if ($zodiacType === 'Tropical' && isset($siderealMode)) {
             unset($siderealMode);
         }
 
@@ -72,6 +74,7 @@ class Subject {
         $this->day = $day;
         $this->hour = $hour;
         $this->minute = $minute;
+        $this->second = $second;
         $this->longitude = $longitude;
         $this->latitude = $latitude;
         $this->city = $city;
@@ -79,7 +82,7 @@ class Subject {
         $this->timezone = $timezone;
         $this->zodiacType = $zodiacType;
         $this->houseSystem = $houseSystem;
-        $this->siderealMode = $siderealMode;
+        $this->siderealMode = $siderealMode ?? '';
         $this->perspectiveType = $perspectiveType;
     }
 
@@ -89,13 +92,14 @@ class Subject {
      * @return array
      */
     public function toArray(): array {
-        return [
+        $data = [
             'name' => $this->name,
             'year' => $this->year,
             'month' => $this->month,
             'day' => $this->day,
             'hour' => $this->hour,
             'minute' => $this->minute,
+            'second' => $this->second,
             'longitude' => $this->longitude,
             'latitude' => $this->latitude,
             'city' => $this->city,
@@ -103,8 +107,13 @@ class Subject {
             'timezone' => $this->timezone,
             'zodiac_type' => $this->zodiacType,
             'houses_system_identifier' => $this->houseSystem,
-            'sidereal_mode' => $this->siderealMode,
             'perspective_type' => $this->perspectiveType
         ];
+
+        if (!empty($this->siderealMode) && $this->zodiacType === 'Sidereal') {
+            $data['sidereal_mode'] = $this->siderealMode;
+        }
+
+        return $data;
     }
 }
