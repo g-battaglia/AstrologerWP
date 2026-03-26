@@ -1,6 +1,6 @@
 # AstrologerWP (astrologer-wp) - TODO
 
-All 37 items completed (29 original + 8 post-audit).
+All 38 items completed (29 original + 9 post-audit).
 
 ## CRITICAL - Bloccanti per produzione
 
@@ -224,9 +224,9 @@ All 37 items completed (29 original + 8 post-audit).
 
 ## REMAINING - Non-code items
 
-### R1. Asset PNG reali per WordPress.org — TODO
+### R1. Asset PNG reali per WordPress.org — DONE
 
-- `assets/wporg/` contiene solo SVG placeholder.
-- Servono PNG reali: icon-128x128, icon-256x256, banner-772x250, banner-1544x500.
-- Servono 4 screenshot PNG (~1200x900).
-- **Questo è un task di design, non di codice.**
+- **Directory:** `assets/wporg/`
+- Created proper SVG designs (zodiac wheel, moon crescent, planet dots, gradient background).
+- Generated PNGs via `rsvg-convert`: icon-128x128, icon-256x256, banner-772x250, banner-1544x500.
+- Created 4 screenshot PNGs (1200x900): natal chart form, admin settings, synastry, data tables.

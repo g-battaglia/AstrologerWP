@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#f8fafc"/>
+  <!-- WP Admin bar -->
+  <rect width="1200" height="32" fill="#1d2327"/>
+  <text x="20" y="22" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">WordPress Admin</text>
+  <!-- WP sidebar -->
+  <rect width="200" height="900" y="32" fill="#1d2327"/>
+  <text x="20" y="72" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">Dashboard</text>
+  <text x="20" y="100" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">Posts</text>
+  <text x="20" y="128" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">Pages</text>
+  <text x="20" y="156" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">Plugins</text>
+  <rect x="0" y="166" width="200" height="28" fill="#2271b1"/>
+  <text x="20" y="185" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="white">Settings</text>
+  <text x="30" y="210" font-family="system-ui, sans-serif" font-size="12" fill="#2271b1">Astrologer API</text>
+
+  <!-- Settings page content -->
+  <text x="230" y="75" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#1e293b">Astrologer API Settings</text>
+
+  <!-- Settings cards -->
+  <!-- API Credentials -->
+  <rect x="230" y="95" width="940" height="160" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="255" y="125" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1e293b">API Credentials</text>
+  <text x="255" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">RapidAPI Key</text>
+  <rect x="255" y="163" width="440" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="267" y="184" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">••••••••••••••••••••••</text>
+  <text x="720" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">GeoNames Username</text>
+  <rect x="720" y="163" width="430" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="732" y="184" font-family="system-ui, sans-serif" font-size="13" fill="#334155">my_geonames_user</text>
+
+  <!-- Chart Options -->
+  <rect x="230" y="275" width="940" height="200" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="255" y="305" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1e293b">Chart Options</text>
+
+  <text x="255" y="340" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Language</text>
+  <rect x="255" y="348" width="200" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="267" y="369" font-family="system-ui, sans-serif" font-size="13" fill="#334155">English</text>
+
+  <text x="480" y="340" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">House System</text>
+  <rect x="480" y="348" width="200" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="492" y="369" font-family="system-ui, sans-serif" font-size="13" fill="#334155">Placidus</text>
+
+  <text x="705" y="340" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Theme</text>
+  <rect x="705" y="348" width="200" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="717" y="369" font-family="system-ui, sans-serif" font-size="13" fill="#334155">Classic</text>
+
+  <!-- Sidereal toggle -->
+  <text x="255" y="415" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Sidereal Zodiac</text>
+  <rect x="255" y="425" width="44" height="24" rx="12" fill="#cbd5e1"/>
+  <circle cx="267" cy="437" r="10" fill="white"/>
+
+  <text x="330" y="415" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Split Chart</text>
+  <rect x="330" y="425" width="44" height="24" rx="12" fill="#7c3aed"/>
+  <circle cx="362" cy="437" r="10" fill="white"/>
+
+  <!-- Active Points section -->
+  <rect x="230" y="495" width="940" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="255" y="528" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#1e293b">Active Points</text>
+  <!-- Checkbox grid -->
+  <rect x="255" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="280" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Sun</text>
+  <rect x="340" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="365" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Moon</text>
+  <rect x="430" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="455" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Mercury</text>
+  <rect x="535" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="560" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Venus</text>
+  <rect x="625" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="650" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Mars</text>
+  <rect x="710" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="735" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Jupiter</text>
+  <rect x="810" y="545" width="16" height="16" rx="3" fill="#7c3aed"/>
+  <text x="835" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Saturn</text>
+  <rect x="910" y="545" width="16" height="16" rx="3" fill="#cbd5e1"/>
+  <text x="935" y="558" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">Chiron</text>
+
+  <!-- Save button -->
+  <rect x="230" y="700" width="120" height="40" rx="6" fill="#2271b1"/>
+  <text x="290" y="726" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Save</text>
+</svg>

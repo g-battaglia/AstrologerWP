@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#f8fafc"/>
+  <!-- WP Admin bar -->
+  <rect width="1200" height="32" fill="#1d2327"/>
+  <text x="20" y="22" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">WordPress</text>
+  <!-- Page title -->
+  <text x="40" y="80" font-family="system-ui, sans-serif" font-size="24" font-weight="600" fill="#1e293b">Synastry Chart</text>
+
+  <!-- First Subject card -->
+  <rect x="40" y="100" width="540" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="60" y="130" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#7c3aed">First Subject</text>
+  <text x="60" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Name</text>
+  <rect x="60" y="160" width="220" height="28" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="72" y="179" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Alice</text>
+  <text x="300" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Date</text>
+  <rect x="300" y="160" width="260" height="28" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="312" y="179" font-family="system-ui, sans-serif" font-size="12" fill="#334155">15/03/1992 14:30</text>
+  <text x="60" y="210" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">City</text>
+  <rect x="60" y="218" width="220" height="28" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="72" y="237" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Milan, IT</text>
+
+  <!-- Second Subject card -->
+  <rect x="620" y="100" width="540" height="180" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="640" y="130" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#7c3aed">Second Subject</text>
+  <text x="640" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Name</text>
+  <rect x="640" y="160" width="220" height="28" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="652" y="179" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Bob</text>
+  <text x="880" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Date</text>
+  <rect x="880" y="160" width="260" height="28" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="892" y="179" font-family="system-ui, sans-serif" font-size="12" fill="#334155">22/07/1988 09:15</text>
+  <text x="640" y="210" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">City</text>
+  <rect x="640" y="218" width="220" height="28" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="652" y="237" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Rome, IT</text>
+
+  <!-- Calculate button -->
+  <rect x="480" y="300" width="240" height="40" rx="8" fill="#7c3aed"/>
+  <text x="600" y="326" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Calculate Synastry</text>
+
+  <!-- Synastry chart area -->
+  <rect x="40" y="360" width="1120" height="520" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <!-- Double zodiac wheel -->
+  <circle cx="600" cy="630" r="240" fill="none" stroke="#ddd6fe" stroke-width="2"/>
+  <circle cx="600" cy="630" r="200" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+  <circle cx="600" cy="630" r="160" fill="none" stroke="#ddd6fe" stroke-width="1"/>
+  <circle cx="600" cy="630" r="120" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="600" cy="630" r="80" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+  <!-- Cross -->
+  <line x1="600" y1="390" x2="600" y2="870" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="360" y1="630" x2="840" y2="630" stroke="#f1f5f9" stroke-width="1"/>
+  <!-- Aspect lines between planets -->
+  <line x1="600" y1="430" x2="770" y2="550" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+  <line x1="430" y1="550" x2="700" y2="780" stroke="#3b82f6" stroke-width="1" opacity="0.5"/>
+  <line x1="500" y1="800" x2="770" y2="700" stroke="#22c55e" stroke-width="1" opacity="0.5"/>
+  <!-- First subject planets (outer ring, purple) -->
+  <circle cx="600" cy="430" r="6" fill="#7c3aed"/>
+  <circle cx="770" cy="500" r="5" fill="#7c3aed"/>
+  <circle cx="810" cy="650" r="5" fill="#7c3aed"/>
+  <circle cx="700" cy="800" r="5" fill="#7c3aed"/>
+  <circle cx="500" cy="800" r="5" fill="#7c3aed"/>
+  <circle cx="430" cy="550" r="5" fill="#7c3aed"/>
+  <!-- Second subject planets (inner ring, amber) -->
+  <circle cx="600" cy="470" r="5" fill="#f59e0b"/>
+  <circle cx="730" cy="550" r="4" fill="#f59e0b"/>
+  <circle cx="770" cy="700" r="4" fill="#f59e0b"/>
+  <circle cx="540" cy="770" r="4" fill="#f59e0b"/>
+  <circle cx="450" cy="600" r="4" fill="#f59e0b"/>
+  <!-- Legend -->
+  <circle cx="80" cy="400" r="5" fill="#7c3aed"/>
+  <text x="95" y="405" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Alice</text>
+  <circle cx="80" cy="425" r="5" fill="#f59e0b"/>
+  <text x="95" y="430" font-family="system-ui, sans-serif" font-size="12" fill="#334155">Bob</text>
+</svg>

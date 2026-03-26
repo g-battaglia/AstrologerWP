@@ -1,29 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="772" height="250" viewBox="0 0 772 250">
-  <!-- Placeholder: Replace with your final banner (772x250 PNG) -->
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e1b4b"/>
-      <stop offset="100%" stop-color="#312e81"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
     </linearGradient>
   </defs>
   <rect width="772" height="250" fill="url(#bg)"/>
-  <!-- Decorative circles (zodiac wheel hints) -->
-  <circle cx="650" cy="125" r="80" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.3"/>
-  <circle cx="650" cy="125" r="60" fill="none" stroke="#7c3aed" stroke-width="1.5" opacity="0.3"/>
-  <circle cx="650" cy="125" r="40" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.3"/>
-  <!-- Star dots -->
-  <circle cx="650" cy="55" r="3" fill="#facc15" opacity="0.6"/>
-  <circle cx="710" cy="85" r="2.5" fill="#facc15" opacity="0.5"/>
-  <circle cx="720" cy="135" r="2" fill="#facc15" opacity="0.6"/>
-  <circle cx="695" cy="185" r="3" fill="#facc15" opacity="0.5"/>
-  <circle cx="620" cy="200" r="2.5" fill="#facc15" opacity="0.6"/>
-  <circle cx="585" cy="165" r="2" fill="#facc15" opacity="0.5"/>
-  <circle cx="580" cy="105" r="3" fill="#facc15" opacity="0.6"/>
-  <circle cx="605" cy="65" r="2.5" fill="#facc15" opacity="0.5"/>
-  <!-- Moon -->
-  <path d="M660 110 A18 18 0 1 1 660 140 A12 12 0 1 0 660 110Z" fill="#c4b5fd" opacity="0.5"/>
+  <!-- Subtle star field -->
+  <circle cx="30" cy="40" r="1" fill="#e2e8f0" opacity="0.3"/>
+  <circle cx="150" cy="20" r="1.5" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="300" cy="30" r="1" fill="#e2e8f0" opacity="0.25"/>
+  <circle cx="420" cy="15" r="1" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="500" cy="45" r="1.5" fill="#e2e8f0" opacity="0.15"/>
+  <circle cx="180" cy="230" r="1" fill="#e2e8f0" opacity="0.2"/>
+  <circle cx="350" cy="220" r="1.5" fill="#e2e8f0" opacity="0.15"/>
+  <!-- Zodiac wheel on the right -->
+  <circle cx="630" cy="125" r="85" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.35"/>
+  <circle cx="630" cy="125" r="65" fill="none" stroke="#7c3aed" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="630" cy="125" r="45" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.25"/>
+  <!-- Cross lines -->
+  <line x1="630" y1="40" x2="630" y2="210" stroke="#6d28d9" stroke-width="0.5" opacity="0.2"/>
+  <line x1="545" y1="125" x2="715" y2="125" stroke="#6d28d9" stroke-width="0.5" opacity="0.2"/>
+  <!-- Planet dots -->
+  <circle cx="630" cy="40" r="3.5" fill="#facc15" opacity="0.7"/>
+  <circle cx="690" cy="70" r="3" fill="#f97316" opacity="0.6"/>
+  <circle cx="710" cy="125" r="3" fill="#ef4444" opacity="0.7"/>
+  <circle cx="690" cy="180" r="2.5" fill="#a78bfa" opacity="0.6"/>
+  <circle cx="630" cy="205" r="3.5" fill="#38bdf8" opacity="0.7"/>
+  <circle cx="570" cy="180" r="2.5" fill="#34d399" opacity="0.6"/>
+  <circle cx="550" cy="125" r="3" fill="#facc15" opacity="0.7"/>
+  <circle cx="570" cy="70" r="2.5" fill="#fb923c" opacity="0.6"/>
+  <!-- Moon crescent -->
+  <path d="M645 110 A18 18 0 1 1 645 140 A12 12 0 1 0 645 110Z" fill="#c4b5fd" opacity="0.5"/>
   <!-- Title text -->
-  <text x="60" y="110" font-family="sans-serif" font-size="42" font-weight="bold" fill="#f8fafc">Astrologer API</text>
-  <text x="60" y="150" font-family="sans-serif" font-size="28" fill="#c4b5fd">Playground</text>
-  <text x="60" y="190" font-family="sans-serif" font-size="14" fill="#94a3b8">Astrology charts, forms, and data for WordPress</text>
+  <text x="55" y="105" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#f8fafc" letter-spacing="1">Astrologer API</text>
+  <text x="55" y="148" font-family="system-ui, sans-serif" font-size="26" font-weight="400" fill="#c4b5fd">Playground</text>
+  <text x="55" y="192" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">Natal charts, synastry, transits, composites, returns &amp; more</text>
 </svg>

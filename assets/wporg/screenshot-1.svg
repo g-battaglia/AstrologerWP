@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <!-- Background -->
+  <rect width="1200" height="900" fill="#f8fafc"/>
+  <!-- WP Admin bar -->
+  <rect width="1200" height="32" fill="#1d2327"/>
+  <text x="20" y="22" font-family="system-ui, sans-serif" font-size="13" fill="#f0f0f1">WordPress</text>
+  <!-- Page title -->
+  <text x="40" y="80" font-family="system-ui, sans-serif" font-size="24" font-weight="600" fill="#1e293b">Natal Chart</text>
+  <!-- Birth form card -->
+  <rect x="40" y="100" width="400" height="440" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="60" y="135" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#1e293b">Birth Data</text>
+  <!-- Form fields -->
+  <text x="60" y="170" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Name</text>
+  <rect x="60" y="178" width="360" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="72" y="199" font-family="system-ui, sans-serif" font-size="13" fill="#334155">John Doe</text>
+
+  <text x="60" y="230" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Day</text>
+  <rect x="60" y="238" width="100" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="72" y="259" font-family="system-ui, sans-serif" font-size="13" fill="#334155">15</text>
+  <text x="180" y="230" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Month</text>
+  <rect x="180" y="238" width="100" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="192" y="259" font-family="system-ui, sans-serif" font-size="13" fill="#334155">5</text>
+  <text x="300" y="230" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Year</text>
+  <rect x="300" y="238" width="120" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="312" y="259" font-family="system-ui, sans-serif" font-size="13" fill="#334155">1990</text>
+
+  <text x="60" y="295" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">City</text>
+  <rect x="60" y="303" width="360" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="72" y="324" font-family="system-ui, sans-serif" font-size="13" fill="#334155">Rome</text>
+
+  <text x="60" y="355" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Time zone</text>
+  <rect x="60" y="363" width="360" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="72" y="384" font-family="system-ui, sans-serif" font-size="13" fill="#334155">Europe/Rome</text>
+
+  <!-- Calculate button -->
+  <rect x="60" y="420" width="360" height="40" rx="8" fill="#7c3aed"/>
+  <text x="240" y="446" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="white">Calculate</text>
+
+  <!-- Chart area -->
+  <rect x="480" y="100" width="680" height="750" rx="8" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="500" y="135" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#1e293b">Chart</text>
+  <!-- Natal chart visualization (simplified zodiac wheel) -->
+  <circle cx="820" cy="480" r="260" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+  <circle cx="820" cy="480" r="220" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
+  <circle cx="820" cy="480" r="180" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="820" cy="480" r="100" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+  <!-- Cross lines -->
+  <line x1="820" y1="220" x2="820" y2="740" stroke="#f1f5f9" stroke-width="1"/>
+  <line x1="560" y1="480" x2="1080" y2="480" stroke="#f1f5f9" stroke-width="1"/>
+  <!-- Zodiac signs around the outer ring -->
+  <text x="820" y="235" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#ef4444">&#x2648;</text>
+  <text x="945" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#22c55e">&#x2649;</text>
+  <text x="1030" y="370" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#eab308">&#x264A;</text>
+  <text x="1060" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#3b82f6">&#x264B;</text>
+  <text x="1030" y="600" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#ef4444">&#x264C;</text>
+  <text x="945" y="695" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#22c55e">&#x264D;</text>
+  <text x="820" y="730" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#eab308">&#x264E;</text>
+  <text x="695" y="695" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#3b82f6">&#x264F;</text>
+  <text x="610" y="600" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#ef4444">&#x2650;</text>
+  <text x="580" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#22c55e">&#x2651;</text>
+  <text x="610" y="370" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#eab308">&#x2652;</text>
+  <text x="695" y="270" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#3b82f6">&#x2653;</text>
+  <!-- Planet markers -->
+  <circle cx="820" cy="270" r="6" fill="#facc15"/>
+  <circle cx="920" cy="310" r="5" fill="#a78bfa"/>
+  <circle cx="980" cy="420" r="5" fill="#ef4444"/>
+  <circle cx="960" cy="560" r="4" fill="#38bdf8"/>
+  <circle cx="750" cy="340" r="5" fill="#f97316"/>
+  <circle cx="680" cy="540" r="4" fill="#34d399"/>
+</svg>

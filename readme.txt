@@ -76,10 +76,10 @@ It enables the city autocomplete feature so users can search for a city and have
 
 == Screenshots ==
 
-1. Natal chart SVG rendered on the frontend.
+1. Natal chart with interactive birth data form.
 2. Admin settings page with API configuration.
-3. Interactive birth data form with chart output.
-4. Synastry chart comparing two birth charts.
+3. Synastry chart comparing two birth charts.
+4. Aspects table, elements/modalities distribution, moon phase, and planetary positions.
 
 == Changelog ==
 
