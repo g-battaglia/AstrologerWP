@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use AstrologerWP\Utils\AstrologerApiAdapter;
 
 add_shortcode('astrologer_wp_moon_phase', 'astrologerWpMoonPhaseShortCode');
@@ -120,9 +124,13 @@ function astrologerWpMoonPhaseShortCode() {
                     <?php endif; ?>
                 </div>
             </div>
-            <script>
-                window.astrologerMoonPhaseData = <?php echo wp_json_encode($moonPhaseData); ?>;
-            </script>
+            <?php
+            wp_add_inline_script(
+                'astrologer-wp-frontend-js',
+                'window.astrologerMoonPhaseData = ' . wp_json_encode( $moonPhaseData ) . ';',
+                'before'
+            );
+            ?>
         <?php endif; ?>
 
         <p class="subject-title">Moon Phase Data</p>

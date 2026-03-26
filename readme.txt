@@ -14,6 +14,21 @@ AstrologerWP is the official WordPress plugin for the Astrologer API on RapidAPI
 
 AstrologerWP is the official WordPress plugin for the [Astrologer API](https://rapidapi.com/gbattaglia/api/astrologer) on RapidAPI. It provides a complete suite of astrology tools for your WordPress site with professional SVG chart generation.
 
+**Third-Party Services:**
+
+This plugin relies on the following external services to function:
+
+1. **Astrologer API** (via RapidAPI) - Used for all astrology calculations and chart generation. When a user submits a birth chart form, the birth data (name, date, time, location coordinates) is sent to this API to compute planetary positions and generate SVG charts.
+   * Service URL: [https://rapidapi.com/gbattaglia/api/astrologer](https://rapidapi.com/gbattaglia/api/astrologer)
+   * RapidAPI Terms of Use: [https://rapidapi.com/terms/](https://rapidapi.com/terms/)
+   * RapidAPI Privacy Policy: [https://rapidapi.com/privacy/](https://rapidapi.com/privacy/)
+
+2. **GeoNames API** - Used for city search autocomplete and timezone resolution. When a user types a city name, the city name is sent to GeoNames to retrieve coordinates and timezone information.
+   * Service URL: [https://www.geonames.org/](https://www.geonames.org/)
+   * GeoNames Terms: [https://www.geonames.org/export/](https://www.geonames.org/export/)
+
+Both services require user-provided credentials (API keys / usernames) configured in the plugin settings. No data is sent to these services until the user explicitly submits a form or types in the city autocomplete field.
+
 **Chart Types:**
 
 * **Birth Chart** - Generate natal birth charts with planetary positions, aspects, houses, and element/quality distribution

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use AstrologerWP\Utils\AstrologerApiAdapter;
 use AstrologerWP\Utils\Subject;
 

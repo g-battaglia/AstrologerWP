@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Decode and render all chart SVGs from data attributes
+    init_chartRendering();
+
     // Birth Chart
     if (document.getElementById("astrologerWpBirthChartForm")) {
         init_searchCityOnInput(
@@ -239,7 +242,7 @@ async function searchCity(city, nation) {
     if (city.length > 2) {
         try {
             const response = await fetch(
-                `${astrologerWpAjax.ajaxurl}?action=search_city&city=${encodeURIComponent(city)}&nation=${encodeURIComponent(nation)}`,
+                `${astrologerWpAjax.ajaxurl}?action=search_city&_ajax_nonce=${astrologerWpAjax.nonce}&city=${encodeURIComponent(city)}&nation=${encodeURIComponent(nation)}`,
             );
             data = await response.json();
         } catch (error) {
@@ -250,4 +253,26 @@ async function searchCity(city, nation) {
     }
 
     return data;
+}
+
+/**
+ * Find all chart wrapper elements with data-chart-svg attributes
+ * and decode the base64 SVG into the DOM.
+ */
+function init_chartRendering() {
+    const chartWrappers = document.querySelectorAll("[data-chart-svg]");
+    chartWrappers.forEach((wrapper) => {
+        const encodedSvg = wrapper.getAttribute("data-chart-svg");
+        if (encodedSvg) {
+            try {
+                const decodedSvg = new TextDecoder("utf-8").decode(
+                    Uint8Array.from(atob(encodedSvg), (c) => c.charCodeAt(0)),
+                );
+                wrapper.innerHTML = decodedSvg;
+                wrapper.removeAttribute("data-chart-svg");
+            } catch (e) {
+                console.error("Error decoding chart SVG:", e);
+            }
+        }
+    });
 }

@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use AstrologerWP\Utils\AstrologerApiAdapter;
 
 add_shortcode('astrologer_wp_now_chart', 'astrologerWpNowChartShortCode');

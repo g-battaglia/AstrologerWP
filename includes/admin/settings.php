@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use AstrologerWP\Constants\KerykeionConstants;
 
 // Registra una nuova pagina nel menu dell'admin.
