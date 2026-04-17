@@ -1,8 +1,11 @@
 # Dependencies
 node_modules/
-bun.lock
+vendor/
+_legacy/node_modules/
+_legacy/vendor/
 
 # Build output
+build/
 frontend/dist/
 
 # Vite
@@ -36,9 +39,15 @@ yarn-error.log*
 wp-config.php
 wp-content/
 
-# Archives
+# Archives (except _legacy reference)
 *.zip
 *.tar.gz
 
 # Docker (runtime)
 docker/.data/
+
+# PHPUnit cache
+.phpunit.result.cache
+
+# wp-env
+.wp-env/

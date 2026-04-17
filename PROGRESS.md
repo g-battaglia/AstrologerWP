@@ -1,7 +1,7 @@
 # Astrologer API v1.0 — Progress Tracker
 
 ## F0 — Cleanup & Bootstrap
-- [ ] F0.1 Archive MVP draft to _legacy/ — multiple files
+- [~] F0.1 Archive MVP draft to _legacy/ — multiple files
 - [ ] F0.2 composer.json + PSR-4 autoload — NEW composer.json
 - [ ] F0.3 package.json + @wordpress/scripts — NEW package.json
 - [ ] F0.4 wp-env config — NEW .wp-env.json
