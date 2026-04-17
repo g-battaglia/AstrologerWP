@@ -9,6 +9,7 @@ declare( strict_types = 1 );
 
 namespace Astrologer\Api;
 
+use Astrologer\Api\Blocks\SpikeBlocksRegistry;
 use Astrologer\Api\Rest\SpikeController;
 use Astrologer\Api\Support\Contracts\Bootable;
 
@@ -87,6 +88,7 @@ final class Plugin {
 		 */
 		$modules = array(
 			Admin\AdminMenu::class,
+			SpikeBlocksRegistry::class,
 			SpikeController::class,
 		);
 

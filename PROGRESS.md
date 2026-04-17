@@ -25,7 +25,8 @@
   └─ Created block.json (apiVersion 3), edit.tsx (editor placeholder), render.php (form with Interactivity directives), placeholder view.ts (F0.5.3 fills it). Added webpack.config.js extending wp-scripts for block compilation. Fixed .gitignore to track block build artifacts. Build green, ESLint + PHPCS clean.
 - [x] F0.5.3 Interactivity store for spike — blocks/spike-birth-form/view.ts
   └─ Implemented Interactivity store with state machine (idle/submitting/success/error), generator-based submit action with fetch, updateField action, nonce injection, and error handling. ESLint + build green. Touched: blocks/spike-birth-form/view.ts, blocks/spike-birth-form/build/*.js
-- [ ] F0.5.4 Register spike block — NEW src/Blocks/SpikeBlocksRegistry.php
+- [x] F0.5.4 Register spike block — NEW src/Blocks/SpikeBlocksRegistry.php
+  └─ Created SpikeBlocksRegistry (Bootable) that calls register_block_type() on init for spike-birth-form. Registered in Plugin::boot(). PHPCS + PHPStan clean. Touched: src/Blocks/SpikeBlocksRegistry.php, src/Plugin.php.
 - [ ] F0.5.5 Test spike in editor + frontend (manual + E2E) — tests/e2e/spike-interactivity.spec.ts
 
 ## F1 — Core Data Layer
