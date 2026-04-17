@@ -27,7 +27,8 @@
   └─ Implemented Interactivity store with state machine (idle/submitting/success/error), generator-based submit action with fetch, updateField action, nonce injection, and error handling. ESLint + build green. Touched: blocks/spike-birth-form/view.ts, blocks/spike-birth-form/build/*.js
 - [x] F0.5.4 Register spike block — NEW src/Blocks/SpikeBlocksRegistry.php
   └─ Created SpikeBlocksRegistry (Bootable) that calls register_block_type() on init for spike-birth-form. Registered in Plugin::boot(). PHPCS + PHPStan clean. Touched: src/Blocks/SpikeBlocksRegistry.php, src/Plugin.php.
-- [ ] F0.5.5 Test spike in editor + frontend (manual + E2E) — tests/e2e/spike-interactivity.spec.ts
+- [x] F0.5.5 Test spike in editor + frontend (manual + E2E) — tests/e2e/spike-interactivity.spec.ts
+  └─ Created Playwright E2E test suite (5 tests: editor insertion, frontend form render, SVG injection via Interactivity, no React bundle check, error state). Uses @wordpress/e2e-test-utils-playwright fixtures. ESLint clean. Docker required to run. Touched: tests/e2e/spike-interactivity.spec.ts.
 
 ## F1 — Core Data Layer
 - [ ] F1.1 Enums (HouseSystem, ZodiacType, SiderealMode, PerspectiveType, ChartTheme, ChartStyle, DistributionMethod, School, UILevel, Language, ChartType) — NEW src/Enums/*.php
