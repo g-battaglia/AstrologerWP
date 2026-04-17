@@ -1,0 +1,15 @@
+parameters:
+	level: 8
+	paths:
+		- src
+		- astrologer-api.php
+		- uninstall.php
+	excludePaths:
+		- _legacy
+		- vendor
+		- node_modules
+		- build
+		- tests
+	reportUnmatchedIgnoredErrors: false
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon

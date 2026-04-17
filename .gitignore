@@ -6,10 +6,6 @@ _legacy/vendor/
 
 # Build output
 build/
-frontend/dist/
-
-# Vite
-*.local
 
 # IDE
 .idea/
@@ -35,19 +31,12 @@ yarn-error.log*
 .env.local
 .env.*.local
 
-# WordPress
-wp-config.php
-wp-content/
-
-# Archives (except _legacy reference)
-*.zip
-*.tar.gz
-
-# Docker (runtime)
-docker/.data/
-
 # PHPUnit cache
 .phpunit.result.cache
 
 # wp-env
 .wp-env/
+
+# Archives
+*.zip
+*.tar.gz

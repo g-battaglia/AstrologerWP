@@ -1,0 +1,60 @@
+# Files and directories excluded from the WP.org distribution ZIP.
+
+# Legacy MVP reference
+_legacy/
+
+# Development dependencies
+node_modules/
+vendor/bin/
+
+# Tests
+tests/
+.phpunit.result.cache/
+
+# Tool configs
+.github/
+.wp-env.json
+phpunit.xml.dist
+phpcs.xml.dist
+phpstan.neon.dist
+jest.config.js
+playwright.config.ts
+.eslintrc.json
+.stylelintrc.json
+.editorconfig
+tsconfig.json
+
+# Build tooling
+package.json
+package-lock.json
+composer.json
+composer.lock
+Makefile
+scripts/
+
+# Meta / docs (readme.txt is kept)
+*.md
+!readme.txt
+PLAN/
+PROGRESS.md
+PROMPT.md
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Archives
+*.zip
+*.tar.gz
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+build/
