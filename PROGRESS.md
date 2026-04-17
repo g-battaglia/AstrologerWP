@@ -19,7 +19,8 @@
   └─ AdminMenu.php already implemented in F0.6. Fixed pre-existing PHPCS issues (Yoda conditions, snake_case method name, multi-line call formatting, escape output suppression) and PHPCS config (registered phpcsutils/phpcsextra paths, excluded PSR-4 filename sniffs, fixed tab_width property). Added PHPStan memory limit. All lint+analyze pass clean.
 
 ## F0.5 — Spike Interactivity API
-- [ ] F0.5.1 REST mock endpoint SpikeController — NEW src/Rest/SpikeController.php
+- [x] F0.5.1 REST mock endpoint SpikeController — NEW src/Rest/SpikeController.php
+  └─ Created SpikeController (Bootable) registering POST /astrologer/v1/spike returning hardcoded SVG + positions. Registered in Plugin::boot(). PHPCS + PHPStan level 8 clean.
 - [ ] F0.5.2 Block spike spike-birth-form — NEW blocks/spike-birth-form/*
 - [ ] F0.5.3 Interactivity store for spike — blocks/spike-birth-form/view.ts
 - [ ] F0.5.4 Register spike block — NEW src/Blocks/SpikeBlocksRegistry.php
