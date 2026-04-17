@@ -13,7 +13,8 @@
   └─ Created phpunit.xml.dist, phpcs.xml.dist (WordPress-Extra), phpstan.neon.dist (level 8 + wp extension), jest.config.js (wp-scripts preset), playwright.config.ts (baseURL :8888, retries 2), .eslintrc.json, .stylelintrc.json, .editorconfig, .distignore, updated .gitignore. Touched: 10 new/updated config files.
 - [x] F0.6 Plugin main file + Plugin.php + Container.php + Bootable + uninstall.php — NEW src/*.php
   └─ Created astrologer-api.php (main plugin file with constants + autoload + hooks), src/Plugin.php (singleton + boot), src/Container.php (lazy service container), src/Support/Contracts/Bootable.php (interface), src/Admin/AdminMenu.php (stub for boot), uninstall.php (multisite-aware cleanup). PhpStan level 8 clean.
-- [ ] F0.7 Makefile — NEW Makefile
+- [x] F0.7 Makefile — NEW Makefile
+  └─ Replaced legacy Makefile with new build/test/lint targets (hyphenated names for GNU Make 3.81 compat on macOS). All dry-runs pass. Touched: Makefile.
 - [ ] F0.8 Admin menu placeholder — NEW src/Admin/AdminMenu.php
 
 ## F0.5 — Spike Interactivity API

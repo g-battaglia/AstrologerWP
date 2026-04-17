@@ -299,9 +299,27 @@
         "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterInClosureUse\" does not exist.",
         "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInClosureUse\" does not exist."
       ]
+    },
+    {
+      "iteration": 8,
+      "startedAt": "2026-04-17T18:28:12.540Z",
+      "endedAt": "2026-04-17T18:32:07.988Z",
+      "durationMs": 233421,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "Makefile"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "ERROR: Property \"tab_width\" does not exist on sniff WordPress.WhiteSpace.ControlStructureSpacing."
+      ]
     }
   ],
-  "totalDurationMs": 1752478,
+  "totalDurationMs": 1985899,
   "struggleIndicators": {
     "repeatedErrors": {
       "ERROR: The file \"astrologer-api.php\" does not exist.": 1,
@@ -314,7 +332,8 @@
       "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInFunctionDeclaration\" does n": 1,
       "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.SpaceBeforeInClosureUse\" does not exist.": 1,
       "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterInClosureUse\" does not e": 1,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInClosureUse\" does not exist.": 1
+      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInClosureUse\" does not exist.": 1,
+      "ERROR: Property \"tab_width\" does not exist on sniff WordPress.WhiteSpace.ControlStructureSpacing.": 1
     },
     "noProgressIterations": 0,
     "shortIterations": 0
