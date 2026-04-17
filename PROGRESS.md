@@ -11,7 +11,8 @@
   └─ Created .wp-env.json (WP 6.5, PHP 8.1, debug flags, encryption key for dev) and tests/fixtures/dev-mailhog.php MU-plugin for MailHog SMTP routing.
 - [x] F0.5 Tool config files (phpcs, phpstan, jest, playwright, eslint, stylelint, editorconfig, distignore, gitignore) — 10 NEW configs
   └─ Created phpunit.xml.dist, phpcs.xml.dist (WordPress-Extra), phpstan.neon.dist (level 8 + wp extension), jest.config.js (wp-scripts preset), playwright.config.ts (baseURL :8888, retries 2), .eslintrc.json, .stylelintrc.json, .editorconfig, .distignore, updated .gitignore. Touched: 10 new/updated config files.
-- [ ] F0.6 Plugin main file + Plugin.php + Container.php + Bootable + uninstall.php — NEW src/*.php
+- [x] F0.6 Plugin main file + Plugin.php + Container.php + Bootable + uninstall.php — NEW src/*.php
+  └─ Created astrologer-api.php (main plugin file with constants + autoload + hooks), src/Plugin.php (singleton + boot), src/Container.php (lazy service container), src/Support/Contracts/Bootable.php (interface), src/Admin/AdminMenu.php (stub for boot), uninstall.php (multisite-aware cleanup). PhpStan level 8 clean.
 - [ ] F0.7 Makefile — NEW Makefile
 - [ ] F0.8 Admin menu placeholder — NEW src/Admin/AdminMenu.php
 
