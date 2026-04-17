@@ -57,6 +57,7 @@ final class Container {
 
 		if ( ! $this->has( $id ) ) {
 			throw new \OutOfBoundsException(
+				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- $id is internal class string, not user input.
 				sprintf( 'Container entry "%s" is not registered.', $id )
 			);
 		}

@@ -50,7 +50,7 @@ final class Plugin {
 	 * @return self
 	 */
 	public static function instance(): self {
-		if ( self::$instance === null ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
 
@@ -89,7 +89,7 @@ final class Plugin {
 		);
 
 		foreach ( $modules as $module_class ) {
-			$factory = self::createFactory( $module_class );
+			$factory = self::create_factory( $module_class );
 			$this->container->set( $module_class, $factory );
 
 			$module = $this->container->get( $module_class );
@@ -105,10 +105,11 @@ final class Plugin {
 	 *
 	 * PhpStan needs this to infer the return type correctly.
 	 *
-	 * @param class-string<Bootable> $class Fully qualified class name.
+	 * @param class-string<Bootable> $fqcn Fully qualified class name.
 	 * @return \Closure(Container): Bootable
 	 */
-	private static function createFactory( string $class ): \Closure {
-		return static fn ( Container $container ): Bootable => new $class();
+	private static function create_factory( string $fqcn ): \Closure {
+		// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Parameter required by the Closure signature for the Container contract.
+		return static fn ( Container $container ): Bootable => new $fqcn();
 	}
 }

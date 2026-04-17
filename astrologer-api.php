@@ -31,9 +31,12 @@ define( 'ASTROLOGER_API_URL', plugin_dir_url( __FILE__ ) );
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Bootstrap the plugin after WordPress is loaded.
-add_action( 'plugins_loaded', static function (): void {
-	\Astrologer\Api\Plugin::instance()->boot();
-} );
+add_action(
+	'plugins_loaded',
+	static function (): void {
+		\Astrologer\Api\Plugin::instance()->boot();
+	}
+);
 
 // Activation hook.
 register_activation_hook(

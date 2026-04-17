@@ -104,7 +104,7 @@ function astrologer_api_remove_capabilities(): void {
 	foreach ( array_keys( $roles ) as $role_name ) {
 		$role = get_role( $role_name );
 
-		if ( $role === null ) {
+		if ( null === $role ) {
 			continue;
 		}
 
@@ -129,7 +129,7 @@ function astrologer_api_unschedule_cron(): void {
 	foreach ( $hooks as $hook ) {
 		$timestamp = wp_next_scheduled( $hook );
 
-		if ( $timestamp ) {
+		if ( false !== $timestamp ) {
 			wp_unschedule_event( $timestamp, $hook );
 		}
 	}

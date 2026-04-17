@@ -29,7 +29,7 @@
 	},
 	"scripts": {
 		"lint": "phpcs",
-		"analyze": "phpstan analyse",
+		"analyze": "phpstan analyse --memory-limit=512M",
 		"test": "phpunit"
 	},
 	"config": {

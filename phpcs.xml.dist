@@ -18,6 +18,9 @@
 	<rule ref="WordPress-Extra">
 		<!-- Allow short array syntax -->
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found"/>
+		<!-- PSR-4 autoloading requires class names match file names -->
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
 	</rule>
 
 	<!-- Use PHPCompatibilityWP -->
@@ -32,9 +35,5 @@
 	<arg value="s"/>
 
 	<!-- Tab width for alignment checks -->
-	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing">
-		<properties>
-			<property name="tab_width" value="4"/>
-		</properties>
-	</rule>
+	<arg name="tab-width" value="4"/>
 </ruleset>
