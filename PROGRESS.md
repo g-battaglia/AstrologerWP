@@ -3,7 +3,8 @@
 ## F0 — Cleanup & Bootstrap
 - [x] F0.1 Archive MVP draft to _legacy/ — multiple files
   └─ Moved all MVP files (astrologer-api-playground.php, includes/, frontend/, uninstall.php, readme.txt, languages/, docker-compose.yml, apple-container.sh, compress_4_wp.sh, DEVELOPMENT.md, TODO.md, astrology-enums.json) to _legacy/. Updated .gitignore.
-- [ ] F0.2 composer.json + PSR-4 autoload — NEW composer.json
+- [x] F0.2 composer.json + PSR-4 autoload — NEW composer.json
+  └─ Created composer.json with PSR-4 Astrologer\Api\ → src/, all dev deps (phpunit, phpcs, phpstan, brain/monkey, wpcs). Ran composer install. Touched: composer.json, composer.lock.
 - [ ] F0.3 package.json + @wordpress/scripts — NEW package.json
 - [ ] F0.4 wp-env config — NEW .wp-env.json
 - [ ] F0.5 Tool config files (phpcs, phpstan, jest, playwright, eslint, stylelint, editorconfig, distignore, gitignore) — 10 NEW configs
