@@ -1,0 +1,36 @@
+{
+  "name": "astrologer-api",
+  "version": "1.0.0",
+  "private": true,
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style",
+    "test:js": "wp-scripts test-unit-js",
+    "test:e2e": "playwright test",
+    "pot": "wp i18n make-pot . languages/astrologer-api.pot --slug=astrologer-api",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50",
+    "@wordpress/e2e-test-utils-playwright": "^1",
+    "@wordpress/env": "^10",
+    "@wordpress/scripts": "^30",
+    "@axe-core/playwright": "^4"
+  },
+  "dependencies": {
+    "@wordpress/api-fetch": "^7",
+    "@wordpress/block-editor": "^14",
+    "@wordpress/blocks": "^13",
+    "@wordpress/components": "^28",
+    "@wordpress/data": "^10",
+    "@wordpress/element": "^6",
+    "@wordpress/i18n": "^5",
+    "@wordpress/icons": "^10",
+    "@wordpress/interactivity": "^6"
+  }
+}
