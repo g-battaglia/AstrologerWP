@@ -396,9 +396,30 @@
         "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/blocks",
         "Child process error: PHPStan process crashed because it reached"
       ]
+    },
+    {
+      "iteration": 12,
+      "startedAt": "2026-04-17T18:50:15.284Z",
+      "endedAt": "2026-04-17T18:53:29.940Z",
+      "durationMs": 192560,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "blocks/spike-birth-form/build/spike-birth-form-view.asset.php",
+        "blocks/spike-birth-form/build/spike-birth-form-view.js",
+        "blocks/spike-birth-form/view.ts"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "+\terror: string;",
+        "+\t\terror: '',"
+      ]
     }
   ],
-  "totalDurationMs": 3054263,
+  "totalDurationMs": 3246823,
   "struggleIndicators": {
     "repeatedErrors": {
       "ERROR: The file \"astrologer-api.php\" does not exist.": 1,
@@ -414,7 +435,9 @@
       "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInClosureUse\" does not exist.": 2,
       "ERROR: Property \"tab_width\" does not exist on sniff WordPress.WhiteSpace.ControlStructureSpacing.": 1,
       "Child process error: PHPStan process crashed because it reached": 2,
-      "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/blocks": 1
+      "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/blocks": 1,
+      "+\terror: string;": 1,
+      "+\t\terror: '',": 1
     },
     "noProgressIterations": 0,
     "shortIterations": 0
