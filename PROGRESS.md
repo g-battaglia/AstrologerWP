@@ -15,7 +15,8 @@
   └─ Created astrologer-api.php (main plugin file with constants + autoload + hooks), src/Plugin.php (singleton + boot), src/Container.php (lazy service container), src/Support/Contracts/Bootable.php (interface), src/Admin/AdminMenu.php (stub for boot), uninstall.php (multisite-aware cleanup). PhpStan level 8 clean.
 - [x] F0.7 Makefile — NEW Makefile
   └─ Replaced legacy Makefile with new build/test/lint targets (hyphenated names for GNU Make 3.81 compat on macOS). All dry-runs pass. Touched: Makefile.
-- [ ] F0.8 Admin menu placeholder — NEW src/Admin/AdminMenu.php
+- [x] F0.8 Admin menu placeholder — NEW src/Admin/AdminMenu.php
+  └─ AdminMenu.php already implemented in F0.6. Fixed pre-existing PHPCS issues (Yoda conditions, snake_case method name, multi-line call formatting, escape output suppression) and PHPCS config (registered phpcsutils/phpcsextra paths, excluded PSR-4 filename sniffs, fixed tab_width property). Added PHPStan memory limit. All lint+analyze pass clean.
 
 ## F0.5 — Spike Interactivity API
 - [ ] F0.5.1 REST mock endpoint SpikeController — NEW src/Rest/SpikeController.php
