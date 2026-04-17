@@ -21,7 +21,8 @@
 ## F0.5 — Spike Interactivity API
 - [x] F0.5.1 REST mock endpoint SpikeController — NEW src/Rest/SpikeController.php
   └─ Created SpikeController (Bootable) registering POST /astrologer/v1/spike returning hardcoded SVG + positions. Registered in Plugin::boot(). PHPCS + PHPStan level 8 clean.
-- [ ] F0.5.2 Block spike spike-birth-form — NEW blocks/spike-birth-form/*
+- [x] F0.5.2 Block spike spike-birth-form — NEW blocks/spike-birth-form/*
+  └─ Created block.json (apiVersion 3), edit.tsx (editor placeholder), render.php (form with Interactivity directives), placeholder view.ts (F0.5.3 fills it). Added webpack.config.js extending wp-scripts for block compilation. Fixed .gitignore to track block build artifacts. Build green, ESLint + PHPCS clean.
 - [ ] F0.5.3 Interactivity store for spike — blocks/spike-birth-form/view.ts
 - [ ] F0.5.4 Register spike block — NEW src/Blocks/SpikeBlocksRegistry.php
 - [ ] F0.5.5 Test spike in editor + frontend (manual + E2E) — tests/e2e/spike-interactivity.spec.ts

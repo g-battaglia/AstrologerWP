@@ -4,8 +4,8 @@ vendor/
 _legacy/node_modules/
 _legacy/vendor/
 
-# Build output
-build/
+# Build output (release ZIP directory at repo root)
+/build/
 
 # IDE
 .idea/

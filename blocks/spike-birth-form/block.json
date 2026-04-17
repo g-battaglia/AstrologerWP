@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/spike-birth-form",
+	"title": "Spike Birth Form (throwaway)",
+	"category": "widgets",
+	"icon": "star-filled",
+	"description": "Interactivity API spike — do not use in production.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "astrologer-api",
+	"editorScript": "file:./build/spike-birth-form-edit.js",
+	"viewScriptModule": "file:./build/spike-birth-form-view.js",
+	"render": "file:./render.php"
+}
