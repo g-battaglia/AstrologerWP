@@ -436,9 +436,27 @@
       "errors": [
         "Child process error: PHPStan process crashed because it reached"
       ]
+    },
+    {
+      "iteration": 14,
+      "startedAt": "2026-04-17T18:57:03.235Z",
+      "endedAt": "2026-04-17T19:02:44.637Z",
+      "durationMs": 339152,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "tests/e2e/spike-interactivity.spec.ts"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/tests/e2e"
+      ]
     }
   ],
-  "totalDurationMs": 3451662,
+  "totalDurationMs": 3790814,
   "struggleIndicators": {
     "repeatedErrors": {
       "ERROR: The file \"astrologer-api.php\" does not exist.": 1,
@@ -456,7 +474,8 @@
       "Child process error: PHPStan process crashed because it reached": 3,
       "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/blocks": 1,
       "+\terror: string;": 1,
-      "+\t\terror: '',": 1
+      "+\t\terror: '',": 1,
+      "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/tests/e2e": 1
     },
     "noProgressIterations": 0,
     "shortIterations": 0
