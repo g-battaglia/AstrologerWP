@@ -1,7 +1,8 @@
 # Astrologer API v1.0 — Progress Tracker
 
 ## F0 — Cleanup & Bootstrap
-- [~] F0.1 Archive MVP draft to _legacy/ — multiple files
+- [x] F0.1 Archive MVP draft to _legacy/ — multiple files
+  └─ Moved all MVP files (astrologer-api-playground.php, includes/, frontend/, uninstall.php, readme.txt, languages/, docker-compose.yml, apple-container.sh, compress_4_wp.sh, DEVELOPMENT.md, TODO.md, astrology-enums.json) to _legacy/. Updated .gitignore.
 - [ ] F0.2 composer.json + PSR-4 autoload — NEW composer.json
 - [ ] F0.3 package.json + @wordpress/scripts — NEW package.json
 - [ ] F0.4 wp-env config — NEW .wp-env.json
