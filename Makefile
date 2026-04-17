@@ -1,112 +1,117 @@
-# Makefile for Astrologer API Playground development.
+# Makefile for Astrologer API WordPress plugin development.
 #
-# Docker targets:
-#   make up          — Start WordPress + MariaDB (Docker), auto-install WP + activate plugin
-#   make down        — Stop and remove Docker containers
-#   make logs        — Tail Docker container logs
-#   make shell       — Shell into the WordPress container (Docker)
+# Quick start:
+#   make install        — Install PHP + JS dependencies
+#   make up             — Start wp-env (WordPress on :8888)
+#   make build          — Production build (composer + wp-scripts)
 #
-# Apple Container targets:
-#   make ac-up       — Start WordPress + MariaDB (Apple Containers)
-#   make ac-down     — Stop Apple Container instances
-#   make ac-logs     — Tail Apple Container WordPress logs
-#   make ac-shell    — Shell into WordPress (Apple Containers)
-#   make ac-clean    — Stop + remove volumes and network (Apple Containers)
-#   make ac-status   — Show Apple Container status
+# Testing:
+#   make test           — Run all test suites
+#   make test-php       — PHPUnit only
+#   make test-js        — Jest only
+#   make test-e2e       — Playwright only
+#   make test-a11y      — axe-core accessibility audit
+#   make test-all       — Lint + all tests
 #
-# Frontend targets:
-#   make build-fe    — Build the frontend for production
-#   make dev-fe      — Start Vite dev server
+# Linting:
+#   make lint           — Run all linters
+#   make lint-php       — phpcs
+#   make lint-js        — eslint
+#   make lint-css       — stylelint
+#   make stan           — phpstan level 8
 #
-# Other targets:
-#   make pot         — Regenerate the .pot translation file
-#   make zip         — Create a distributable ZIP archive
-#   make clean       — Remove build artefacts
+# Other:
+#   make pot            — Extract translatable strings
+#   make zip            — Build distributable ZIP
+#   make clean          — Remove generated artifacts
 
-.PHONY: up down logs shell build-fe dev-fe pot zip clean \
-        ac-up ac-down ac-logs ac-shell ac-clean ac-status
+.PHONY: install up down build dev test test-php test-js test-e2e test-a11y \
+        test-all lint lint-php lint-js lint-css stan pot zip clean
 
 # ---------------------------------------------------------------------------
-# Docker
+# Install
+# ---------------------------------------------------------------------------
+
+install:
+	composer install
+	npm install
+
+# ---------------------------------------------------------------------------
+# Environment
 # ---------------------------------------------------------------------------
 
 up:
-	docker compose up -d
+	npm run env:start
 
 down:
-	docker compose down
-
-logs:
-	docker compose logs -f
-
-shell:
-	docker compose exec wordpress bash
+	npm run env:stop
 
 # ---------------------------------------------------------------------------
-# Apple Containers
+# Build
 # ---------------------------------------------------------------------------
 
-ac-up:
-	./apple-container.sh up
+build:
+	composer install --no-dev
+	npm run build
 
-ac-down:
-	./apple-container.sh down
-
-ac-logs:
-	./apple-container.sh logs
-
-ac-shell:
-	./apple-container.sh shell
-
-ac-clean:
-	./apple-container.sh clean
-
-ac-status:
-	./apple-container.sh status
+dev:
+	npm run start
 
 # ---------------------------------------------------------------------------
-# Frontend
+# Test
 # ---------------------------------------------------------------------------
 
-build-fe:
-	cd frontend && npm run build
+test: test-php test-js test-e2e
 
-dev-fe:
-	cd frontend && npm run dev
+test-php:
+	vendor/bin/phpunit
+
+test-js:
+	npm run test:js
+
+test-e2e:
+	npm run test:e2e
+
+test-a11y:
+	npx playwright test tests/e2e/a11y-axe.spec.ts
+
+test-all: lint test-php test-js test-e2e test-a11y
+
+# ---------------------------------------------------------------------------
+# Lint & Static Analysis
+# ---------------------------------------------------------------------------
+
+lint: lint-php lint-js lint-css stan
+
+lint-php:
+	vendor/bin/phpcs
+
+lint-js:
+	npm run lint:js
+
+lint-css:
+	npm run lint:css
+
+stan:
+	vendor/bin/phpstan analyse
 
 # ---------------------------------------------------------------------------
 # i18n
 # ---------------------------------------------------------------------------
 
 pot:
-	mkdir -p languages
-	xgettext \
-		--language=PHP \
-		--keyword=__ --keyword=_e --keyword=_n:1,2 \
-		--keyword=_x:1,2c --keyword=_ex:1,2c --keyword=_nx:1,2,4c \
-		--keyword=esc_html__ --keyword=esc_html_e \
-		--keyword=esc_attr__ --keyword=esc_attr_e \
-		--keyword=esc_html_x:1,2c --keyword=esc_attr_x:1,2c \
-		--from-code=UTF-8 \
-		--default-domain=astrologer-api \
-		--package-name="Astrologer API" \
-		--package-version="1.0.0" \
-		--output=languages/astrologer-api.pot \
-		astrologer-api-playground.php \
-		$$(find includes -name '*.php') \
-		uninstall.php
+	npm run pot
 
 # ---------------------------------------------------------------------------
 # Distribution
 # ---------------------------------------------------------------------------
 
-zip: build-fe
-	bash compress_4_wp.sh
+zip:
+	./scripts/build-zip.sh
 
 # ---------------------------------------------------------------------------
 # Cleanup
 # ---------------------------------------------------------------------------
 
 clean:
-	rm -rf frontend/dist
-	rm -f astrologer-api-playground.zip
+	rm -rf build/ vendor/ node_modules/ .wp-env/
