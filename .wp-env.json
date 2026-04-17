@@ -1,0 +1,15 @@
+{
+  "core": "WordPress/WordPress#6.5",
+  "phpVersion": "8.1",
+  "plugins": ["."],
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "ASTROLOGER_ENCRYPTION_KEY": "dev-only-change-in-prod-0000000000000000000000000000000000000000",
+    "SCRIPT_DEBUG": true
+  },
+  "mappings": {
+    "wp-content/mu-plugins/dev-mailhog.php": "./tests/fixtures/dev-mailhog.php"
+  }
+}

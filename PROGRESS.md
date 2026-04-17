@@ -7,7 +7,8 @@
   └─ Created composer.json with PSR-4 Astrologer\Api\ → src/, all dev deps (phpunit, phpcs, phpstan, brain/monkey, wpcs). Ran composer install. Touched: composer.json, composer.lock.
 - [x] F0.3 package.json + @wordpress/scripts — NEW package.json
   └─ Created package.json with @wordpress/scripts, wp-env, playwright, axe-core, and all wp runtime deps. Ran npm install. Touched: package.json, package-lock.json.
-- [ ] F0.4 wp-env config — NEW .wp-env.json
+- [x] F0.4 wp-env config — NEW .wp-env.json
+  └─ Created .wp-env.json (WP 6.5, PHP 8.1, debug flags, encryption key for dev) and tests/fixtures/dev-mailhog.php MU-plugin for MailHog SMTP routing.
 - [ ] F0.5 Tool config files (phpcs, phpstan, jest, playwright, eslint, stylelint, editorconfig, distignore, gitignore) — 10 NEW configs
 - [ ] F0.6 Plugin main file + Plugin.php + Container.php + Bootable + uninstall.php — NEW src/*.php
 - [ ] F0.7 Makefile — NEW Makefile
