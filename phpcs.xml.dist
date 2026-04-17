@@ -36,4 +36,9 @@
 
 	<!-- Tab width for alignment checks -->
 	<arg name="tab-width" value="4"/>
+
+	<!-- Suppress false-positive for $this in PHP 8.1 enum methods -->
+	<rule ref="PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext">
+		<exclude-pattern>src/Enums/</exclude-pattern>
+	</rule>
 </ruleset>

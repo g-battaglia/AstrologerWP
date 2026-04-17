@@ -31,7 +31,8 @@
   └─ Created Playwright E2E test suite (5 tests: editor insertion, frontend form render, SVG injection via Interactivity, no React bundle check, error state). Uses @wordpress/e2e-test-utils-playwright fixtures. ESLint clean. Docker required to run. Touched: tests/e2e/spike-interactivity.spec.ts.
 
 ## F1 — Core Data Layer
-- [ ] F1.1 Enums (HouseSystem, ZodiacType, SiderealMode, PerspectiveType, ChartTheme, ChartStyle, DistributionMethod, School, UILevel, Language, ChartType) — NEW src/Enums/*.php
+- [x] F1.1 Enums (HouseSystem, ZodiacType, SiderealMode, PerspectiveType, ChartTheme, ChartStyle, DistributionMethod, School, UILevel, Language, ChartType) — NEW src/Enums/*.php
+  └─ Created 11 string-backed enums with label() + get_default() methods. Case counts match spec (HouseSystem 23, SiderealMode 48, PerspectiveType 11, Language 10, ChartType 9, ChartTheme 6, School 4, UILevel 3, ZodiacType/ChartStyle/DistributionMethod 2). Added phpcs exclude-pattern for false-positive on $this in enum match() expressions. phpcs + phpstan clean. Touched: src/Enums/*.php (11 files), phpcs.xml.dist.
 - [ ] F1.2 ActivePoint + AspectType constants — NEW src/Enums/ActivePoint.php, AspectType.php
 - [ ] F1.3 Value Objects (BirthData, GeoLocation, ChartOptions, ActiveAspect) — NEW src/ValueObjects/*.php
 - [ ] F1.4 DTOs (SubjectDTO, ChartRequestDTO, SynastryRequestDTO, etc.) — NEW src/DTO/*.php
