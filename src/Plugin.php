@@ -20,6 +20,7 @@ use Astrologer\Api\Repository\SettingsRepository;
 use Astrologer\Api\Rest\SpikeController;
 use Astrologer\Api\Services\ChartService;
 use Astrologer\Api\Services\HooksRegistry;
+use Astrologer\Api\Services\RateLimiter;
 use Astrologer\Api\Services\SchoolPresetsService;
 use Astrologer\Api\Support\Contracts\Bootable;
 use Astrologer\Api\Support\Encryption\EncryptionService;
@@ -170,6 +171,11 @@ final class Plugin {
 		$this->container->set(
 			HooksRegistry::class,
 			static fn (): HooksRegistry => new HooksRegistry(),
+		);
+
+		$this->container->set(
+			RateLimiter::class,
+			static fn (): RateLimiter => new RateLimiter(),
 		);
 	}
 
