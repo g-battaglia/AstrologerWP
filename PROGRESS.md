@@ -55,7 +55,8 @@
   └─ Created Activator (CPT+taxonomy register, cap seeding, encryption salt, wizard flag, flush rewrites), Deactivator (flush rewrites + unschedule cron), Uninstaller (delete CPT posts, taxonomy terms, caps, options, transients, user meta, cron). Updated astrologer-api.php activation/deactivation hooks and uninstall.php to delegate to class-based handlers with multisite support. PHPCS + PHPStan clean. Touched: src/Activation/Activator.php, src/Activation/Deactivator.php, src/Activation/Uninstaller.php, astrologer-api.php, uninstall.php.
 
 ## F2 — Services & HTTP
-- [ ] F2.1 ApiClient (RapidAPI proxy with retry) — NEW src/Http/ApiClient.php
+- [x] F2.1 ApiClient (RapidAPI proxy with retry) — NEW src/Http/ApiClient.php
+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unknown_error), sanitized error messages, and 3 hooks (http_request_args filter, before_http_request/after_http_response actions). Integration test with 14 cases. PHPCS + PHPStan clean. Touched: src/Http/ApiClient.php, tests/Integration/Http/ApiClientTest.php, tests/fixtures/api/subject-200.json.
 - [ ] F2.2 GeonamesClient — NEW src/Http/GeonamesClient.php
 - [ ] F2.3 ChartService (orchestrator, 28+ methods) — NEW src/Services/ChartService.php
 - [ ] F2.4 SchoolPresetsService (4 presets) — NEW src/Services/SchoolPresetsService.php

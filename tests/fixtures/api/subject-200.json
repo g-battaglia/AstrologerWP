@@ -1,0 +1,6 @@
+{
+    "name": "Test Subject",
+    "planets": {
+        "Sun": {"longitude": 54.5, "latitude": 0.0, "sign": "Taurus"}
+    }
+}
