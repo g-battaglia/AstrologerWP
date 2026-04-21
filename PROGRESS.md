@@ -77,7 +77,8 @@
   └─ Created 3 schema classes (SubjectSchema with 19 fields, ChartOptionsSchema with 17 fields, GeoLocationSchema with 6 fields) that return WP REST API compatible arg arrays with validate/sanitize callbacks and enum values from PHP enums. Controllers will merge these via array_merge(). PHPCS + PHPStan level 8 clean. Touched: src/Rest/Schemas/SubjectSchema.php, ChartOptionsSchema.php, GeoLocationSchema.php.
 - [x] F3.3 ChartControllers (natal, synastry, transit, composite, solar/lunar return, now, birth, birth-data) — NEW src/Rest/Controllers/*.php
   └─ Created 9 chart REST controllers extending AbstractController: NatalChartController, SynastryChartController, TransitChartController, CompositeChartController, SolarReturnChartController, LunarReturnChartController, NowChartController, BirthChartController, BirthDataController. Each registers a POST route, validates via SubjectSchema/ChartOptionsSchema, delegates to ChartService, and returns normalized responses. PHPCS + PHPStan level 8 clean. Touched: src/Rest/Controllers/*.php (9 files).
-- [~] F3.4 Relationship & Compatibility controllers — NEW src/Rest/Controllers/RelationshipScoreController.php, SynastryAspectsController.php
+- [x] F3.4 Relationship & Compatibility controllers — NEW src/Rest/Controllers/RelationshipScoreController.php, SynastryAspectsController.php
+  └─ Created RelationshipScoreController (POST /relationship-score, uses CompatibilityRequestDTO + ChartService::compatibilityScore) and SynastryAspectsController (POST /synastry-aspects, uses SynastryRequestDTO + ChartService::synastryChartData). PHPCS + PHPStan level 8 clean.
 - [ ] F3.5 MoonPhase controller (4 routes) — NEW src/Rest/Controllers/MoonPhaseController.php
 - [ ] F3.6 AI Context controller (8 routes) — NEW src/Rest/Controllers/ContextController.php
 - [ ] F3.7 MCP + Health controllers — NEW src/Rest/Controllers/McpController.php, HealthController.php
