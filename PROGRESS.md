@@ -47,7 +47,8 @@
   └─ Created AstrologerChartPostType (Bootable, private CPT with custom cap_type, show_in_rest, astrologer_api/cpt_args filter) and ChartTypeTaxonomy (Bootable, non-hierarchical with 7 seeded terms from ChartType enum, restricted caps). Registered both in Plugin::boot(). Suppressed ValidHookName sniff for project-wide slash-separated hook convention. Touched: src/PostType/AstrologerChartPostType.php, src/PostType/ChartTypeTaxonomy.php, src/Plugin.php, phpcs.xml.dist.
 - [x] F1.8 ChartRepository (CPT CRUD) — NEW src/Repository/ChartRepository.php
   └─ Created ChartRepository (Bootable) with create/find/update/delete/listByUser/isOwner + post meta registration + astrologer_api/chart_saved action. Added ChartRecord VO for hydrated records. Added ChartType $type field to ChartRequestDTO. Registered in Plugin::boot(). PHPCS + PHPStan clean. Touched: src/Repository/ChartRepository.php, src/ValueObjects/ChartRecord.php, src/DTO/ChartRequestDTO.php, src/Plugin.php, tests/Integration/Repository/ChartRepositoryTest.php.
-- [ ] F1.9 BirthDataRepository (user meta) — NEW src/Repository/BirthDataRepository.php
+- [x] F1.9 BirthDataRepository (user meta) — NEW src/Repository/BirthDataRepository.php
+  └─ Created BirthDataRepository (Bootable) with getForUser/setForUser/clearForUser + register_meta('user') with full REST schema. Registered in Plugin::boot(). Integration test with 7 cases. PHPCS + PHPStan clean. Touched: src/Repository/BirthDataRepository.php, tests/Integration/Repository/BirthDataRepositoryTest.php, src/Plugin.php.
 - [ ] F1.10 CapabilityManager — NEW src/Capabilities/CapabilityManager.php
 - [ ] F1.11 Activation / Deactivation / Uninstall — NEW src/Activation/*.php
 
