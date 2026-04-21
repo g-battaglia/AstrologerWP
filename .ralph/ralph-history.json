@@ -615,11 +615,33 @@
       "exitCode": 0,
       "completionDetected": false,
       "errors": []
+    },
+    {
+      "iteration": 22,
+      "startedAt": "2026-04-21T13:06:40.905Z",
+      "endedAt": "2026-04-21T13:18:09.301Z",
+      "durationMs": 683579,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Capabilities/CapabilityManager.php",
+        "src/Plugin.php",
+        "tests/Integration/Capabilities/CapabilityManagerTest.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "Child process error: PHPStan process crashed because it reached"
+      ]
     }
   ],
-  "totalDurationMs": 7311563,
+  "totalDurationMs": 7995142,
   "struggleIndicators": {
-    "repeatedErrors": {},
+    "repeatedErrors": {
+      "Child process error: PHPStan process crashed because it reached": 1
+    },
     "noProgressIterations": 0,
     "shortIterations": 0
   }

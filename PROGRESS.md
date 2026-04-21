@@ -49,7 +49,8 @@
   └─ Created ChartRepository (Bootable) with create/find/update/delete/listByUser/isOwner + post meta registration + astrologer_api/chart_saved action. Added ChartRecord VO for hydrated records. Added ChartType $type field to ChartRequestDTO. Registered in Plugin::boot(). PHPCS + PHPStan clean. Touched: src/Repository/ChartRepository.php, src/ValueObjects/ChartRecord.php, src/DTO/ChartRequestDTO.php, src/Plugin.php, tests/Integration/Repository/ChartRepositoryTest.php.
 - [x] F1.9 BirthDataRepository (user meta) — NEW src/Repository/BirthDataRepository.php
   └─ Created BirthDataRepository (Bootable) with getForUser/setForUser/clearForUser + register_meta('user') with full REST schema. Registered in Plugin::boot(). Integration test with 7 cases. PHPCS + PHPStan clean. Touched: src/Repository/BirthDataRepository.php, tests/Integration/Repository/BirthDataRepositoryTest.php, src/Plugin.php.
-- [ ] F1.10 CapabilityManager — NEW src/Capabilities/CapabilityManager.php
+- [x] F1.10 CapabilityManager — NEW src/Capabilities/CapabilityManager.php
+  └─ Created CapabilityManager (Bootable) with 5 plugin caps + 13 CPT caps, role mapping, user_has_cap filter, map_meta_cap with ownership resolution via match expression, astrologer_api/capability_map filter. Integration test with 11 cases. Registered in Plugin::boot(). PHPCS + PHPStan clean. Touched: src/Capabilities/CapabilityManager.php, src/Plugin.php, tests/Integration/Capabilities/CapabilityManagerTest.php.
 - [ ] F1.11 Activation / Deactivation / Uninstall — NEW src/Activation/*.php
 
 ## F2 — Services & HTTP
