@@ -43,7 +43,8 @@
   └─ Created EncryptionService with encrypt/decrypt (sodium_crypto_secretbox), is_available(), key from ASTROLOGER_ENCRYPTION_KEY constant or AUTH_KEY+persistent salt fallback. PHPCS + PHPStan level 8 clean. Touched: src/Support/Encryption/EncryptionService.php.
 - [x] F1.6 SettingsRepository (wp_options + encryption) — NEW src/Repository/SettingsRepository.php
   └─ Created SettingsRepository with all()/get()/set()/update()/reset()/is_configured(). Sensitive fields (rapidapi_key, geonames_username) encrypted at rest via EncryptionService. Hook filter astrologer_api/settings_defaults applied. Integration test with 12 test cases. PHPCS + PHPStan clean. Touched: src/Repository/SettingsRepository.php, tests/Integration/Repository/SettingsRepositoryTest.php.
-- [ ] F1.7 Custom Post Type astrologer_chart — NEW src/PostType/AstrologerChartPostType.php
+- [x] F1.7 Custom Post Type astrologer_chart — NEW src/PostType/AstrologerChartPostType.php
+  └─ Created AstrologerChartPostType (Bootable, private CPT with custom cap_type, show_in_rest, astrologer_api/cpt_args filter) and ChartTypeTaxonomy (Bootable, non-hierarchical with 7 seeded terms from ChartType enum, restricted caps). Registered both in Plugin::boot(). Suppressed ValidHookName sniff for project-wide slash-separated hook convention. Touched: src/PostType/AstrologerChartPostType.php, src/PostType/ChartTypeTaxonomy.php, src/Plugin.php, phpcs.xml.dist.
 - [ ] F1.8 ChartRepository (CPT CRUD) — NEW src/Repository/ChartRepository.php
 - [ ] F1.9 BirthDataRepository (user meta) — NEW src/Repository/BirthDataRepository.php
 - [ ] F1.10 CapabilityManager — NEW src/Capabilities/CapabilityManager.php

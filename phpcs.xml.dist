@@ -21,6 +21,8 @@
 		<!-- PSR-4 autoloading requires class names match file names -->
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<!-- Project convention: slash-separated hook names (astrologer_api/...) -->
+		<exclude name="WordPress.NamingConventions.ValidHookName.UseUnderscores"/>
 	</rule>
 
 	<!-- Use PHPCompatibilityWP -->
