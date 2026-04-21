@@ -63,7 +63,8 @@
   └─ Created ChartService with 28+ methods mapping to all upstream API endpoints (subject, birth chart, synastry, compatibility, transit, composite, solar/lunar return, now, moon phase x4, AI context x8, MCP, health). Each method fires before/after hooks + request_args/response filters. Updated Plugin.php to register DI graph (EncryptionService -> SettingsRepository -> ApiClient -> ChartService). Integration test with 20 cases. PHPCS + PHPStan level 8 clean. Touched: src/Services/ChartService.php, src/Plugin.php, tests/Integration/Services/ChartServiceTest.php.
 - [x] F2.4 SchoolPresetsService (4 presets) — NEW src/Services/SchoolPresetsService.php
   └─ Created SchoolPresetsService with 4 immutable presets (Modern Western, Traditional/Hellenistic, Vedic/Jyotish, Uranian/Hamburg) each returning ChartOptions. Methods: get(), all(), merge(). Filter astrologer_api/school_preset applied. Registered in Plugin.php container. PHPCS + PHPStan level 8 clean. Touched: src/Services/SchoolPresetsService.php, src/Plugin.php.
-- [ ] F2.5 HooksRegistry (documentation index) — NEW src/Services/HooksRegistry.php
+- [x] F2.5 HooksRegistry (documentation index) — NEW src/Services/HooksRegistry.php
+  └─ Created HooksRegistry (10 actions + 14 filters documented), ActionDef and FilterDef readonly VOs. Registered in Plugin.php container. PHPCS + PHPStan clean.
 - [ ] F2.6 RateLimiter (transient-based) — NEW src/Services/RateLimiter.php
 - [ ] F2.7 SvgSanitizer — NEW src/Support/Svg/SvgSanitizer.php
 
