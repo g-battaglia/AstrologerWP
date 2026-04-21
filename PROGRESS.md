@@ -81,7 +81,8 @@
   └─ Created RelationshipScoreController (POST /relationship-score, uses CompatibilityRequestDTO + ChartService::compatibilityScore) and SynastryAspectsController (POST /synastry-aspects, uses SynastryRequestDTO + ChartService::synastryChartData). PHPCS + PHPStan level 8 clean.
 - [x] F3.5 MoonPhase controller (4 routes) — NEW src/Rest/Controllers/MoonPhaseController.php
   └─ Created MoonPhaseController with 4 routes: GET /moon-phase/current (now-utc), POST /moon-phase/at (specific date/time/location), POST /moon-phase/range (ephemeris-based date range), GET /moon-phase/next/{phase} (next occurrence of new/first-quarter/full/last-quarter). Added moonPhaseRange() and moonPhaseNext() methods to ChartService with EP_EPHEMERIS constant. PHPCS + PHPStan level 8 clean. Touched: src/Rest/Controllers/MoonPhaseController.php, src/Services/ChartService.php.
-- [ ] F3.6 AI Context controller (8 routes) — NEW src/Rest/Controllers/ContextController.php
+- [x] F3.6 AI Context controller (8 routes) — NEW src/Rest/Controllers/ContextController.php
+  └─ Created ContextController with 8 POST routes (/context/subject, /natal, /synastry, /transit, /composite, /solar-return, /lunar-return, /moon-phase), each delegating to ChartService *Context() methods. PHPCS + PHPStan level 8 clean.
 - [ ] F3.7 MCP + Health controllers — NEW src/Rest/Controllers/McpController.php, HealthController.php
 - [ ] F3.8 Geonames REST controller — NEW src/Rest/Controllers/GeonamesController.php
 - [ ] F3.9 Settings REST controller — NEW src/Rest/Controllers/SettingsController.php
