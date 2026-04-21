@@ -79,7 +79,8 @@
   └─ Created 9 chart REST controllers extending AbstractController: NatalChartController, SynastryChartController, TransitChartController, CompositeChartController, SolarReturnChartController, LunarReturnChartController, NowChartController, BirthChartController, BirthDataController. Each registers a POST route, validates via SubjectSchema/ChartOptionsSchema, delegates to ChartService, and returns normalized responses. PHPCS + PHPStan level 8 clean. Touched: src/Rest/Controllers/*.php (9 files).
 - [x] F3.4 Relationship & Compatibility controllers — NEW src/Rest/Controllers/RelationshipScoreController.php, SynastryAspectsController.php
   └─ Created RelationshipScoreController (POST /relationship-score, uses CompatibilityRequestDTO + ChartService::compatibilityScore) and SynastryAspectsController (POST /synastry-aspects, uses SynastryRequestDTO + ChartService::synastryChartData). PHPCS + PHPStan level 8 clean.
-- [ ] F3.5 MoonPhase controller (4 routes) — NEW src/Rest/Controllers/MoonPhaseController.php
+- [x] F3.5 MoonPhase controller (4 routes) — NEW src/Rest/Controllers/MoonPhaseController.php
+  └─ Created MoonPhaseController with 4 routes: GET /moon-phase/current (now-utc), POST /moon-phase/at (specific date/time/location), POST /moon-phase/range (ephemeris-based date range), GET /moon-phase/next/{phase} (next occurrence of new/first-quarter/full/last-quarter). Added moonPhaseRange() and moonPhaseNext() methods to ChartService with EP_EPHEMERIS constant. PHPCS + PHPStan level 8 clean. Touched: src/Rest/Controllers/MoonPhaseController.php, src/Services/ChartService.php.
 - [ ] F3.6 AI Context controller (8 routes) — NEW src/Rest/Controllers/ContextController.php
 - [ ] F3.7 MCP + Health controllers — NEW src/Rest/Controllers/McpController.php, HealthController.php
 - [ ] F3.8 Geonames REST controller — NEW src/Rest/Controllers/GeonamesController.php

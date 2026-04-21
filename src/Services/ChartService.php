@@ -65,6 +65,7 @@ final class ChartService {
 	private const EP_NOW_CHART = '/api/v5/chart/now';
 	private const EP_MOON_PHASE = '/api/v5/moon-phase';
 	private const EP_MOON_PHASE_NOW_UTC = '/api/v5/moon-phase/now-utc';
+	private const EP_EPHEMERIS = '/api/v5/ephemeris';
 	private const EP_HEALTH = '/health';
 	// phpcs:enable Generic.Formatting.MultipleStatementAlignment
 
@@ -323,6 +324,84 @@ final class ChartService {
 	 */
 	public function moonPhaseNowUtcContext(): ChartResponseDTO|WP_Error {
 		return $this->call( 'moon_phase_now_utc_context', self::EP_MOON_PHASE_NOW_UTC . self::CTX_SUFFIX, array() );
+	}
+
+	/**
+	 * Get moon phase data for a date range using the ephemeris endpoint.
+	 *
+	 * @param string $start_date Start date in ISO format (e.g. '2025-01-01').
+	 * @param string $end_date   End date in ISO format.
+	 * @param int    $step       Step interval in days.
+	 * @param float  $latitude   Observer latitude.
+	 * @param float  $longitude  Observer longitude.
+	 * @param string $timezone   IANA timezone.
+	 * @return ChartResponseDTO|WP_Error
+	 */
+	public function moonPhaseRange(
+		string $start_date,
+		string $end_date,
+		int $step = 1,
+		float $latitude = 51.4769,
+		float $longitude = 0.0005,
+		string $timezone = 'UTC'
+	): ChartResponseDTO|WP_Error {
+		return $this->call(
+			'moon_phase_range',
+			self::EP_EPHEMERIS,
+			array(
+				'start_date' => $start_date,
+				'end_date'   => $end_date,
+				'step'       => $step,
+				'step_type'  => 'days',
+				'latitude'   => $latitude,
+				'longitude'  => $longitude,
+				'timezone'   => $timezone,
+			)
+		);
+	}
+
+	/**
+	 * Get the next occurrence of a specific moon phase.
+	 *
+	 * Fetches the current moon phase which includes upcoming phases,
+	 * then extracts the requested phase from the response.
+	 *
+	 * @param string               $phase  Phase name (new, first-quarter, full, last-quarter).
+	 * @return ChartResponseDTO|WP_Error
+	 */
+	public function moonPhaseNext( string $phase ): ChartResponseDTO|WP_Error {
+		$result = $this->moonPhaseNowUtc();
+
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+
+		// The upstream response includes upcoming_phases with dates for each phase.
+		$data = $result->to_array();
+
+		/** @var array<string,mixed>|null $upcoming */
+		$upcoming = $data['upcoming_phases'] ?? null;
+
+		if ( is_array( $upcoming ) && isset( $upcoming[ $phase ] ) ) {
+			return ChartResponseDTO::from_array(
+				array(
+					'phase'   => $phase,
+					'date'    => $upcoming[ $phase ],
+					'source'  => 'upcoming_phases',
+					'context' => $data,
+				)
+			);
+		}
+
+		// Fallback: return the full response with a note about the missing phase.
+		return ChartResponseDTO::from_array(
+			array(
+				'phase'   => $phase,
+				'date'    => null,
+				'message' => 'Requested phase not found in upcoming phases data.',
+				'context' => $data,
+			)
+		);
 	}
 
 	// -------------------------------------------------------------------------
