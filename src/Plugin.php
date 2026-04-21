@@ -19,6 +19,7 @@ use Astrologer\Api\Repository\ChartRepository;
 use Astrologer\Api\Repository\SettingsRepository;
 use Astrologer\Api\Rest\SpikeController;
 use Astrologer\Api\Services\ChartService;
+use Astrologer\Api\Services\SchoolPresetsService;
 use Astrologer\Api\Support\Contracts\Bootable;
 use Astrologer\Api\Support\Encryption\EncryptionService;
 
@@ -158,6 +159,11 @@ final class Plugin {
 				$client = $this->container->get( ApiClient::class );
 				return new ChartService( $client );
 			},
+		);
+
+		$this->container->set(
+			SchoolPresetsService::class,
+			static fn (): SchoolPresetsService => new SchoolPresetsService(),
 		);
 	}
 
