@@ -85,7 +85,8 @@
   └─ Created ContextController with 8 POST routes (/context/subject, /natal, /synastry, /transit, /composite, /solar-return, /lunar-return, /moon-phase), each delegating to ChartService *Context() methods. PHPCS + PHPStan level 8 clean.
 - [x] F3.7 MCP + Health controllers — NEW src/Rest/Controllers/McpController.php, HealthController.php
   └─ Created McpController (POST /mcp, JSON-RPC 2.0 proxy to upstream, cap astrologer_calculate_chart) and HealthController (GET /health, public, 10s Cache-Control). PHPCS + PHPStan level 8 clean. Touched: src/Rest/Controllers/McpController.php, src/Rest/Controllers/HealthController.php.
-- [ ] F3.8 Geonames REST controller — NEW src/Rest/Controllers/GeonamesController.php
+- [x] F3.8 Geonames REST controller — NEW src/Rest/Controllers/GeonamesController.php
+  └─ Created GeonamesController with GET /geonames/search (city autocomplete, q+limit+lang params) and GET /geonames/timezone (lat+lng params). Both rate-limited, require astrologer_calculate_chart cap. PHPCS + PHPStan clean.
 - [ ] F3.9 Settings REST controller — NEW src/Rest/Controllers/SettingsController.php
 - [ ] F3.10 Chart CPT CRUD REST controller — NEW src/Rest/Controllers/ChartController.php
 - [ ] F3.11 Bindings metadata controller — NEW src/Rest/Controllers/BindingsController.php
