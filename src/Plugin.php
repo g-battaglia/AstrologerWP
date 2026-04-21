@@ -10,6 +10,7 @@ declare( strict_types = 1 );
 namespace Astrologer\Api;
 
 use Astrologer\Api\Blocks\SpikeBlocksRegistry;
+use Astrologer\Api\Capabilities\CapabilityManager;
 use Astrologer\Api\PostType\AstrologerChartPostType;
 use Astrologer\Api\PostType\ChartTypeTaxonomy;
 use Astrologer\Api\Repository\BirthDataRepository;
@@ -94,6 +95,7 @@ final class Plugin {
 			Admin\AdminMenu::class,
 			AstrologerChartPostType::class,
 			ChartTypeTaxonomy::class,
+			CapabilityManager::class,
 			ChartRepository::class,
 			BirthDataRepository::class,
 			SpikeBlocksRegistry::class,
