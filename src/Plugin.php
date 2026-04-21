@@ -12,6 +12,7 @@ namespace Astrologer\Api;
 use Astrologer\Api\Blocks\SpikeBlocksRegistry;
 use Astrologer\Api\PostType\AstrologerChartPostType;
 use Astrologer\Api\PostType\ChartTypeTaxonomy;
+use Astrologer\Api\Repository\ChartRepository;
 use Astrologer\Api\Rest\SpikeController;
 use Astrologer\Api\Support\Contracts\Bootable;
 
@@ -92,6 +93,7 @@ final class Plugin {
 			Admin\AdminMenu::class,
 			AstrologerChartPostType::class,
 			ChartTypeTaxonomy::class,
+			ChartRepository::class,
 			SpikeBlocksRegistry::class,
 			SpikeController::class,
 		);
