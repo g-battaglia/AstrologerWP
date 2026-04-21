@@ -718,15 +718,34 @@
         "Child process error: PHPStan process crashed because it reached",
         "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
       ]
+    },
+    {
+      "iteration": 27,
+      "startedAt": "2026-04-21T13:55:37.028Z",
+      "endedAt": "2026-04-21T14:01:45.877Z",
+      "durationMs": 365469,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Plugin.php",
+        "src/Services/SchoolPresetsService.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "Child process error: PHPStan process crashed because it reached"
+      ]
     }
   ],
-  "totalDurationMs": 10211912,
+  "totalDurationMs": 10577381,
   "struggleIndicators": {
     "repeatedErrors": {
       "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/": 1,
       "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/con": 2,
       "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 2,
-      "Child process error: PHPStan process crashed because it reached": 1
+      "Child process error: PHPStan process crashed because it reached": 2
     },
     "noProgressIterations": 0,
     "shortIterations": 0
