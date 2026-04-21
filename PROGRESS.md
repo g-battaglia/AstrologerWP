@@ -37,7 +37,8 @@
   └─ ActivePoint enum (79 cases: 10 planets, 4 nodes, 4 Lilith, Priapus/WhiteMoon/Earth, Chiron/Pholus, 4 asteroids, 8 TNOs, 8 Uranian, 23 fixed stars, 4 Arabic parts, 6 angles) with label(), get_defaults(), is_angle(), is_classical_planet(). AspectType enum (13 cases) with label(), default_orb(), get_defaults(), is_major(), is_declination(). PHPCS + PHPStan clean. Touched: src/Enums/ActivePoint.php, src/Enums/AspectType.php.
 - [x] F1.3 Value Objects (BirthData, GeoLocation, ChartOptions, ActiveAspect) — NEW src/ValueObjects/*.php
   └─ Created 4 readonly VOs: GeoLocation (lat/lon/timezone validation), BirthData (date/time/name/location), ActiveAspect (AspectType + orb), ChartOptions (19 fields with defaults(), from_array(), to_array()). PHPCS + PHPStan level 8 clean. Touched: src/ValueObjects/GeoLocation.php, BirthData.php, ActiveAspect.php, ChartOptions.php.
-- [ ] F1.4 DTOs (SubjectDTO, ChartRequestDTO, SynastryRequestDTO, etc.) — NEW src/DTO/*.php
+- [x] F1.4 DTOs (SubjectDTO, ChartRequestDTO, SynastryRequestDTO, etc.) — NEW src/DTO/*.php
+  └─ Created 10 readonly DTOs with from_array()/to_array(): SubjectDTO, ChartRequestDTO, SynastryRequestDTO, TransitRequestDTO, CompositeRequestDTO, ReturnRequestDTO, NowRequestDTO, MoonPhaseRequestDTO, CompatibilityRequestDTO, ChartResponseDTO. PHPCS + PHPStan level 8 clean. Touched: src/DTO/*.php (10 files).
 - [ ] F1.5 EncryptionService (sodium_crypto_secretbox) — NEW src/Support/Encryption/EncryptionService.php
 - [ ] F1.6 SettingsRepository (wp_options + encryption) — NEW src/Repository/SettingsRepository.php
 - [ ] F1.7 Custom Post Type astrologer_chart — NEW src/PostType/AstrologerChartPostType.php
