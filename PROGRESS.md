@@ -59,7 +59,8 @@
   └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unknown_error), sanitized error messages, and 3 hooks (http_request_args filter, before_http_request/after_http_response actions). Integration test with 14 cases. PHPCS + PHPStan clean. Touched: src/Http/ApiClient.php, tests/Integration/Http/ApiClientTest.php, tests/fixtures/api/subject-200.json.
 - [x] F2.2 GeonamesClient — NEW src/Http/GeonamesClient.php
   └─ Created GeonamesClient with search() and timezone() methods, HTTPS to secure.geonames.org, WP_Error mapping, geonames_request_args filter, username from SettingsRepository. Fixed phpunit.xml.dist bootstrap path. 13 integration test cases. PHPCS + PHPStan clean. Touched: src/Http/GeonamesClient.php, tests/Integration/Http/GeonamesClientTest.php, phpunit.xml.dist.
-- [ ] F2.3 ChartService (orchestrator, 28+ methods) — NEW src/Services/ChartService.php
+- [x] F2.3 ChartService (orchestrator, 28+ methods) — NEW src/Services/ChartService.php
+  └─ Created ChartService with 28+ methods mapping to all upstream API endpoints (subject, birth chart, synastry, compatibility, transit, composite, solar/lunar return, now, moon phase x4, AI context x8, MCP, health). Each method fires before/after hooks + request_args/response filters. Updated Plugin.php to register DI graph (EncryptionService -> SettingsRepository -> ApiClient -> ChartService). Integration test with 20 cases. PHPCS + PHPStan level 8 clean. Touched: src/Services/ChartService.php, src/Plugin.php, tests/Integration/Services/ChartServiceTest.php.
 - [ ] F2.4 SchoolPresetsService (4 presets) — NEW src/Services/SchoolPresetsService.php
 - [ ] F2.5 HooksRegistry (documentation index) — NEW src/Services/HooksRegistry.php
 - [ ] F2.6 RateLimiter (transient-based) — NEW src/Services/RateLimiter.php

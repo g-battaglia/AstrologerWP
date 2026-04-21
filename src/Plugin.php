@@ -11,12 +11,16 @@ namespace Astrologer\Api;
 
 use Astrologer\Api\Blocks\SpikeBlocksRegistry;
 use Astrologer\Api\Capabilities\CapabilityManager;
+use Astrologer\Api\Http\ApiClient;
 use Astrologer\Api\PostType\AstrologerChartPostType;
 use Astrologer\Api\PostType\ChartTypeTaxonomy;
 use Astrologer\Api\Repository\BirthDataRepository;
 use Astrologer\Api\Repository\ChartRepository;
+use Astrologer\Api\Repository\SettingsRepository;
 use Astrologer\Api\Rest\SpikeController;
+use Astrologer\Api\Services\ChartService;
 use Astrologer\Api\Support\Contracts\Bootable;
+use Astrologer\Api\Support\Encryption\EncryptionService;
 
 /**
  * Plugin singleton. Instantiates the container and boots Bootable modules.
@@ -85,6 +89,9 @@ final class Plugin {
 
 		$this->booted = true;
 
+		// Register infrastructure services (non-Bootable, dependency graph).
+		$this->register_services();
+
 		/**
 		 * List of Bootable class names to register and boot.
 		 * Modules are added here as phases progress.
@@ -112,6 +119,46 @@ final class Plugin {
 				$module->boot();
 			}
 		}
+	}
+
+	/**
+	 * Register infrastructure services in the container.
+	 *
+	 * These are non-Bootable services that form the dependency graph.
+	 * Bootable modules receive them via constructor injection.
+	 */
+	private function register_services(): void {
+		$this->container->set(
+			EncryptionService::class,
+			static fn (): EncryptionService => new EncryptionService(),
+		);
+
+		$this->container->set(
+			SettingsRepository::class,
+			function (): SettingsRepository {
+				/** @var EncryptionService $encryption */
+				$encryption = $this->container->get( EncryptionService::class );
+				return new SettingsRepository( $encryption );
+			},
+		);
+
+		$this->container->set(
+			ApiClient::class,
+			function (): ApiClient {
+				/** @var SettingsRepository $settings */
+				$settings = $this->container->get( SettingsRepository::class );
+				return new ApiClient( $settings );
+			},
+		);
+
+		$this->container->set(
+			ChartService::class,
+			function (): ChartService {
+				/** @var ApiClient $client */
+				$client = $this->container->get( ApiClient::class );
+				return new ChartService( $client );
+			},
+		);
 	}
 
 	/**
