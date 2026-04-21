@@ -675,12 +675,35 @@
       "errors": [
         "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unkno"
       ]
+    },
+    {
+      "iteration": 25,
+      "startedAt": "2026-04-21T13:34:17.692Z",
+      "endedAt": "2026-04-21T13:42:32.130Z",
+      "durationMs": 491880,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "phpunit.xml.dist",
+        "src/Http/GeonamesClient.php",
+        "tests/Integration/Http/GeonamesClientTest.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unknown_",
+        "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
+      ]
     }
   ],
-  "totalDurationMs": 8945447,
+  "totalDurationMs": 9437327,
   "struggleIndicators": {
     "repeatedErrors": {
-      "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/": 1
+      "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/": 1,
+      "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/con": 1,
+      "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 1
     },
     "noProgressIterations": 0,
     "shortIterations": 0
