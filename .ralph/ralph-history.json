@@ -539,30 +539,28 @@
       "errors": [
         "Child process error: PHPStan process crashed because it reached"
       ]
+    },
+    {
+      "iteration": 18,
+      "startedAt": "2026-04-21T12:38:11.105Z",
+      "endedAt": "2026-04-21T12:45:18.726Z",
+      "durationMs": 425292,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Repository/SettingsRepository.php",
+        "tests/Integration/Repository/SettingsRepositoryTest.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": []
     }
   ],
-  "totalDurationMs": 5626691,
+  "totalDurationMs": 6051983,
   "struggleIndicators": {
-    "repeatedErrors": {
-      "ERROR: The file \"astrologer-api.php\" does not exist.": 1,
-      "ERROR: Referenced sniff \"PHPCSUtils\" does not exist.": 2,
-      "ERROR: Referenced sniff \"Universal.NamingConventions.NoReservedKeywordParameterNames\" does not exist": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing\" does not exist.": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterCommaBeforeTrailingComme": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.SpaceBeforeInFunctionDeclaration\" does no": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterInFunctionDeclaration\" d": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInFunctionDeclaration\" does n": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.SpaceBeforeInClosureUse\" does not exist.": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterInClosureUse\" does not e": 2,
-      "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInClosureUse\" does not exist.": 2,
-      "ERROR: Property \"tab_width\" does not exist on sniff WordPress.WhiteSpace.ControlStructureSpacing.": 1,
-      "Child process error: PHPStan process crashed because it reached": 6,
-      "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/blocks": 1,
-      "+\terror: string;": 1,
-      "+\t\terror: '',": 1,
-      "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/tests/e2e": 1,
-      "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/src/DTO": 1
-    },
+    "repeatedErrors": {},
     "noProgressIterations": 0,
     "shortIterations": 0
   }

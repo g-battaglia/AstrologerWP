@@ -41,7 +41,8 @@
   └─ Created 10 readonly DTOs with from_array()/to_array(): SubjectDTO, ChartRequestDTO, SynastryRequestDTO, TransitRequestDTO, CompositeRequestDTO, ReturnRequestDTO, NowRequestDTO, MoonPhaseRequestDTO, CompatibilityRequestDTO, ChartResponseDTO. PHPCS + PHPStan level 8 clean. Touched: src/DTO/*.php (10 files).
 - [x] F1.5 EncryptionService (sodium_crypto_secretbox) — NEW src/Support/Encryption/EncryptionService.php
   └─ Created EncryptionService with encrypt/decrypt (sodium_crypto_secretbox), is_available(), key from ASTROLOGER_ENCRYPTION_KEY constant or AUTH_KEY+persistent salt fallback. PHPCS + PHPStan level 8 clean. Touched: src/Support/Encryption/EncryptionService.php.
-- [ ] F1.6 SettingsRepository (wp_options + encryption) — NEW src/Repository/SettingsRepository.php
+- [x] F1.6 SettingsRepository (wp_options + encryption) — NEW src/Repository/SettingsRepository.php
+  └─ Created SettingsRepository with all()/get()/set()/update()/reset()/is_configured(). Sensitive fields (rapidapi_key, geonames_username) encrypted at rest via EncryptionService. Hook filter astrologer_api/settings_defaults applied. Integration test with 12 test cases. PHPCS + PHPStan clean. Touched: src/Repository/SettingsRepository.php, tests/Integration/Repository/SettingsRepositoryTest.php.
 - [ ] F1.7 Custom Post Type astrologer_chart — NEW src/PostType/AstrologerChartPostType.php
 - [ ] F1.8 ChartRepository (CPT CRUD) — NEW src/Repository/ChartRepository.php
 - [ ] F1.9 BirthDataRepository (user meta) — NEW src/Repository/BirthDataRepository.php
