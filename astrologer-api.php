@@ -42,11 +42,7 @@ add_action(
 register_activation_hook(
 	__FILE__,
 	static function (): void {
-		// Full activation logic will be added in F1.11.
-		// For now, just ensure the autoloader works.
-		if ( ! class_exists( \Astrologer\Api\Plugin::class ) ) {
-			return;
-		}
+		\Astrologer\Api\Activation\Activator::run();
 	}
 );
 
@@ -54,6 +50,6 @@ register_activation_hook(
 register_deactivation_hook(
 	__FILE__,
 	static function (): void {
-		// Full deactivation logic will be added in F1.11.
+		\Astrologer\Api\Activation\Deactivator::run();
 	}
 );

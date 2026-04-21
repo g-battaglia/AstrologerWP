@@ -51,7 +51,8 @@
   └─ Created BirthDataRepository (Bootable) with getForUser/setForUser/clearForUser + register_meta('user') with full REST schema. Registered in Plugin::boot(). Integration test with 7 cases. PHPCS + PHPStan clean. Touched: src/Repository/BirthDataRepository.php, tests/Integration/Repository/BirthDataRepositoryTest.php, src/Plugin.php.
 - [x] F1.10 CapabilityManager — NEW src/Capabilities/CapabilityManager.php
   └─ Created CapabilityManager (Bootable) with 5 plugin caps + 13 CPT caps, role mapping, user_has_cap filter, map_meta_cap with ownership resolution via match expression, astrologer_api/capability_map filter. Integration test with 11 cases. Registered in Plugin::boot(). PHPCS + PHPStan clean. Touched: src/Capabilities/CapabilityManager.php, src/Plugin.php, tests/Integration/Capabilities/CapabilityManagerTest.php.
-- [ ] F1.11 Activation / Deactivation / Uninstall — NEW src/Activation/*.php
+- [x] F1.11 Activation / Deactivation / Uninstall — NEW src/Activation/*.php
+  └─ Created Activator (CPT+taxonomy register, cap seeding, encryption salt, wizard flag, flush rewrites), Deactivator (flush rewrites + unschedule cron), Uninstaller (delete CPT posts, taxonomy terms, caps, options, transients, user meta, cron). Updated astrologer-api.php activation/deactivation hooks and uninstall.php to delegate to class-based handlers with multisite support. PHPCS + PHPStan clean. Touched: src/Activation/Activator.php, src/Activation/Deactivator.php, src/Activation/Uninstaller.php, astrologer-api.php, uninstall.php.
 
 ## F2 — Services & HTTP
 - [ ] F2.1 ApiClient (RapidAPI proxy with retry) — NEW src/Http/ApiClient.php
