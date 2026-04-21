@@ -696,14 +696,37 @@
         "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unknown_",
         "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
       ]
+    },
+    {
+      "iteration": 26,
+      "startedAt": "2026-04-21T13:42:35.713Z",
+      "endedAt": "2026-04-21T13:55:33.209Z",
+      "durationMs": 774585,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Plugin.php",
+        "src/Services/ChartService.php",
+        "tests/Integration/Services/ChartServiceTest.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unknown_",
+        "Child process error: PHPStan process crashed because it reached",
+        "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
+      ]
     }
   ],
-  "totalDurationMs": 9437327,
+  "totalDurationMs": 10211912,
   "struggleIndicators": {
     "repeatedErrors": {
       "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/": 1,
-      "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/con": 1,
-      "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 1
+      "└─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/con": 2,
+      "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 2,
+      "Child process error: PHPStan process crashed because it reached": 1
     },
     "noProgressIterations": 0,
     "shortIterations": 0
