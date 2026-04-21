@@ -71,7 +71,8 @@
   └─ Created SvgSanitizer with wp_kses allowlist (24 SVG tags, 75 attrs), strips script/on*/javascript:/vbscript:/data: URIs, external hrefs. Filter hooks for tag/attr overrides. 13 unit tests (24 assertions). Added phpunit-unit.xml.dist for pure unit tests with Brain\Monkey. PHPCS + PHPStan level 8 clean. Touched: src/Support/Svg/SvgSanitizer.php, tests/Unit/Support/Svg/SvgSanitizerTest.php, tests/bootstrap-unit.php, phpunit-unit.xml.dist.
 
 ## F3 — REST API Layer
-- [ ] F3.1 AbstractController — NEW src/Rest/AbstractController.php
+- [x] F3.1 AbstractController — NEW src/Rest/AbstractController.php
+  └─ Created AbstractController with permission_check (cap + rate limit), respond (rate-remaining header), handle_service_error, default_permission_callback, rate_bucket helper. PHPCS + PHPStan clean. Touched: src/Rest/AbstractController.php.
 - [ ] F3.2 Shared REST schemas (Subject, ChartOptions, GeoLocation) — NEW src/Rest/Schemas/*.php
 - [ ] F3.3 ChartControllers (natal, synastry, transit, composite, solar/lunar return, now, birth, birth-data) — NEW src/Rest/Controllers/*.php
 - [ ] F3.4 Relationship & Compatibility controllers — NEW src/Rest/Controllers/RelationshipScoreController.php, SynastryAspectsController.php
