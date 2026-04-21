@@ -65,7 +65,8 @@
   └─ Created SchoolPresetsService with 4 immutable presets (Modern Western, Traditional/Hellenistic, Vedic/Jyotish, Uranian/Hamburg) each returning ChartOptions. Methods: get(), all(), merge(). Filter astrologer_api/school_preset applied. Registered in Plugin.php container. PHPCS + PHPStan level 8 clean. Touched: src/Services/SchoolPresetsService.php, src/Plugin.php.
 - [x] F2.5 HooksRegistry (documentation index) — NEW src/Services/HooksRegistry.php
   └─ Created HooksRegistry (10 actions + 14 filters documented), ActionDef and FilterDef readonly VOs. Registered in Plugin.php container. PHPCS + PHPStan clean.
-- [ ] F2.6 RateLimiter (transient-based) — NEW src/Services/RateLimiter.php
+- [x] F2.6 RateLimiter (transient-based) — NEW src/Services/RateLimiter.php
+  └─ Created RateLimiter with check()/reset()/detect_ip(), transient-based sliding window, per-IP + per-user buckets, admin exemption, client_ip filter (Cloudflare/X-Forwarded/X-Real-IP/REMOTE_ADDR), rate_limit_per_minute filter. Registered in Plugin.php container. Integration test with 11 cases. PHPCS + PHPStan clean. Docker not running, tests need wp-env. Touched: src/Services/RateLimiter.php, src/Plugin.php, tests/Integration/Services/RateLimiterTest.php.
 - [ ] F2.7 SvgSanitizer — NEW src/Support/Svg/SvgSanitizer.php
 
 ## F3 — REST API Layer

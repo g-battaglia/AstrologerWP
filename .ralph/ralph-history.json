@@ -757,11 +757,35 @@
       "exitCode": 0,
       "completionDetected": false,
       "errors": []
+    },
+    {
+      "iteration": 29,
+      "startedAt": "2026-04-21T14:06:53.586Z",
+      "endedAt": "2026-04-21T14:15:40.803Z",
+      "durationMs": 524526,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Plugin.php",
+        "src/Services/RateLimiter.php",
+        "tests/Integration/Services/RateLimiterTest.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "Child process error: PHPStan process crashed because it reached",
+        "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
+      ]
     }
   ],
-  "totalDurationMs": 10873504,
+  "totalDurationMs": 11398030,
   "struggleIndicators": {
-    "repeatedErrors": {},
+    "repeatedErrors": {
+      "Child process error: PHPStan process crashed because it reached": 1,
+      "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 1
+    },
     "noProgressIterations": 0,
     "shortIterations": 0
   }
