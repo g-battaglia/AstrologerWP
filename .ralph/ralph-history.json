@@ -521,9 +521,27 @@
       "errors": [
         "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/src/DTO"
       ]
+    },
+    {
+      "iteration": 17,
+      "startedAt": "2026-04-21T12:32:45.355Z",
+      "endedAt": "2026-04-21T12:38:07.762Z",
+      "durationMs": 320075,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Support/Encryption/EncryptionService.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "Child process error: PHPStan process crashed because it reached"
+      ]
     }
   ],
-  "totalDurationMs": 5306616,
+  "totalDurationMs": 5626691,
   "struggleIndicators": {
     "repeatedErrors": {
       "ERROR: The file \"astrologer-api.php\" does not exist.": 1,
@@ -538,7 +556,7 @@
       "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.TooMuchSpaceAfterInClosureUse\" does not e": 2,
       "ERROR: Referenced sniff \"Universal.WhiteSpace.CommaSpacing.NoSpaceAfterInClosureUse\" does not exist.": 2,
       "ERROR: Property \"tab_width\" does not exist on sniff WordPress.WhiteSpace.ControlStructureSpacing.": 1,
-      "Child process error: PHPStan process crashed because it reached": 5,
+      "Child process error: PHPStan process crashed because it reached": 6,
       "\u001b[91m\u001b[1mError: \u001b[0mFile not found: /Users/giacomo/dev/astrologerwp/blocks": 1,
       "+\terror: string;": 1,
       "+\t\terror: '',": 1,
