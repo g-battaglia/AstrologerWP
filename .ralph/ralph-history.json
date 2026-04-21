@@ -778,13 +778,35 @@
         "Child process error: PHPStan process crashed because it reached",
         "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
       ]
+    },
+    {
+      "iteration": 30,
+      "startedAt": "2026-04-21T14:15:44.584Z",
+      "endedAt": "2026-04-21T14:23:22.600Z",
+      "durationMs": 455148,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "phpunit-unit.xml.dist",
+        "src/Support/Svg/SvgSanitizer.php",
+        "tests/Unit/Support/Svg/SvgSanitizerTest.php",
+        "tests/bootstrap-unit.php"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "Child process error: PHPStan process crashed because it reached",
+        "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_TITLE, WP_PHP_BINARY."
+      ]
     }
   ],
-  "totalDurationMs": 11398030,
+  "totalDurationMs": 11853178,
   "struggleIndicators": {
     "repeatedErrors": {
-      "Child process error: PHPStan process crashed because it reached": 1,
-      "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 1
+      "Child process error: PHPStan process crashed because it reached": 2,
+      "Error: The following required constants are not defined: WP_TESTS_DOMAIN, WP_TESTS_EMAIL, WP_TESTS_T": 2
     },
     "noProgressIterations": 0,
     "shortIterations": 0

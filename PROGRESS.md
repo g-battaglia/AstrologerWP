@@ -67,7 +67,8 @@
   └─ Created HooksRegistry (10 actions + 14 filters documented), ActionDef and FilterDef readonly VOs. Registered in Plugin.php container. PHPCS + PHPStan clean.
 - [x] F2.6 RateLimiter (transient-based) — NEW src/Services/RateLimiter.php
   └─ Created RateLimiter with check()/reset()/detect_ip(), transient-based sliding window, per-IP + per-user buckets, admin exemption, client_ip filter (Cloudflare/X-Forwarded/X-Real-IP/REMOTE_ADDR), rate_limit_per_minute filter. Registered in Plugin.php container. Integration test with 11 cases. PHPCS + PHPStan clean. Docker not running, tests need wp-env. Touched: src/Services/RateLimiter.php, src/Plugin.php, tests/Integration/Services/RateLimiterTest.php.
-- [ ] F2.7 SvgSanitizer — NEW src/Support/Svg/SvgSanitizer.php
+- [x] F2.7 SvgSanitizer — NEW src/Support/Svg/SvgSanitizer.php
+  └─ Created SvgSanitizer with wp_kses allowlist (24 SVG tags, 75 attrs), strips script/on*/javascript:/vbscript:/data: URIs, external hrefs. Filter hooks for tag/attr overrides. 13 unit tests (24 assertions). Added phpunit-unit.xml.dist for pure unit tests with Brain\Monkey. PHPCS + PHPStan level 8 clean. Touched: src/Support/Svg/SvgSanitizer.php, tests/Unit/Support/Svg/SvgSanitizerTest.php, tests/bootstrap-unit.php, phpunit-unit.xml.dist.
 
 ## F3 — REST API Layer
 - [ ] F3.1 AbstractController — NEW src/Rest/AbstractController.php
