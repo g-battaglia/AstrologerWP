@@ -655,11 +655,33 @@
       "exitCode": 0,
       "completionDetected": false,
       "errors": []
+    },
+    {
+      "iteration": 24,
+      "startedAt": "2026-04-21T13:25:10.148Z",
+      "endedAt": "2026-04-21T13:34:14.061Z",
+      "durationMs": 541325,
+      "agent": "opencode",
+      "model": "",
+      "toolsUsed": {},
+      "filesModified": [
+        "PROGRESS.md",
+        "src/Http/ApiClient.php",
+        "tests/Integration/Http/ApiClientTest.php",
+        "tests/fixtures/api/subject-200.json"
+      ],
+      "exitCode": 0,
+      "completionDetected": false,
+      "errors": [
+        "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/connection errors, WP_Error mapping (auth_failed/validation_failed/rate_limited/upstream_error/unkno"
+      ]
     }
   ],
-  "totalDurationMs": 8404122,
+  "totalDurationMs": 8945447,
   "struggleIndicators": {
-    "repeatedErrors": {},
+    "repeatedErrors": {
+      "+  └─ Created ApiClient with POST/GET methods, exponential retry (max 2, 500ms base backoff) on 5xx/": 1
+    },
     "noProgressIterations": 0,
     "shortIterations": 0
   }
