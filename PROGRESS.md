@@ -73,7 +73,8 @@
 ## F3 — REST API Layer
 - [x] F3.1 AbstractController — NEW src/Rest/AbstractController.php
   └─ Created AbstractController with permission_check (cap + rate limit), respond (rate-remaining header), handle_service_error, default_permission_callback, rate_bucket helper. PHPCS + PHPStan clean. Touched: src/Rest/AbstractController.php.
-- [ ] F3.2 Shared REST schemas (Subject, ChartOptions, GeoLocation) — NEW src/Rest/Schemas/*.php
+- [x] F3.2 Shared REST schemas (Subject, ChartOptions, GeoLocation) — NEW src/Rest/Schemas/*.php
+  └─ Created 3 schema classes (SubjectSchema with 19 fields, ChartOptionsSchema with 17 fields, GeoLocationSchema with 6 fields) that return WP REST API compatible arg arrays with validate/sanitize callbacks and enum values from PHP enums. Controllers will merge these via array_merge(). PHPCS + PHPStan level 8 clean. Touched: src/Rest/Schemas/SubjectSchema.php, ChartOptionsSchema.php, GeoLocationSchema.php.
 - [ ] F3.3 ChartControllers (natal, synastry, transit, composite, solar/lunar return, now, birth, birth-data) — NEW src/Rest/Controllers/*.php
 - [ ] F3.4 Relationship & Compatibility controllers — NEW src/Rest/Controllers/RelationshipScoreController.php, SynastryAspectsController.php
 - [ ] F3.5 MoonPhase controller (4 routes) — NEW src/Rest/Controllers/MoonPhaseController.php
