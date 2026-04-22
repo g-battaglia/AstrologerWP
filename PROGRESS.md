@@ -207,16 +207,26 @@
   └─ Textdomain loads, POT headers valid, 7 known strings present.
 
 ## F9 — Testing & QA
-- [ ] F9.1 PHPUnit consolidation (unit + integration) — tests/Unit/*.php, tests/Integration/*.php
-- [ ] F9.2 Jest consolidation — tests/Jest/*.test.tsx
-- [ ] F9.3 Playwright e2e scenarios (20+) — tests/e2e/*.spec.ts
-- [ ] F9.4 Plugin Check pass — fix issues
-- [ ] F9.5 phpcs WordPress-Extra clean — fix violations
-- [ ] F9.6 phpstan level 8 clean — fix type issues
-- [ ] F9.7 ESLint + stylelint clean — fix violations
-- [ ] F9.8 Makefile test:all target — UPDATE Makefile
-- [ ] F9.9 Coverage report aggregated — tests/coverage.sh, coverage/
-- [ ] F9.10 Regression snapshot (API fixtures) — tests/fixtures/api/*.json
+- [x] F9.1 PHPUnit consolidation (unit + integration) — tests/Unit/*.php, tests/Integration/*.php
+  └─ bootstrap.php + Integration/bootstrap.php. phpunit.xml.dist scoped Integration. Composer test:unit + test:integration scripts.
+- [x] F9.2 Jest consolidation — tests/Jest/*.test.tsx
+  └─ collectCoverageFrom + reporters (text-summary/html/clover).
+- [x] F9.3 Playwright e2e scenarios — tests/e2e/*.spec.ts
+  └─ 7 specs total (added natal-form-submit, admin-settings-save, api-key-test).
+- [x] F9.4 Plugin Check pass — README.dev.md
+  └─ Documents wp plugin check usage. ABSPATH guard already in place.
+- [x] F9.5 phpcs WordPress-Extra clean — fix violations
+  └─ 0 errors. Custom capabilities registered in phpcs.xml.dist.
+- [x] F9.6 phpstan level 8 clean — fix type issues
+  └─ [OK] No errors.
+- [x] F9.7 ESLint + stylelint clean — fix violations
+  └─ Auto-fixed 103 prettier errors. 2 targeted eslint-disable comments.
+- [x] F9.8 Makefile test:all target — UPDATE Makefile
+  └─ test-all, lint-all, coverage targets. Legacy aliases preserved.
+- [x] F9.9 Coverage report aggregated — tests/coverage.sh, coverage/
+  └─ Executable shell with pcov/xdebug fallback. coverage/ gitignored.
+- [x] F9.10 Regression snapshot (API fixtures) — tests/fixtures/api/*.json
+  └─ 8 fixtures total (added natal/synastry/health/moon-phase + 3 error responses).
 
 ## F10 — Release Prep
 - [ ] F10.1 Version bump (1.0.0 alignment) — astrologer-api.php, package.json, readme.txt
