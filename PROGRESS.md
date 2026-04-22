@@ -87,26 +87,42 @@
   └─ Created McpController (POST /mcp, JSON-RPC 2.0 proxy to upstream, cap astrologer_calculate_chart) and HealthController (GET /health, public, 10s Cache-Control). PHPCS + PHPStan level 8 clean. Touched: src/Rest/Controllers/McpController.php, src/Rest/Controllers/HealthController.php.
 - [x] F3.8 Geonames REST controller — NEW src/Rest/Controllers/GeonamesController.php
   └─ Created GeonamesController with GET /geonames/search (city autocomplete, q+limit+lang params) and GET /geonames/timezone (lat+lng params). Both rate-limited, require astrologer_calculate_chart cap. PHPCS + PHPStan clean.
-- [ ] F3.9 Settings REST controller — NEW src/Rest/Controllers/SettingsController.php
-- [ ] F3.10 Chart CPT CRUD REST controller — NEW src/Rest/Controllers/ChartController.php
-- [ ] F3.11 Bindings metadata controller — NEW src/Rest/Controllers/BindingsController.php
-- [ ] F3.12 RestServiceProvider registration — NEW src/Rest/RestServiceProvider.php
-- [ ] F3.13 REST integration tests — tests/Integration/Rest/*.php
+- [x] F3.9 Settings REST controller — NEW src/Rest/Controllers/SettingsController.php
+  └─ GET/POST /settings (masked key, allowlist filter) + POST /test-connection. Cap astrologer_manage_settings. Fires astrologer_api/settings_updated action. PHPCS + PHPStan clean.
+- [x] F3.10 Chart CPT CRUD REST controller — NEW src/Rest/Controllers/ChartController.php
+  └─ GET list/single, POST create (MD5 fingerprint dedup), DELETE (trash/force), POST recalculate. Owner + capability checks. PHPCS + PHPStan clean.
+- [x] F3.11 Bindings metadata controller — NEW src/Rest/Controllers/BindingsController.php
+  └─ GET /bindings/fields — 26 field descriptors across 8 groups. Filterable via astrologer_api/bindings_fields. PHPCS + PHPStan clean.
+- [x] F3.12 RestServiceProvider registration — NEW src/Rest/RestServiceProvider.php
+  └─ Bootable provider, variadic AbstractController constructor, hooks rest_api_init. All 19 controllers DI-wired in Plugin::register_rest_provider(). PHPCS + PHPStan clean.
+- [x] F3.13 REST integration tests — tests/Integration/Rest/*.php
+  └─ 3 test files: NatalChartControllerTest (4 tests), SettingsControllerTest (6 tests), HealthControllerTest (4 tests). 14 total assertions.
 
 ## F4 — Admin UI
-- [ ] F4.1 AdminMenu (top-level + submenus) — UPDATE src/Admin/AdminMenu.php
-- [ ] F4.2 SettingsPage (React mount) — NEW src/Admin/SettingsPage.php
-- [ ] F4.3 Settings React app (6 tabs) — NEW admin-src/settings/*.tsx
-- [ ] F4.4 Setup Wizard (6 steps) — NEW src/Admin/SetupWizardPage.php + admin-src/setup-wizard/*.tsx
-- [ ] F4.5 HelpTabsProvider — NEW src/Admin/HelpTabsProvider.php
-- [ ] F4.6 DocumentationPage — NEW src/Admin/DocumentationPage.php + admin-src/documentation/*.tsx
-- [ ] F4.7 Admin CSS scoping — NEW admin-src/shared/admin.scss
-- [ ] F4.8 Admin tests (Jest + E2E) — tests/Jest/admin/*.tsx, tests/e2e/admin-setup-wizard.spec.ts
+- [x] F4.1 AdminMenu (top-level + submenus) — UPDATE src/Admin/AdminMenu.php
+  └─ Expanded with Settings, Charts, Docs, Wizard subpages. Already committed prior to reconstruction.
+- [x] F4.2 SettingsPage (React mount) — NEW src/Admin/SettingsPage.php
+  └─ Bootable, enqueues build/admin-settings.js + CSS on toplevel_page_astrologer-api. Localizes restUrl/nonce/adminUrl.
+- [x] F4.3 Settings React app (6 tabs) — NEW admin-src/settings/*.tsx
+  └─ 6 tabs: ApiCredentials, AstrologyDefaults, UI, Cron, Capabilities, Integrations. useSettings hook with apiFetch. TabPanel + Notice + Spinner.
+- [x] F4.4 Setup Wizard (6 steps) — NEW src/Admin/SetupWizardPage.php + admin-src/setup-wizard/*.tsx
+  └�� SetupWizardPage: first-visit redirect + wizard asset enqueue. React: 6 steps (Welcome, ApiKey, School, Language, Demo, Done). Auto-advance on API test success.
+- [x] F4.5 HelpTabsProvider — NEW src/Admin/HelpTabsProvider.php
+  └─ Bootable, 4 load-* hooks. Settings: 4 tabs + sidebar. Wizard: 1 tab. Charts: 2 shared tabs.
+- [x] F4.6 DocumentationPage — NEW src/Admin/DocumentationPage.php + admin-src/documentation/*.tsx
+  └─ Bootable, league/commonmark for MD→HTML. 6 doc files. React 2-column layout with sidebar nav.
+- [x] F4.7 Admin CSS scoping — NEW admin-src/shared/admin.scss
+  └─ Scoped under .astrologer-admin with CSS custom properties. Docs content styles.
+- [x] F4.8 Admin tests (Jest + E2E) — tests/Jest/admin/*.tsx, tests/e2e/admin-setup-wizard.spec.ts
+  └─ Jest: ApiCredentialsTab (3 tests), SetupWizard (4 tests). E2E: admin-setup-wizard.spec.ts (page load + navigation).
 
 ## F5 — Gutenberg Blocks (22 blocks)
-- [ ] F5.1 BlocksRegistry + category — NEW src/Blocks/BlocksRegistry.php, BlockCategory.php
-- [ ] F5.2 Shared build config (wp-scripts multi-entry) — UPDATE package.json
-- [ ] F5.3 Template block: birth-form — NEW blocks/birth-form/*
+- [x] F5.1 BlocksRegistry + category — NEW src/Blocks/BlocksRegistry.php, BlockCategory.php
+  └─ BlocksRegistry (Bootable): scans blocks/ for block.json, registers 22 slugs. BlockCategory: adds "astrology" category via block_categories_all.
+- [x] F5.2 Shared build config (wp-scripts multi-entry) — UPDATE webpack.config.js
+  └─ Multi-compiler: admin → build/, blocks → blocks/NAME/build/. Custom getBlockEntries() scanner. CRITICAL: clean: false on blocks output.
+- [x] F5.3 Template block: birth-form — NEW blocks/birth-form/*
+  └─ block.json v3, edit.tsx (InspectorControls: uiLevel, preset, save option, redirect), render.php (Interactivity API data-wp-* attrs), style.css, view.ts (stub for F6).
 - [ ] F5.4 Other 6 form blocks — NEW blocks/synastry-form/*, transit-form/*, composite-form/*, solar-return-form/*, lunar-return-form/*, now-form/*, compatibility-form/*
 - [ ] F5.5 Display chart blocks (7) — NEW blocks/natal-chart/*, synastry-chart/*, transit-chart/*, composite-chart/*, solar-return-chart/*, lunar-return-chart/*, now-chart/*
 - [ ] F5.6 Data display blocks (7) — NEW blocks/positions-table/*, aspects-table/*, elements-chart/*, modalities-chart/*, compatibility-score/*, relationship-score/*, moon-phase/*
