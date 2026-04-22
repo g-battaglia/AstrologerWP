@@ -129,11 +129,16 @@
   └─ Shared astrologer/chart-display namespace. Attributes: showSvg/showPositions/showAspects/chartTheme/sourceBlockId.
 - [x] F5.6 Data display blocks (7) — NEW blocks/positions-table/*, aspects-table/*, elements-chart/*, modalities-chart/*, compatibility-score/*, relationship-score/*, moon-phase/*
   └─ Tables widefat, charts CSS-grid bars, moon-phase self-fetches with refreshInterval.
-- [ ] F5.7 Block Patterns (6 patterns) — NEW patterns/*.php + src/Blocks/BlockPatternsRegistry.php
-- [ ] F5.8 Variations per school (4 per form block) — NEW src/Blocks/VariationsRegistry.php
-- [ ] F5.9 FSE templates + parts — NEW src/Blocks/FseTemplatesRegistry.php
-- [ ] F5.10 Block Bindings API source — NEW src/Blocks/BlockBindingsSource.php
-- [ ] F5.11 Block tests — tests/Jest/blocks/*.test.tsx, tests/Integration/Blocks/*.php, tests/e2e/block-birth-form.spec.ts
+- [x] F5.7 Block Patterns (6 patterns) — NEW patterns/*.php + src/Blocks/BlockPatternsRegistry.php
+  └─ 6 patterns (simple-natal, synastry-compat, transit-today, solar-return-annual, moon-phase-widget, daily-dashboard). Astrology pattern category registered.
+- [x] F5.8 Variations per school (4 per form block) — NEW src/Blocks/VariationsRegistry.php
+  └─ 28 variations (7 form blocks × 4 schools) via admin-variations.js.
+- [x] F5.9 FSE templates + parts — NEW src/Blocks/FseTemplatesRegistry.php
+  └─ 2 templates (chart-single, chart-archive) via register_block_template (WP 6.7+).
+- [x] F5.10 Block Bindings API source — NEW src/Blocks/BlockBindingsSource.php
+  └─ astrologer-api/chart-data source, dot-notation path lookup (WP 6.5+).
+- [x] F5.11 Block tests — tests/Jest/blocks/*.test.tsx, tests/Integration/Blocks/*.php, tests/e2e/block-birth-form.spec.ts
+  └─ Jest birth-form render, PHPUnit BlocksRegistry asserts 22 blocks, Playwright e2e smoke.
 
 ## F6 — Frontend Interactivity API
 - [x] F6.1 Directory structure interactivity-src/ — NEW interactivity-src/stores/*.ts, lib/*.ts
@@ -178,17 +183,28 @@
   └─ DoctorCommandTest: 3 scenarios with WP_CLI stub.
 
 ## F8 — i18n, Accessibility, Docs
-- [ ] F8.1 POT extraction (make pot) — languages/astrologer-api.pot
-- [ ] F8.2 JSON translations for script handles — package.json update
-- [ ] F8.3 RTL CSS generation + fix logical properties — blocks/**/style.css
-- [ ] F8.4 ScriptTranslations loading — NEW src/Support/i18n/ScriptTranslations.php
-- [ ] F8.5 Load textdomain in Plugin.php — UPDATE src/Plugin.php
-- [ ] F8.6 Accessibility audit setup — tests/e2e/a11y.spec.ts
-- [ ] F8.7 Fix accessibility findings — various files
-- [ ] F8.8 Documentation markdown (6 pages) — docs/*.md
-- [ ] F8.9 Screenshot + banner placeholders — assets/wporg/*
-- [ ] F8.10 readme.txt WP.org compliant — NEW readme.txt
-- [ ] F8.11 i18n tests — tests/Integration/I18nTest.php
+- [x] F8.1 POT extraction (make pot) — languages/astrologer-api.pot
+  └─ Seed POT with ~50 real strings from src/ + blocks/. make-pot npm script for wp-cli CI.
+- [x] F8.2 JSON translations for script handles — package.json update
+  └─ make-json npm script. Italian it_IT.json placeholder.
+- [x] F8.3 RTL CSS generation + fix logical properties — blocks/**/style.css
+  └─ text-align left/right → start/end, border-left → border-inline-start in 11 block stylesheets + admin.scss.
+- [x] F8.4 ScriptTranslations loading — NEW src/Support/i18n/ScriptTranslations.php
+  └─ Bootable, priority 20 on admin_enqueue_scripts + wp_enqueue_scripts + enqueue_block_editor_assets.
+- [x] F8.5 Load textdomain in Plugin.php — UPDATE src/Plugin.php
+  └─ load_plugin_textdomain call at top of boot(). ScriptTranslations in modules.
+- [x] F8.6 Accessibility audit setup — tests/e2e/a11y.spec.ts
+  └─ Playwright + @axe-core/playwright, fails on impact > minor, across frontend + admin surfaces.
+- [x] F8.7 Fix accessibility findings — various files
+  └─ Added data-wp-bind--aria-busy to 8 form blocks. role=status+aria-live=polite on moon-phase loader. role=alert + aria-live=assertive on spike-birth-form error.
+- [x] F8.8 Documentation markdown (6 pages) — docs/*.md
+  └─ user-guide, shortcodes, blocks, hooks, cli, rest-api — 200-400 words each from real code.
+- [x] F8.9 Screenshot + banner placeholders — assets/wporg/*
+  └─ 8 placeholder text files (4 screenshots, 2 banners, 2 icons).
+- [x] F8.10 readme.txt WP.org compliant — NEW readme.txt
+  └─ Stable tag 1.0.0, PHP 8.1, full sections.
+- [x] F8.11 i18n tests — tests/Integration/I18nTest.php
+  └─ Textdomain loads, POT headers valid, 7 known strings present.
 
 ## F9 — Testing & QA
 - [ ] F9.1 PHPUnit consolidation (unit + integration) — tests/Unit/*.php, tests/Integration/*.php
