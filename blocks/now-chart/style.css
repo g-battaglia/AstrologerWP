@@ -1,0 +1,46 @@
+.wp-block-astrologer-api-now-chart {
+	max-width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-placeholder {
+	border: 1px dashed #ccc;
+	background: #f9f9f9;
+	padding: 24px;
+	text-align: center;
+	border-radius: 4px;
+	color: #757575;
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-svg {
+	margin-top: var(--wp--preset--spacing--30, 0.75rem);
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-svg svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-positions {
+	margin-top: var(--wp--preset--spacing--40, 1rem);
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-positions table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-positions th,
+.wp-block-astrologer-api-now-chart .astrologer-chart-positions td {
+	border: 1px solid #e0e0e0;
+	padding: 0.5em;
+	text-align: left;
+	font-size: 0.875rem;
+}
+
+.wp-block-astrologer-api-now-chart .astrologer-chart-aspects {
+	margin-top: var(--wp--preset--spacing--40, 1rem);
+}

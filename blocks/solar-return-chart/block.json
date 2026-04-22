@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/solar-return-chart",
+	"title": "Solar Return Chart",
+	"category": "astrology",
+	"icon": "chart-pie",
+	"description": "Displays a solar return chart for a given year.",
+	"keywords": [ "astrologer", "solar", "return", "chart" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"sourceBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"showSvg": {
+			"type": "boolean",
+			"default": true
+		},
+		"showPositions": {
+			"type": "boolean",
+			"default": true
+		},
+		"showAspects": {
+			"type": "boolean",
+			"default": false
+		},
+		"chartTheme": {
+			"type": "string",
+			"default": "classic",
+			"enum": [ "classic", "dark", "light" ]
+		},
+		"theme": {
+			"type": "string",
+			"default": "wheel"
+		}
+	},
+	"example": {
+		"attributes": {
+			"chartTheme": "classic"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

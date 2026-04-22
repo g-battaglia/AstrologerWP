@@ -1,0 +1,1 @@
+(()=>{"use strict";const o=window.wp.i18n;window.wp.blockEditor,window.wp.components,window.ReactJSXRuntime,(0,o.__)("Classic","astrologer-api"),(0,o.__)("Dark","astrologer-api"),(0,o.__)("Light","astrologer-api")})();
