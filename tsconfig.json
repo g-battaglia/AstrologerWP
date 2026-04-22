@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "declaration": false,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@wordpress/*": ["node_modules/@wordpress/*"]
+    }
+  },
+  "include": [
+    "admin-src/**/*.ts",
+    "admin-src/**/*.tsx",
+    "blocks/**/*.ts",
+    "blocks/**/*.tsx",
+    "tests/Jest/**/*.ts",
+    "tests/Jest/**/*.tsx"
+  ],
+  "exclude": ["node_modules", "build", "_legacy"]
+}

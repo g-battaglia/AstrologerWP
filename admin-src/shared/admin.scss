@@ -1,0 +1,102 @@
+/**
+ * Shared admin styles for Astrologer admin apps.
+ *
+ * @package Astrologer\Api
+ */
+
+.astrologer-admin {
+	--ast-spacing: 16px;
+	--ast-border: #ddd;
+	--ast-radius: 4px;
+	--ast-bg-subtle: #f9f9f9;
+
+	.astrologer-admin__tab-content {
+		padding: var(--ast-spacing);
+		background: var(--ast-bg-subtle);
+		border: 1px solid var(--ast-border);
+		border-radius: var(--ast-radius);
+		margin-top: var(--ast-spacing);
+	}
+
+	.components-tab-panel__tabs {
+		margin-bottom: var(--ast-spacing);
+	}
+
+	.components-notice {
+		margin: var(--ast-spacing) 0;
+	}
+
+	table.widefat {
+		margin-top: var(--ast-spacing);
+
+		th,
+		td {
+			padding: 8px 12px;
+		}
+
+		code {
+			font-size: 12px;
+		}
+	}
+}
+
+.astrologer-docs-content {
+	max-width: 800px;
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		margin-top: 1.5em;
+		margin-bottom: 0.5em;
+	}
+
+	h1:first-child,
+	h2:first-child {
+		margin-top: 0;
+	}
+
+	pre {
+		background: #f0f0f0;
+		padding: 12px 16px;
+		border-radius: 4px;
+		overflow-x: auto;
+	}
+
+	code {
+		background: #f0f0f0;
+		padding: 2px 6px;
+		border-radius: 3px;
+		font-size: 13px;
+	}
+
+	pre code {
+		background: none;
+		padding: 0;
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		margin: 1em 0;
+
+		th,
+		td {
+			border: 1px solid #ddd;
+			padding: 8px 12px;
+			text-align: left;
+		}
+
+		th {
+			background: #f9f9f9;
+			font-weight: 600;
+		}
+	}
+
+	blockquote {
+		border-left: 4px solid #3858e9;
+		margin: 1em 0;
+		padding: 0.5em 1em;
+		background: #f9f9f9;
+	}
+}

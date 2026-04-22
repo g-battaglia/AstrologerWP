@@ -1,4 +1,6 @@
 parameters:
+	bootstrapFiles:
+		- phpstan-constants.php
 	level: 8
 	paths:
 		- src
