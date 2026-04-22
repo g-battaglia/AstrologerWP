@@ -34,6 +34,9 @@ yarn-error.log*
 # PHPUnit cache
 .phpunit.result.cache
 
+# Coverage reports
+coverage/
+
 # wp-env
 .wp-env/
 
