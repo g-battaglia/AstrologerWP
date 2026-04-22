@@ -12,6 +12,8 @@
     "test:js": "wp-scripts test-unit-js",
     "test:e2e": "playwright test",
     "pot": "wp i18n make-pot . languages/astrologer-api.pot --slug=astrologer-api",
+    "make-pot": "wp i18n make-pot . languages/astrologer-api.pot --exclude=_legacy,vendor,node_modules,tests",
+    "make-json": "wp i18n make-json languages --no-purge",
     "env:start": "wp-env start",
     "env:stop": "wp-env stop"
   },

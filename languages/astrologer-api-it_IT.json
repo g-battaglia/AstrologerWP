@@ -1,0 +1,14 @@
+{
+	"translation-revision-date": "2026-04-22 00:00+0000",
+	"generator": "AstrologerWP/1.0.0",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": {
+				"domain": "messages",
+				"lang": "it_IT",
+				"plural-forms": "nplurals=2; plural=(n != 1);"
+			}
+		}
+	}
+}

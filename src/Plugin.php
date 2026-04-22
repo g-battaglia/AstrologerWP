@@ -9,9 +9,13 @@ declare( strict_types = 1 );
 
 namespace Astrologer\Api;
 
+use Astrologer\Api\Blocks\BlockBindingsSource;
 use Astrologer\Api\Blocks\BlockCategory;
+use Astrologer\Api\Blocks\BlockPatternsRegistry;
 use Astrologer\Api\Blocks\BlocksRegistry;
+use Astrologer\Api\Blocks\FseTemplatesRegistry;
 use Astrologer\Api\Blocks\SpikeBlocksRegistry;
+use Astrologer\Api\Blocks\VariationsRegistry;
 use Astrologer\Api\Capabilities\CapabilityManager;
 use Astrologer\Api\Cli\AstrologerCommand;
 use Astrologer\Api\Cron\CronRegistry;
@@ -53,6 +57,7 @@ use Astrologer\Api\Services\RateLimiter;
 use Astrologer\Api\Services\SchoolPresetsService;
 use Astrologer\Api\Support\Contracts\Bootable;
 use Astrologer\Api\Support\Encryption\EncryptionService;
+use Astrologer\Api\Support\i18n\ScriptTranslations;
 
 /**
  * Plugin singleton. Instantiates the container and boots Bootable modules.
@@ -121,6 +126,13 @@ final class Plugin {
 
 		$this->booted = true;
 
+		// Load translations early so every subsequent module can use the text domain.
+		load_plugin_textdomain(
+			'astrologer-api',
+			false,
+			dirname( plugin_basename( ASTROLOGER_API_FILE ) ) . '/languages'
+		);
+
 		// Register infrastructure services (non-Bootable, dependency graph).
 		$this->register_services();
 
@@ -143,9 +155,14 @@ final class Plugin {
 			BirthDataRepository::class,
 			BlockCategory::class,
 			BlocksRegistry::class,
+			BlockPatternsRegistry::class,
+			VariationsRegistry::class,
+			FseTemplatesRegistry::class,
+			BlockBindingsSource::class,
 			SpikeBlocksRegistry::class,
 			SpikeController::class,
 			AssetEnqueuer::class,
+			ScriptTranslations::class,
 		);
 
 		foreach ( $modules as $module_class ) {
