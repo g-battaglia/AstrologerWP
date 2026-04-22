@@ -46,6 +46,10 @@ module.exports = [
 				__dirname,
 				'admin-src/documentation/index.tsx'
 			),
+			'admin-variations': path.resolve(
+				__dirname,
+				'admin-src/variations/index.ts'
+			),
 		},
 		output: {
 			...defaultConfig.output,

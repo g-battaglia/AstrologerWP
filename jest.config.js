@@ -16,5 +16,7 @@ module.exports = {
 		...( defaultConfig.moduleNameMapper || {} ),
 		'^@wordpress/interactivity$':
 			'<rootDir>/tests/Jest/__mocks__/wp-interactivity.ts',
+		'^@wordpress/block-editor$':
+			'<rootDir>/tests/Jest/__mocks__/wp-block-editor.ts',
 	},
 };
