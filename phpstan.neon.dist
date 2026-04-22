@@ -1,6 +1,7 @@
 parameters:
 	bootstrapFiles:
 		- phpstan-constants.php
+		- phpstan-stubs/wp-cli.stub.php
 	level: 8
 	paths:
 		- src

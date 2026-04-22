@@ -13,6 +13,12 @@ use Astrologer\Api\Blocks\BlockCategory;
 use Astrologer\Api\Blocks\BlocksRegistry;
 use Astrologer\Api\Blocks\SpikeBlocksRegistry;
 use Astrologer\Api\Capabilities\CapabilityManager;
+use Astrologer\Api\Cli\AstrologerCommand;
+use Astrologer\Api\Cron\CronRegistry;
+use Astrologer\Api\Cron\Handlers\DailyMoonPhaseHandler;
+use Astrologer\Api\Cron\Handlers\DailyTransitsHandler;
+use Astrologer\Api\Cron\Handlers\SolarReturnReminderHandler;
+use Astrologer\Api\Frontend\AssetEnqueuer;
 use Astrologer\Api\Http\ApiClient;
 use Astrologer\Api\Http\GeonamesClient;
 use Astrologer\Api\PostType\AstrologerChartPostType;
@@ -139,6 +145,7 @@ final class Plugin {
 			BlocksRegistry::class,
 			SpikeBlocksRegistry::class,
 			SpikeController::class,
+			AssetEnqueuer::class,
 		);
 
 		foreach ( $modules as $module_class ) {
@@ -154,6 +161,14 @@ final class Plugin {
 
 		// REST provider after modules — needs ChartRepository from container.
 		$this->register_rest_provider();
+
+		// Cron registry: needs handlers wired from the container first.
+		$this->boot_cron_registry();
+
+		// WP-CLI commands are only registered when running under WP-CLI.
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			$this->boot_cli_commands();
+		}
 	}
 
 	/**
@@ -218,6 +233,76 @@ final class Plugin {
 				return new GeonamesClient( $settings );
 			},
 		);
+
+		$this->container->set(
+			DailyTransitsHandler::class,
+			function (): DailyTransitsHandler {
+				/** @var ChartService $chart_service */
+				$chart_service = $this->container->get( ChartService::class );
+				return new DailyTransitsHandler( $chart_service );
+			},
+		);
+
+		$this->container->set(
+			DailyMoonPhaseHandler::class,
+			function (): DailyMoonPhaseHandler {
+				/** @var ChartService $chart_service */
+				$chart_service = $this->container->get( ChartService::class );
+				return new DailyMoonPhaseHandler( $chart_service );
+			},
+		);
+
+		$this->container->set(
+			SolarReturnReminderHandler::class,
+			function (): SolarReturnReminderHandler {
+				/** @var BirthDataRepository $birth_data */
+				$birth_data = $this->container->get( BirthDataRepository::class );
+				return new SolarReturnReminderHandler( $birth_data );
+			},
+		);
+
+		$this->container->set(
+			CronRegistry::class,
+			function (): CronRegistry {
+				/** @var DailyTransitsHandler $transits */
+				$transits = $this->container->get( DailyTransitsHandler::class );
+				/** @var DailyMoonPhaseHandler $moon_phase */
+				$moon_phase = $this->container->get( DailyMoonPhaseHandler::class );
+				/** @var SolarReturnReminderHandler $solar_return */
+				$solar_return = $this->container->get( SolarReturnReminderHandler::class );
+
+				return new CronRegistry( $transits, $moon_phase, $solar_return );
+			},
+		);
+	}
+
+	/**
+	 * Boot the cron registry (has container-resolved dependencies).
+	 */
+	private function boot_cron_registry(): void {
+		/** @var CronRegistry $registry */
+		$registry = $this->container->get( CronRegistry::class );
+		$registry->boot();
+	}
+
+	/**
+	 * Register WP-CLI commands. Only called when WP_CLI is defined.
+	 */
+	private function boot_cli_commands(): void {
+		/** @var ChartService $chart_service */
+		$chart_service = $this->container->get( ChartService::class );
+
+		/** @var SettingsRepository $settings */
+		$settings = $this->container->get( SettingsRepository::class );
+
+		/** @var EncryptionService $encryption */
+		$encryption = $this->container->get( EncryptionService::class );
+
+		$command = new AstrologerCommand( $chart_service, $settings, $encryption );
+
+		$this->container->set( AstrologerCommand::class, static fn (): AstrologerCommand => $command );
+
+		$command->register();
 	}
 
 	/**
