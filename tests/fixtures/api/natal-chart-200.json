@@ -1,0 +1,30 @@
+{
+    "status": "OK",
+    "data": {
+        "name": "Test Subject",
+        "year": 1990,
+        "month": 6,
+        "day": 15,
+        "hour": 12,
+        "minute": 30,
+        "city": "Rome",
+        "nation": "IT",
+        "lat": 41.9028,
+        "lng": 12.4964,
+        "tz_str": "Europe/Rome",
+        "zodiac_type": "Tropic",
+        "houses_system_identifier": "P",
+        "planets": {
+            "sun": {"name": "Sun", "longitude": 84.512, "latitude": 0.0, "sign": "Gem", "house": "Tenth_House"},
+            "moon": {"name": "Moon", "longitude": 221.34, "latitude": 3.12, "sign": "Sco", "house": "Third_House"}
+        },
+        "houses": {
+            "first_house": {"name": "First_House", "longitude": 213.44, "sign": "Sco"},
+            "tenth_house": {"name": "Tenth_House", "longitude": 123.88, "sign": "Leo"}
+        },
+        "aspects": [
+            {"p1_name": "Sun", "p2_name": "Moon", "aspect": "trine", "orbit": 3.2}
+        ]
+    },
+    "chart": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"40\"/></svg>"
+}

@@ -1,0 +1,22 @@
+{
+    "status": "OK",
+    "data": {
+        "first_subject": {
+            "name": "Subject A",
+            "year": 1990, "month": 6, "day": 15, "hour": 12, "minute": 30,
+            "city": "Rome", "nation": "IT", "lat": 41.9028, "lng": 12.4964,
+            "tz_str": "Europe/Rome"
+        },
+        "second_subject": {
+            "name": "Subject B",
+            "year": 1992, "month": 3, "day": 20, "hour": 8, "minute": 15,
+            "city": "London", "nation": "GB", "lat": 51.5074, "lng": -0.1278,
+            "tz_str": "Europe/London"
+        },
+        "aspects": [
+            {"p1_name": "Sun", "p2_name": "Moon", "aspect": "conjunction", "orbit": 1.4, "aid": 0},
+            {"p1_name": "Venus", "p2_name": "Mars", "aspect": "trine", "orbit": 2.9, "aid": 1}
+        ]
+    },
+    "chart": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"40\"/></svg>"
+}

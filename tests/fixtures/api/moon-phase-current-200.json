@@ -1,0 +1,15 @@
+{
+    "status": "OK",
+    "data": {
+        "phase_name": "Waxing Gibbous",
+        "moon_phase": 11,
+        "sun_phase": 6,
+        "degrees_between_s_m": 134.21,
+        "moon_emoji": "🌔",
+        "illumination_percentage": 83.4,
+        "day_since_new_moon": 10,
+        "lunation_day": 10,
+        "next_full_moon_timestamp": 1735689600,
+        "next_new_moon_timestamp": 1736726400
+    }
+}

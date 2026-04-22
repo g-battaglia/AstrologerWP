@@ -1,0 +1,4 @@
+{
+    "message": "You have exceeded the rate limit per second for your plan. BASIC PLAN allows 5 requests per second.",
+    "status": 429
+}
