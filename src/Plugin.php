@@ -9,14 +9,37 @@ declare( strict_types = 1 );
 
 namespace Astrologer\Api;
 
+use Astrologer\Api\Blocks\BlockCategory;
+use Astrologer\Api\Blocks\BlocksRegistry;
 use Astrologer\Api\Blocks\SpikeBlocksRegistry;
 use Astrologer\Api\Capabilities\CapabilityManager;
 use Astrologer\Api\Http\ApiClient;
+use Astrologer\Api\Http\GeonamesClient;
 use Astrologer\Api\PostType\AstrologerChartPostType;
 use Astrologer\Api\PostType\ChartTypeTaxonomy;
 use Astrologer\Api\Repository\BirthDataRepository;
 use Astrologer\Api\Repository\ChartRepository;
 use Astrologer\Api\Repository\SettingsRepository;
+use Astrologer\Api\Rest\Controllers\BindingsController;
+use Astrologer\Api\Rest\Controllers\BirthChartController;
+use Astrologer\Api\Rest\Controllers\BirthDataController;
+use Astrologer\Api\Rest\Controllers\ChartController;
+use Astrologer\Api\Rest\Controllers\CompositeChartController;
+use Astrologer\Api\Rest\Controllers\ContextController;
+use Astrologer\Api\Rest\Controllers\GeonamesController;
+use Astrologer\Api\Rest\Controllers\HealthController;
+use Astrologer\Api\Rest\Controllers\LunarReturnChartController;
+use Astrologer\Api\Rest\Controllers\McpController;
+use Astrologer\Api\Rest\Controllers\MoonPhaseController;
+use Astrologer\Api\Rest\Controllers\NatalChartController;
+use Astrologer\Api\Rest\Controllers\NowChartController;
+use Astrologer\Api\Rest\Controllers\RelationshipScoreController;
+use Astrologer\Api\Rest\Controllers\SettingsController;
+use Astrologer\Api\Rest\Controllers\SolarReturnChartController;
+use Astrologer\Api\Rest\Controllers\SynastryAspectsController;
+use Astrologer\Api\Rest\Controllers\SynastryChartController;
+use Astrologer\Api\Rest\Controllers\TransitChartController;
+use Astrologer\Api\Rest\RestServiceProvider;
 use Astrologer\Api\Rest\SpikeController;
 use Astrologer\Api\Services\ChartService;
 use Astrologer\Api\Services\HooksRegistry;
@@ -103,11 +126,17 @@ final class Plugin {
 		 */
 		$modules = array(
 			Admin\AdminMenu::class,
+			Admin\SettingsPage::class,
+			Admin\SetupWizardPage::class,
+			Admin\HelpTabsProvider::class,
+			Admin\DocumentationPage::class,
 			AstrologerChartPostType::class,
 			ChartTypeTaxonomy::class,
 			CapabilityManager::class,
 			ChartRepository::class,
 			BirthDataRepository::class,
+			BlockCategory::class,
+			BlocksRegistry::class,
 			SpikeBlocksRegistry::class,
 			SpikeController::class,
 		);
@@ -122,6 +151,9 @@ final class Plugin {
 				$module->boot();
 			}
 		}
+
+		// REST provider after modules — needs ChartRepository from container.
+		$this->register_rest_provider();
 	}
 
 	/**
@@ -177,6 +209,61 @@ final class Plugin {
 			RateLimiter::class,
 			static fn (): RateLimiter => new RateLimiter(),
 		);
+
+		$this->container->set(
+			GeonamesClient::class,
+			function (): GeonamesClient {
+				/** @var SettingsRepository $settings */
+				$settings = $this->container->get( SettingsRepository::class );
+				return new GeonamesClient( $settings );
+			},
+		);
+	}
+
+	/**
+	 * Build and register the RestServiceProvider with all 19 controllers.
+	 *
+	 * Each controller receives its dependencies from the container.
+	 * The provider is booted immediately so routes are available on rest_api_init.
+	 */
+	private function register_rest_provider(): void {
+		/** @var ChartService $chart_service */
+		$chart_service = $this->container->get( ChartService::class );
+
+		/** @var RateLimiter $rate_limiter */
+		$rate_limiter = $this->container->get( RateLimiter::class );
+
+		/** @var SettingsRepository $settings */
+		$settings = $this->container->get( SettingsRepository::class );
+
+		/** @var GeonamesClient $geonames */
+		$geonames = $this->container->get( GeonamesClient::class );
+
+		$provider = new RestServiceProvider(
+			new NatalChartController( $chart_service, $rate_limiter ),
+			new BirthChartController( $chart_service, $rate_limiter ),
+			new SynastryChartController( $chart_service, $rate_limiter ),
+			new SynastryAspectsController( $chart_service, $rate_limiter ),
+			new TransitChartController( $chart_service, $rate_limiter ),
+			new CompositeChartController( $chart_service, $rate_limiter ),
+			new SolarReturnChartController( $chart_service, $rate_limiter ),
+			new LunarReturnChartController( $chart_service, $rate_limiter ),
+			new NowChartController( $chart_service, $rate_limiter ),
+			new MoonPhaseController( $chart_service, $rate_limiter ),
+			new RelationshipScoreController( $chart_service, $rate_limiter ),
+			new ContextController( $chart_service, $rate_limiter ),
+			new HealthController( $chart_service, $rate_limiter ),
+			new McpController( $chart_service, $rate_limiter ),
+			new BirthDataController( $chart_service, $rate_limiter ),
+			new GeonamesController( $geonames, $rate_limiter ),
+			new SettingsController( $settings, $rate_limiter ),
+			new ChartController( $chart_service, $rate_limiter ),
+			new BindingsController( $rate_limiter ),
+		);
+
+		$this->container->set( RestServiceProvider::class, fn (): RestServiceProvider => $provider );
+
+		$provider->boot();
 	}
 
 	/**
