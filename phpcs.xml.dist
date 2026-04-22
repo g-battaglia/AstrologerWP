@@ -43,4 +43,17 @@
 	<rule ref="PHPCompatibility.Variables.ForbiddenThisUseContexts.OutsideObjectContext">
 		<exclude-pattern>src/Enums/</exclude-pattern>
 	</rule>
+
+	<!-- Register plugin-defined capabilities so WPCS stops warning on them. -->
+	<rule ref="WordPress.WP.Capabilities">
+		<properties>
+			<property name="custom_capabilities" type="array">
+				<element value="astrologer_manage_settings"/>
+				<element value="astrologer_calculate_chart"/>
+				<element value="astrologer_save_chart"/>
+				<element value="astrologer_view_any_chart"/>
+				<element value="astrologer_delete_any_chart"/>
+			</property>
+		</properties>
+	</rule>
 </ruleset>

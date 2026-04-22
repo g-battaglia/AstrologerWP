@@ -1,7 +1,7 @@
 /**
  * Welcome step — overview and getting started.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { Button } from '@wordpress/components';

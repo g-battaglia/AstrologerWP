@@ -1,7 +1,7 @@
 /**
  * TypeScript interfaces for the Setup Wizard.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 export interface WizardData {

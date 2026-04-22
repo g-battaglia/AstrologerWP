@@ -156,6 +156,8 @@ const { state } = store< {
 					city: state.city,
 					nation: state.nation.toUpperCase(),
 				};
+				// RapidAPI expects snake_case payload field names.
+				// eslint-disable-next-line camelcase
 				const target_date = {
 					year: Number( state.targetYear ),
 					month: Number( state.targetMonth ),
@@ -164,6 +166,7 @@ const { state } = store< {
 
 				const data = ( yield astrologerFetch< LunarReturnResponse >(
 					'lunar-return-chart',
+					// eslint-disable-next-line camelcase
 					{ subject, target_date },
 					getNonce()
 				) ) as LunarReturnResponse;

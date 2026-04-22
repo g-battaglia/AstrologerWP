@@ -1,7 +1,7 @@
 /**
  * Documentation viewer — two-column layout with sidebar navigation.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { Button } from '@wordpress/components';
@@ -60,7 +60,9 @@ const App = () => {
 		return (
 			<div className="astrologer-admin wrap">
 				<h1>{ __( 'Documentation', 'astrologer-api' ) }</h1>
-				<p>{ __( 'No documentation files found.', 'astrologer-api' ) }</p>
+				<p>
+					{ __( 'No documentation files found.', 'astrologer-api' ) }
+				</p>
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 /**
  * Language & UI step — set language and UI complexity.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { SelectControl, RadioControl, Button } from '@wordpress/components';
@@ -27,11 +27,17 @@ const UI_LEVEL_OPTIONS = [
 		value: 'basic',
 	},
 	{
-		label: __( 'Advanced — Includes aspects, houses, and transits', 'astrologer-api' ),
+		label: __(
+			'Advanced — Includes aspects, houses, and transits',
+			'astrologer-api'
+		),
 		value: 'advanced',
 	},
 	{
-		label: __( 'Expert — Full data including midpoints and fixed stars', 'astrologer-api' ),
+		label: __(
+			'Expert — Full data including midpoints and fixed stars',
+			'astrologer-api'
+		),
 		value: 'expert',
 	},
 ];
@@ -52,9 +58,7 @@ const LanguageStep = ( { data, setData, next, back }: StepProps ) => {
 				label={ __( 'UI Complexity Level', 'astrologer-api' ) }
 				selected={ data.ui_level }
 				options={ UI_LEVEL_OPTIONS }
-				onChange={ ( value: string ) =>
-					setData( { ui_level: value } )
-				}
+				onChange={ ( value: string ) => setData( { ui_level: value } ) }
 			/>
 
 			<div style={ { marginTop: '16px', display: 'flex', gap: '8px' } }>

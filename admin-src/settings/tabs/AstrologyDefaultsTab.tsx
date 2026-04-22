@@ -1,7 +1,7 @@
 /**
  * Astrology Defaults settings tab.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { SelectControl, Button } from '@wordpress/components';
@@ -16,7 +16,10 @@ interface Props {
 }
 
 const SCHOOL_OPTIONS = [
-	{ label: __( 'Modern Western', 'astrologer-api' ), value: 'modern_western' },
+	{
+		label: __( 'Modern Western', 'astrologer-api' ),
+		value: 'modern_western',
+	},
 	{ label: __( 'Traditional', 'astrologer-api' ), value: 'traditional' },
 	{ label: __( 'Vedic', 'astrologer-api' ), value: 'vedic' },
 	{ label: __( 'Uranian', 'astrologer-api' ), value: 'uranian' },
@@ -36,7 +39,9 @@ const LANGUAGE_OPTIONS = [
 ];
 
 const AstrologyDefaultsTab = ( { settings, onSave, isSaving }: Props ) => {
-	const [ school, setSchool ] = useState( settings.school || 'modern_western' );
+	const [ school, setSchool ] = useState(
+		settings.school || 'modern_western'
+	);
 	const [ language, setLanguage ] = useState( settings.language || 'EN' );
 
 	const handleSave = () => {

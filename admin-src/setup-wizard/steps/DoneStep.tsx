@@ -1,7 +1,7 @@
 /**
  * Done step — saves settings and shows completion summary.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { Button, Notice, Spinner } from '@wordpress/components';
@@ -43,7 +43,7 @@ const DoneStep = ( { data }: StepProps ) => {
 		return (
 			<div>
 				<Spinner />
-				<p>{ __( 'Saving your settings...', 'astrologer-api' ) }</p>
+				<p>{ __( 'Saving your settings…', 'astrologer-api' ) }</p>
 			</div>
 		);
 	}
@@ -69,20 +69,30 @@ const DoneStep = ( { data }: StepProps ) => {
 			<h3>{ __( 'Configuration Summary', 'astrologer-api' ) }</h3>
 			<ul>
 				<li>
-					{ `✓ ${ __( 'API Key', 'astrologer-api' ) }: ${ __( 'Configured', 'astrologer-api' ) }` }
+					{ `✓ ${ __( 'API Key', 'astrologer-api' ) }: ${ __(
+						'Configured',
+						'astrologer-api'
+					) }` }
 				</li>
 				<li>
-					{ `✓ ${ __( 'School', 'astrologer-api' ) }: ${ data.school.replace( '_', ' ' ) }` }
+					{ `✓ ${ __(
+						'School',
+						'astrologer-api'
+					) }: ${ data.school.replace( '_', ' ' ) }` }
 				</li>
 				<li>
-					{ `✓ ${ __( 'Language', 'astrologer-api' ) }: ${ data.language }` }
+					{ `✓ ${ __( 'Language', 'astrologer-api' ) }: ${
+						data.language
+					}` }
 				</li>
 				<li>
-					{ `✓ ${ __( 'UI Level', 'astrologer-api' ) }: ${ data.ui_level }` }
+					{ `✓ ${ __( 'UI Level', 'astrologer-api' ) }: ${
+						data.ui_level
+					}` }
 				</li>
 			</ul>
 
-			<h3>{ __( 'What\'s Next?', 'astrologer-api' ) }</h3>
+			<h3>{ __( "What's Next?", 'astrologer-api' ) }</h3>
 
 			<div style={ { display: 'flex', gap: '8px', marginTop: '16px' } }>
 				<Button

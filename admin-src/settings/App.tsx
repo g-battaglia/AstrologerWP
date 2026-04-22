@@ -1,7 +1,7 @@
 /**
  * Settings app root component with tabbed interface.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { TabPanel, Notice, Spinner } from '@wordpress/components';
@@ -49,8 +49,14 @@ const TABS = [
 ];
 
 const App = () => {
-	const { settings, isLoading, isSaving, error, updateSettings, testConnection } =
-		useSettings();
+	const {
+		settings,
+		isLoading,
+		isSaving,
+		error,
+		updateSettings,
+		testConnection,
+	} = useSettings();
 	const [ saveNotice, setSaveNotice ] = useState< string | null >( null );
 
 	if ( isLoading ) {

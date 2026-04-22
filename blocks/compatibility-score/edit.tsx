@@ -67,11 +67,17 @@ export default function Edit( { attributes, setAttributes }: Props ) {
 						{ __( 'Compatibility Score', 'astrologer-api' ) }
 					</p>
 					<p style={ { margin: '8px 0 0', color: '#757575' } }>
-						{ `${ __( 'Display Mode:', 'astrologer-api' ) } ${ displayMode }` }
+						{ `${ __(
+							'Display Mode:',
+							'astrologer-api'
+						) } ${ displayMode }` }
 					</p>
 					{ sourceBlockId && (
 						<p style={ { margin: '4px 0 0', color: '#757575' } }>
-							{ `${ __( 'Source:', 'astrologer-api' ) } ${ sourceBlockId }` }
+							{ `${ __(
+								'Source:',
+								'astrologer-api'
+							) } ${ sourceBlockId }` }
 						</p>
 					) }
 				</div>

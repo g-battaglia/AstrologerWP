@@ -1,7 +1,7 @@
 /**
  * TypeScript interfaces for the Settings app.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 export interface CronSettings {

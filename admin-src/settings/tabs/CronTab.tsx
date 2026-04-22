@@ -1,7 +1,7 @@
 /**
  * Cron settings tab.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { ToggleControl, Button } from '@wordpress/components';

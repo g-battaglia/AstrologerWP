@@ -29,7 +29,10 @@ const UI_LEVELS = [
 
 const PRESETS = [
 	{ label: __( 'Auto (from settings)', 'astrologer-api' ), value: 'auto' },
-	{ label: __( 'Modern Western', 'astrologer-api' ), value: 'modern_western' },
+	{
+		label: __( 'Modern Western', 'astrologer-api' ),
+		value: 'modern_western',
+	},
 	{ label: __( 'Traditional', 'astrologer-api' ), value: 'traditional' },
 	{ label: __( 'Vedic', 'astrologer-api' ), value: 'vedic' },
 	{ label: __( 'Uranian', 'astrologer-api' ), value: 'uranian' },
@@ -93,7 +96,10 @@ export default function Edit( { attributes, setAttributes }: Props ) {
 					<TextControl
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-						label={ __( 'Redirect After Submit', 'astrologer-api' ) }
+						label={ __(
+							'Redirect After Submit',
+							'astrologer-api'
+						) }
 						value={ redirectAfterSubmit }
 						onChange={ ( val: string ) =>
 							setAttributes( { redirectAfterSubmit: val } )
@@ -119,7 +125,10 @@ export default function Edit( { attributes, setAttributes }: Props ) {
 						{ __( 'Compatibility Form', 'astrologer-api' ) }
 					</p>
 					<p style={ { margin: '8px 0 0', color: '#757575' } }>
-						{ `${ __( 'UI Level:', 'astrologer-api' ) } ${ uiLevel }` }
+						{ `${ __(
+							'UI Level:',
+							'astrologer-api'
+						) } ${ uiLevel }` }
 					</p>
 				</div>
 			</div>

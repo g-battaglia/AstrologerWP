@@ -1,7 +1,7 @@
 /**
  * Custom hook for managing Astrologer settings via the REST API.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { useState, useEffect, useCallback } from '@wordpress/element';

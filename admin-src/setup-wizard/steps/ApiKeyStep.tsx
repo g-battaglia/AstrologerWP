@@ -1,7 +1,7 @@
 /**
  * API Key step — enter and test the RapidAPI key.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { TextControl, Button, Notice } from '@wordpress/components';
@@ -12,9 +12,9 @@ import type { StepProps } from './types';
 
 const ApiKeyStep = ( { data, setData, next, back }: StepProps ) => {
 	const [ isTesting, setIsTesting ] = useState( false );
-	const [ testResult, setTestResult ] = useState< 'success' | 'error' | null >(
-		null
-	);
+	const [ testResult, setTestResult ] = useState<
+		'success' | 'error' | null
+	>( null );
 
 	const handleTest = async () => {
 		setIsTesting( true );

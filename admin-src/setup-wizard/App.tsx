@@ -1,7 +1,7 @@
 /**
  * Setup Wizard multi-step application.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { Panel, PanelBody } from '@wordpress/components';
@@ -67,10 +67,7 @@ const App = () => {
 			</p>
 
 			<Panel>
-				<PanelBody
-					title={ STEP_TITLES[ step ] }
-					initialOpen={ true }
-				>
+				<PanelBody title={ STEP_TITLES[ step ] } initialOpen={ true }>
 					{ STEPS[ step ] }
 				</PanelBody>
 			</Panel>

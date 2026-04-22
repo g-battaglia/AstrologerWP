@@ -1,7 +1,7 @@
 /**
  * Settings app entry point.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { createRoot } from '@wordpress/element';

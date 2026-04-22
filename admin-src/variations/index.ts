@@ -5,7 +5,7 @@
  * Astrologer form blocks to one of the four built-in schools so authors can
  * insert pre-configured form variants directly from the inserter.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { registerBlockVariation } from '@wordpress/blocks';

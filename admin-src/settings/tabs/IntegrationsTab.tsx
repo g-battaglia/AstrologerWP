@@ -1,7 +1,7 @@
 /**
  * Integrations settings tab — placeholder.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { __ } from '@wordpress/i18n';

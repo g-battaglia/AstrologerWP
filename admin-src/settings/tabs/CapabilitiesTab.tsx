@@ -1,7 +1,7 @@
 /**
  * Capabilities settings tab — read-only reference table.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { __ } from '@wordpress/i18n';

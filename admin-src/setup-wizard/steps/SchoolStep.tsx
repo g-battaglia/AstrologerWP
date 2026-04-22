@@ -1,7 +1,7 @@
 /**
  * School selection step — choose astrological school.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { Card, CardBody, CardHeader } from '@wordpress/components';
@@ -61,7 +61,8 @@ const SchoolStep = ( { data, setData, next, back }: StepProps ) => {
 			<div
 				style={ {
 					display: 'grid',
-					gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+					gridTemplateColumns:
+						'repeat(auto-fill, minmax(250px, 1fr))',
 					gap: '16px',
 					marginBottom: '16px',
 				} }

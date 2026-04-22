@@ -1,7 +1,7 @@
 /**
  * UI settings tab.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { RadioControl, Button } from '@wordpress/components';
@@ -21,11 +21,17 @@ const UI_LEVEL_OPTIONS = [
 		value: 'basic',
 	},
 	{
-		label: __( 'Advanced — Includes aspects, houses, and transits', 'astrologer-api' ),
+		label: __(
+			'Advanced — Includes aspects, houses, and transits',
+			'astrologer-api'
+		),
 		value: 'advanced',
 	},
 	{
-		label: __( 'Expert — Full data including midpoints and fixed stars', 'astrologer-api' ),
+		label: __(
+			'Expert — Full data including midpoints and fixed stars',
+			'astrologer-api'
+		),
 		value: 'expert',
 	},
 ];

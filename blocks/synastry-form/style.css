@@ -36,6 +36,7 @@
 }
 
 @media (max-width: 640px) {
+
 	.wp-block-astrologer-api-synastry-form .astrologer-subjects--side-by-side {
 		grid-template-columns: 1fr;
 	}

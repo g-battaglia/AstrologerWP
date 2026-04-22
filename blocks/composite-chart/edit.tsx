@@ -29,13 +29,8 @@ const CHART_THEMES = [
 
 export default function Edit( { attributes, setAttributes }: Props ) {
 	const blockProps = useBlockProps();
-	const {
-		sourceBlockId,
-		showSvg,
-		showPositions,
-		showAspects,
-		chartTheme,
-	} = attributes;
+	const { sourceBlockId, showSvg, showPositions, showAspects, chartTheme } =
+		attributes;
 
 	const onLabel = __( 'on', 'astrologer-api' );
 	const offLabel = __( 'off', 'astrologer-api' );
@@ -105,7 +100,10 @@ export default function Edit( { attributes, setAttributes }: Props ) {
 						{ __( 'Composite Chart', 'astrologer-api' ) }
 					</p>
 					<p style={ { margin: '8px 0 0', color: '#757575' } }>
-						{ `${ __( 'Theme:', 'astrologer-api' ) } ${ chartTheme }` }
+						{ `${ __(
+							'Theme:',
+							'astrologer-api'
+						) } ${ chartTheme }` }
 					</p>
 					<p style={ { margin: '4px 0 0', color: '#757575' } }>
 						{ `${ __( 'SVG:', 'astrologer-api' ) } ${

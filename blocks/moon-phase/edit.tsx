@@ -4,6 +4,7 @@ import {
 	PanelBody,
 	SelectControl,
 	TextControl,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 	__experimentalNumberControl as NumberControl,
 } from '@wordpress/components';
 
@@ -92,10 +93,16 @@ export default function Edit( { attributes, setAttributes }: Props ) {
 						{ __( 'Moon Phase', 'astrologer-api' ) }
 					</p>
 					<p style={ { margin: '8px 0 0', color: '#757575' } }>
-						{ `${ __( 'Display Mode:', 'astrologer-api' ) } ${ displayMode }` }
+						{ `${ __(
+							'Display Mode:',
+							'astrologer-api'
+						) } ${ displayMode }` }
 					</p>
 					<p style={ { margin: '4px 0 0', color: '#757575' } }>
-						{ `${ __( 'Refresh:', 'astrologer-api' ) } ${ refreshInterval }s` }
+						{ `${ __(
+							'Refresh:',
+							'astrologer-api'
+						) } ${ refreshInterval }s` }
 					</p>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 /**
  * API Credentials settings tab.
  *
- * @package Astrologer\Api
+ * @package
  */
 
 import { TextControl, Button, Notice } from '@wordpress/components';
@@ -16,14 +16,21 @@ interface Props {
 	testConnection: () => Promise< boolean >;
 }
 
-const ApiCredentialsTab = ( { settings, onSave, isSaving, testConnection }: Props ) => {
-	const [ rapidapiKey, setRapidapiKey ] = useState( settings.rapidapi_key || '' );
+const ApiCredentialsTab = ( {
+	settings,
+	onSave,
+	isSaving,
+	testConnection,
+}: Props ) => {
+	const [ rapidapiKey, setRapidapiKey ] = useState(
+		settings.rapidapi_key || ''
+	);
 	const [ geonamesUsername, setGeonamesUsername ] = useState(
 		settings.geonames_username || ''
 	);
-	const [ testResult, setTestResult ] = useState< 'success' | 'error' | null >(
-		null
-	);
+	const [ testResult, setTestResult ] = useState<
+		'success' | 'error' | null
+	>( null );
 	const [ isTesting, setIsTesting ] = useState( false );
 
 	const handleTest = async () => {
@@ -48,7 +55,10 @@ const ApiCredentialsTab = ( { settings, onSave, isSaving, testConnection }: Prop
 				type="password"
 				value={ rapidapiKey }
 				onChange={ setRapidapiKey }
-				help={ __( 'Your RapidAPI key for the Astrologer API.', 'astrologer-api' ) }
+				help={ __(
+					'Your RapidAPI key for the Astrologer API.',
+					'astrologer-api'
+				) }
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 			/>
@@ -72,7 +82,10 @@ const ApiCredentialsTab = ( { settings, onSave, isSaving, testConnection }: Prop
 
 			{ testResult === 'error' && (
 				<Notice status="error" isDismissible={ false }>
-					{ __( 'Connection failed. Please check your API key.', 'astrologer-api' ) }
+					{ __(
+						'Connection failed. Please check your API key.',
+						'astrologer-api'
+					) }
 				</Notice>
 			) }
 
@@ -80,7 +93,10 @@ const ApiCredentialsTab = ( { settings, onSave, isSaving, testConnection }: Prop
 				label={ __( 'GeoNames Username', 'astrologer-api' ) }
 				value={ geonamesUsername }
 				onChange={ setGeonamesUsername }
-				help={ __( 'Your GeoNames username for geocoding.', 'astrologer-api' ) }
+				help={ __(
+					'Your GeoNames username for geocoding.',
+					'astrologer-api'
+				) }
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 			/>
