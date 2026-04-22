@@ -123,9 +123,12 @@
   └─ Multi-compiler: admin → build/, blocks → blocks/NAME/build/. Custom getBlockEntries() scanner. CRITICAL: clean: false on blocks output.
 - [x] F5.3 Template block: birth-form — NEW blocks/birth-form/*
   └─ block.json v3, edit.tsx (InspectorControls: uiLevel, preset, save option, redirect), render.php (Interactivity API data-wp-* attrs), style.css, view.ts (stub for F6).
-- [ ] F5.4 Other 6 form blocks — NEW blocks/synastry-form/*, transit-form/*, composite-form/*, solar-return-form/*, lunar-return-form/*, now-form/*, compatibility-form/*
-- [ ] F5.5 Display chart blocks (7) — NEW blocks/natal-chart/*, synastry-chart/*, transit-chart/*, composite-chart/*, solar-return-chart/*, lunar-return-chart/*, now-chart/*
-- [ ] F5.6 Data display blocks (7) — NEW blocks/positions-table/*, aspects-table/*, elements-chart/*, modalities-chart/*, compatibility-score/*, relationship-score/*, moon-phase/*
+- [x] F5.4 Other 6 form blocks — NEW blocks/synastry-form/*, transit-form/*, composite-form/*, solar-return-form/*, lunar-return-form/*, now-form/*, compatibility-form/*
+  └─ 7 form blocks mirror birth-form template. Two-subject blocks (synastry/composite/compatibility) add twoSubjectLayout attribute. now-form: location only.
+- [x] F5.5 Display chart blocks (7) — NEW blocks/natal-chart/*, synastry-chart/*, transit-chart/*, composite-chart/*, solar-return-chart/*, lunar-return-chart/*, now-chart/*
+  └─ Shared astrologer/chart-display namespace. Attributes: showSvg/showPositions/showAspects/chartTheme/sourceBlockId.
+- [x] F5.6 Data display blocks (7) — NEW blocks/positions-table/*, aspects-table/*, elements-chart/*, modalities-chart/*, compatibility-score/*, relationship-score/*, moon-phase/*
+  └─ Tables widefat, charts CSS-grid bars, moon-phase self-fetches with refreshInterval.
 - [ ] F5.7 Block Patterns (6 patterns) — NEW patterns/*.php + src/Blocks/BlockPatternsRegistry.php
 - [ ] F5.8 Variations per school (4 per form block) — NEW src/Blocks/VariationsRegistry.php
 - [ ] F5.9 FSE templates + parts — NEW src/Blocks/FseTemplatesRegistry.php
@@ -133,30 +136,46 @@
 - [ ] F5.11 Block tests — tests/Jest/blocks/*.test.tsx, tests/Integration/Blocks/*.php, tests/e2e/block-birth-form.spec.ts
 
 ## F6 — Frontend Interactivity API
-- [ ] F6.1 Directory structure interactivity-src/ — NEW interactivity-src/stores/*.ts, lib/*.ts
-- [ ] F6.2 Bus event cross-store — NEW interactivity-src/lib/bus.ts
-- [ ] F6.3 Birth form store — NEW interactivity-src/stores/birth-form.ts
-- [ ] F6.4 Other form stores (synastry, transit, composite, solar/lunar return, now, compatibility) — NEW interactivity-src/stores/*.ts
-- [ ] F6.5 Chart display store — NEW interactivity-src/stores/chart-display.ts
-- [ ] F6.6 City autocomplete store — NEW interactivity-src/stores/city-autocomplete.ts
-- [ ] F6.7 Moon phase store — NEW interactivity-src/stores/moon-phase.ts
-- [ ] F6.8 API lib wrapper — NEW interactivity-src/lib/api.ts
-- [ ] F6.9 Validation lib — NEW interactivity-src/lib/validation.ts
-- [ ] F6.10 AssetEnqueuer — NEW src/Frontend/AssetEnqueuer.php
-- [ ] F6.11 Interactivity tests — tests/Jest/interactivity/*.test.ts, tests/e2e/natal-form-submit.spec.ts
+- [x] F6.1 Directory structure interactivity-src/ — NEW interactivity-src/stores/*.ts, lib/*.ts
+- [x] F6.2 Bus event cross-store — NEW interactivity-src/lib/bus.ts
+  └─ Map<string, Set<handler>> based pub/sub, no deps.
+- [x] F6.3 Birth form store — NEW interactivity-src/stores/birth-form.ts
+  └─ store('astrologer/birth-form'): state (fields + isLoading + error + hasResult + chartHtml), actions (updateField, submitForm generator). Emits 'astrologer:chart-calculated' via bus.
+- [x] F6.4 Other form stores (synastry, transit, composite, solar/lunar return, now, compatibility) — NEW interactivity-src/stores/*.ts
+  └─ Same pattern. Two-subject forms track subject1/subject2. 7 stores.
+- [x] F6.5 Chart display store — NEW interactivity-src/stores/chart-display.ts
+  └─ Subscribes to bus 'astrologer:chart-calculated' events, renders SVG/positions/aspects.
+- [x] F6.6 City autocomplete store — NEW interactivity-src/stores/city-autocomplete.ts
+  └─ Debounced 300ms via setTimeout. Fetches /geonames/search.
+- [x] F6.7 Moon phase store — NEW interactivity-src/stores/moon-phase.ts
+  └─ Init fetch + setInterval refresh. Reads refreshInterval from context.
+- [x] F6.8 API lib wrapper — NEW interactivity-src/lib/api.ts
+  └─ astrologerFetch<T> POST wrapper with X-WP-Nonce header.
+- [x] F6.9 Validation lib — NEW interactivity-src/lib/validation.ts
+  └─ 7 validators: year/month/day/hour/minute/countryCode/name. Return string|null.
+- [x] F6.10 AssetEnqueuer — NEW src/Frontend/AssetEnqueuer.php
+  └─ Bootable, has_block()-gated view module enqueue + window.astrologer* localization with restUrl+nonce.
+- [x] F6.11 Interactivity tests — tests/Jest/interactivity/*.test.ts, tests/e2e/natal-form-submit.spec.ts
+  └─ birth-form.test.ts: 4 unit tests. Jest mock for @wordpress/interactivity (ESM-only).
 
 ## F7 — Cron, WP-CLI, Email
-- [ ] F7.1 CronRegistry — NEW src/Cron/CronRegistry.php
-- [ ] F7.2 DailyTransits handler — NEW src/Cron/Handlers/DailyTransitsHandler.php
-- [ ] F7.3 DailyMoonPhase handler — NEW src/Cron/Handlers/DailyMoonPhaseHandler.php
-- [ ] F7.4 SolarReturnReminder handler + email template — NEW src/Cron/Handlers/SolarReturnReminderHandler.php, templates/emails/solar-return-reminder.php
-- [ ] F7.5 WP-CLI AstrologerCommand bootstrap — NEW src/Cli/AstrologerCommand.php
-- [ ] F7.6 wp astrologer chart command — NEW src/Cli/Commands/ChartCommand.php
-- [ ] F7.7 wp astrologer cache command — NEW src/Cli/Commands/CacheCommand.php
-- [ ] F7.8 wp astrologer settings command — NEW src/Cli/Commands/SettingsCommand.php
-- [ ] F7.9 wp astrologer health command — NEW src/Cli/Commands/HealthCommand.php
-- [ ] F7.10 wp astrologer doctor command — NEW src/Cli/Commands/DoctorCommand.php
-- [ ] F7.11 CLI tests — tests/Integration/Cli/*.php
+- [x] F7.1 CronRegistry — NEW src/Cron/CronRegistry.php
+  └─ Bootable, schedules 3 daily events on init.
+- [x] F7.2 DailyTransits handler — NEW src/Cron/Handlers/DailyTransitsHandler.php
+  └─ Fetches now chart, transient cache, fires astrologer_api/daily_transits_calculated.
+- [x] F7.3 DailyMoonPhase handler — NEW src/Cron/Handlers/DailyMoonPhaseHandler.php
+  └─ Fetches current UTC moon phase, transient cache.
+- [x] F7.4 SolarReturnReminder handler + email template — NEW src/Cron/Handlers/SolarReturnReminderHandler.php, templates/emails/solar-return-reminder.php
+  └─ Queries users with birth-data meta, 7-day window, tracks sent via user meta.
+- [x] F7.5 WP-CLI AstrologerCommand bootstrap — NEW src/Cli/AstrologerCommand.php
+- [x] F7.6 wp astrologer chart command — NEW src/Cli/Commands/ChartCommand.php
+- [x] F7.7 wp astrologer cache command — NEW src/Cli/Commands/CacheCommand.php
+- [x] F7.8 wp astrologer settings command — NEW src/Cli/Commands/SettingsCommand.php
+- [x] F7.9 wp astrologer health command — NEW src/Cli/Commands/HealthCommand.php
+- [x] F7.10 wp astrologer doctor command — NEW src/Cli/Commands/DoctorCommand.php
+  └─ Diagnostics: PHP>=8.1, sodium/json/openssl, encryption key, rapidapi key, permalinks.
+- [x] F7.11 CLI tests — tests/Integration/Cli/*.php
+  └─ DoctorCommandTest: 3 scenarios with WP_CLI stub.
 
 ## F8 — i18n, Accessibility, Docs
 - [ ] F8.1 POT extraction (make pot) — languages/astrologer-api.pot
