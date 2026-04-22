@@ -1,0 +1,58 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/birth-form",
+	"title": "Birth Form",
+	"category": "astrology",
+	"icon": "calendar-alt",
+	"description": "Form to collect birth data for natal chart calculation.",
+	"keywords": [ "astrologer", "natal", "form", "birth" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"uiLevel": {
+			"type": "string",
+			"default": "basic",
+			"enum": [ "basic", "advanced", "expert" ]
+		},
+		"targetBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"showSaveOption": {
+			"type": "boolean",
+			"default": false
+		},
+		"preset": {
+			"type": "string",
+			"default": "auto"
+		},
+		"redirectAfterSubmit": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"example": {
+		"attributes": {
+			"uiLevel": "basic"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

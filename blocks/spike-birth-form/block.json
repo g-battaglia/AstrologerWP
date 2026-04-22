@@ -10,7 +10,7 @@
 		"html": false
 	},
 	"textdomain": "astrologer-api",
-	"editorScript": "file:./build/spike-birth-form-edit.js",
-	"viewScriptModule": "file:./build/spike-birth-form-view.js",
+	"editorScript": "file:./build/edit.js",
+	"viewScriptModule": "file:./build/view.js",
 	"render": "file:./render.php"
 }
