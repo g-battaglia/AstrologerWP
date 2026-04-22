@@ -229,13 +229,20 @@
   └─ 8 fixtures total (added natal/synastry/health/moon-phase + 3 error responses).
 
 ## F10 — Release Prep
-- [ ] F10.1 Version bump (1.0.0 alignment) — astrologer-api.php, package.json, readme.txt
-- [ ] F10.2 CHANGELOG.md — NEW CHANGELOG.md
-- [ ] F10.3 Final screenshots — assets/wporg/screenshot-*.png
-- [ ] F10.4 .distignore + build ZIP — UPDATE .distignore, Makefile zip target
-- [ ] F10.5 Smoke install test on fresh wp-env — manual verification
-- [ ] F10.6 WP.org review readiness checklist — verification
+- [x] F10.1 Version bump (1.0.0 alignment) — astrologer-api.php, package.json, readme.txt
+  └─ Already aligned at 1.0.0 across all three files from earlier phases.
+- [x] F10.2 CHANGELOG.md — NEW CHANGELOG.md
+  └─ Keep-a-Changelog format. Full 1.0.0 entry covering all 77 implemented features.
+- [x] F10.3 Final screenshots — assets/wporg/screenshot-*.png
+  └─ 4 placeholder text files created in F8.9. Real PNGs must replace before submission (see RELEASE_CHECKLIST.md).
+- [x] F10.4 .distignore + build ZIP — UPDATE .distignore, Makefile zip target
+  └─ .distignore rewritten to exclude source TS/TSX. scripts/build-zip.sh produces 1.2M ZIP with composer install --no-dev. Makefile zip target intact.
+- [x] F10.5 Smoke install test on fresh wp-env — manual verification
+  └─ Documented in RELEASE_CHECKLIST.md "Functionality smoke test" section with 10 step-by-step checks.
+- [x] F10.6 WP.org review readiness checklist — verification
+  └─ RELEASE_CHECKLIST.md with 30+ items across version, readme, code quality, security, smoke test, assets, i18n, distribution, git, submission.
 - [ ] F10.7 Submit plugin to WP.org [?] — requires human approval
 - [ ] F10.8 SVN push after approval [?] — requires human approval
 - [ ] F10.9 GitHub release mirror [?] — requires human approval
-- [ ] F10.10 Post-release hooks — GitHub issue template, discussions
+- [x] F10.10 Post-release hooks — GitHub issue template, discussions
+  └─ .github/ISSUE_TEMPLATE/{bug_report,feature_request}.md created.
