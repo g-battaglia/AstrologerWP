@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/synastry-form",
+	"title": "Synastry Form",
+	"category": "astrology",
+	"icon": "heart",
+	"description": "Form to collect two subjects' birth data for synastry chart calculation.",
+	"keywords": [ "astrologer", "synastry", "form", "relationship" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"uiLevel": {
+			"type": "string",
+			"default": "basic",
+			"enum": [ "basic", "advanced", "expert" ]
+		},
+		"targetBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"showSaveOption": {
+			"type": "boolean",
+			"default": false
+		},
+		"preset": {
+			"type": "string",
+			"default": "auto"
+		},
+		"redirectAfterSubmit": {
+			"type": "string",
+			"default": ""
+		},
+		"twoSubjectLayout": {
+			"type": "string",
+			"default": "stacked",
+			"enum": [ "stacked", "side-by-side" ]
+		}
+	},
+	"example": {
+		"attributes": {
+			"uiLevel": "basic"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

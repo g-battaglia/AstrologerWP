@@ -1,0 +1,55 @@
+.wp-block-astrologer-api-lunar-return-form {
+	max-width: 640px;
+}
+
+.wp-block-astrologer-api-lunar-return-form fieldset {
+	border: 1px solid var(--wp--preset--color--contrast, #1e1e1e);
+	border-radius: 4px;
+	padding: var(--wp--preset--spacing--30, 0.75rem);
+	margin-bottom: var(--wp--preset--spacing--30, 0.75rem);
+}
+
+.wp-block-astrologer-api-lunar-return-form legend {
+	font-weight: 600;
+	padding: 0 0.5em;
+}
+
+.wp-block-astrologer-api-lunar-return-form label {
+	display: block;
+	font-size: 0.875rem;
+	margin-top: var(--wp--preset--spacing--20, 0.5rem);
+}
+
+.wp-block-astrologer-api-lunar-return-form input {
+	display: block;
+	width: 100%;
+	padding: 0.5em;
+	border: 1px solid #949494;
+	border-radius: 4px;
+	margin-top: 0.25em;
+}
+
+.wp-block-astrologer-api-lunar-return-form button[type="submit"] {
+	margin-top: var(--wp--preset--spacing--30, 0.75rem);
+	padding: 0.75em 1.5em;
+	background: var(--wp--preset--color--contrast, #1e1e1e);
+	color: var(--wp--preset--color--base, #fff);
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.wp-block-astrologer-api-lunar-return-form button[type="submit"]:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.wp-block-astrologer-api-lunar-return-form [role="alert"] p {
+	color: var(--wp--preset--color--vivid-red, #cf2e2e);
+	margin-top: var(--wp--preset--spacing--20, 0.5rem);
+}
+
+.wp-block-astrologer-api-lunar-return-form .astrologer-chart-result {
+	margin-top: var(--wp--preset--spacing--40, 1rem);
+}
