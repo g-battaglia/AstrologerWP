@@ -47,7 +47,7 @@
 }
 
 .wp-block-astrologer-api-modalities-chart .astrologer-bar-value {
-	text-align: right;
+	text-align: end;
 	font-variant-numeric: tabular-nums;
 	font-size: 0.875rem;
 }

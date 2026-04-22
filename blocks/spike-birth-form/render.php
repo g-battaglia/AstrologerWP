@@ -18,7 +18,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 );
 ?>
 <div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes() is escaped. ?>>
-	<form data-wp-on--submit="actions.submit" style="margin-bottom:16px;">
+	<form data-wp-on--submit="actions.submit" data-wp-bind--aria-busy="state.isSubmitting" style="margin-bottom:16px;">
 		<p>
 			<label for="spike-name"><?php esc_html_e( 'Name', 'astrologer-api' ); ?></label><br />
 			<input
@@ -80,6 +80,8 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	<p
 		data-wp-text="state.error"
 		data-wp-class--hidden="!state.error"
+		role="alert"
+		aria-live="assertive"
 		style="color:#c00;"
 	></p>
 </div>

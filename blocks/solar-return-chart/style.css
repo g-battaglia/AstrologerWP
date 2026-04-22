@@ -37,7 +37,7 @@
 .wp-block-astrologer-api-solar-return-chart .astrologer-chart-positions td {
 	border: 1px solid #e0e0e0;
 	padding: 0.5em;
-	text-align: left;
+	text-align: start;
 	font-size: 0.875rem;
 }
 

@@ -25,7 +25,7 @@ $wrapper  = get_block_wrapper_attributes(
 );
 ?>
 <div <?php echo $wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_block_wrapper_attributes returns escaped HTML. ?>>
-	<form data-wp-on--submit="actions.submitForm">
+	<form data-wp-on--submit="actions.submitForm" data-wp-bind--aria-busy="state.isLoading">
 		<div class="astrologer-subjects astrologer-subjects--<?php echo esc_attr( $layout ); ?>">
 			<fieldset>
 				<legend><?php esc_html_e( 'Person A', 'astrologer-api' ); ?></legend>

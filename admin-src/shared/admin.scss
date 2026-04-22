@@ -84,7 +84,7 @@
 		td {
 			border: 1px solid #ddd;
 			padding: 8px 12px;
-			text-align: left;
+			text-align: start;
 		}
 
 		th {
@@ -94,7 +94,7 @@
 	}
 
 	blockquote {
-		border-left: 4px solid #3858e9;
+		border-inline-start: 4px solid #3858e9;
 		margin: 1em 0;
 		padding: 0.5em 1em;
 		background: #f9f9f9;

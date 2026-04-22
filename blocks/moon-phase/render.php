@@ -37,7 +37,7 @@ $wrapper = get_block_wrapper_attributes(
 	data-wp-init="callbacks.init"
 	data-wp-watch="callbacks.schedule"
 >
-	<div data-wp-bind--hidden="state.hasData">
+	<div data-wp-bind--hidden="state.hasData" role="status" aria-live="polite">
 		<p class="astrologer-placeholder">
 			<span class="astrologer-moon-emoji" aria-hidden="true">&#127765;</span>
 			<span><?php esc_html_e( 'Loading moon phase…', 'astrologer-api' ); ?></span>
