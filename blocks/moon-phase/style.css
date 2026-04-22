@@ -1,0 +1,36 @@
+.wp-block-astrologer-api-moon-phase {
+	max-width: 480px;
+}
+
+.wp-block-astrologer-api-moon-phase .astrologer-moon-phase,
+.wp-block-astrologer-api-moon-phase .astrologer-placeholder {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: var(--wp--preset--spacing--20, 0.5rem) var(--wp--preset--spacing--30, 0.75rem);
+	border: 1px solid #dcdcde;
+	border-radius: 999px;
+	background: #fff;
+	font-size: 1rem;
+}
+
+.wp-block-astrologer-api-moon-phase .astrologer-placeholder {
+	color: #757575;
+	font-style: italic;
+	border-style: dashed;
+}
+
+.wp-block-astrologer-api-moon-phase .astrologer-moon-emoji {
+	font-size: 1.5rem;
+	line-height: 1;
+}
+
+.wp-block-astrologer-api-moon-phase .astrologer-moon-label {
+	font-weight: 600;
+}
+
+.wp-block-astrologer-api-moon-phase .astrologer-moon-illumination {
+	color: #555;
+	font-size: 0.875rem;
+	font-variant-numeric: tabular-nums;
+}

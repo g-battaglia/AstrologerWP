@@ -1,0 +1,48 @@
+.wp-block-astrologer-api-compatibility-score {
+	max-width: 360px;
+}
+
+.wp-block-astrologer-api-compatibility-score .astrologer-score-card {
+	text-align: center;
+	padding: var(--wp--preset--spacing--40, 1rem);
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.wp-block-astrologer-api-compatibility-score .astrologer-score-heading {
+	font-size: 0.875rem;
+	color: #757575;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-bottom: 0.25rem;
+}
+
+.wp-block-astrologer-api-compatibility-score .astrologer-score-value {
+	font-size: 3.5rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--wp--preset--color--contrast, #1e1e1e);
+	font-variant-numeric: tabular-nums;
+}
+
+.wp-block-astrologer-api-compatibility-score .astrologer-score-suffix {
+	font-size: 0.875rem;
+	color: #757575;
+	margin-top: 0.25rem;
+}
+
+.wp-block-astrologer-api-compatibility-score .astrologer-score-label {
+	margin-top: 0.5rem;
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.wp-block-astrologer-api-compatibility-score .astrologer-placeholder {
+	padding: var(--wp--preset--spacing--30, 0.75rem);
+	color: #757575;
+	font-style: italic;
+	text-align: center;
+	border: 1px dashed #dcdcde;
+	border-radius: 4px;
+}

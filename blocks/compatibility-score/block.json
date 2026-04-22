@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/compatibility-score",
+	"title": "Compatibility Score",
+	"category": "astrology",
+	"icon": "awards",
+	"description": "Displays compatibility score (0-100) with a descriptive label.",
+	"keywords": [ "astrologer", "compatibility", "score", "synastry" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"sourceBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"displayMode": {
+			"type": "string",
+			"default": "table"
+		}
+	},
+	"example": {
+		"attributes": {
+			"displayMode": "table"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

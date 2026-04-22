@@ -1,0 +1,62 @@
+.wp-block-astrologer-api-modalities-chart {
+	max-width: 560px;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-modalities-chart {
+	display: grid;
+	gap: var(--wp--preset--spacing--20, 0.5rem);
+	margin-top: var(--wp--preset--spacing--20, 0.5rem);
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-row {
+	display: grid;
+	grid-template-columns: 90px 1fr 50px;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-label {
+	font-weight: 600;
+	font-size: 0.875rem;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-track {
+	height: 18px;
+	background: #f0f0f0;
+	border-radius: 9px;
+	overflow: hidden;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-fill {
+	height: 100%;
+	width: 0;
+	border-radius: 9px;
+	transition: width 0.3s ease;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-cardinal {
+	background: #d62828;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-fixed {
+	background: #003049;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-mutable {
+	background: #f77f00;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-bar-value {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	font-size: 0.875rem;
+}
+
+.wp-block-astrologer-api-modalities-chart .astrologer-placeholder {
+	padding: var(--wp--preset--spacing--30, 0.75rem);
+	color: #757575;
+	font-style: italic;
+	text-align: center;
+	border: 1px dashed #dcdcde;
+	border-radius: 4px;
+}

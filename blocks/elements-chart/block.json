@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/elements-chart",
+	"title": "Elements Chart",
+	"category": "astrology",
+	"icon": "chart-bar",
+	"description": "Distribution chart of elements (fire, earth, air, water).",
+	"keywords": [ "astrologer", "elements", "chart", "fire", "earth", "air", "water" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"sourceBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"displayMode": {
+			"type": "string",
+			"default": "bar"
+		}
+	},
+	"example": {
+		"attributes": {
+			"displayMode": "bar"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/moon-phase",
+	"title": "Moon Phase",
+	"category": "astrology",
+	"icon": "star-half",
+	"description": "Displays the current moon phase name, emoji and illumination percentage.",
+	"keywords": [ "astrologer", "moon", "phase", "lunar" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"sourceBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"displayMode": {
+			"type": "string",
+			"default": "table"
+		},
+		"refreshInterval": {
+			"type": "number",
+			"default": 3600,
+			"minimum": 0,
+			"maximum": 86400
+		}
+	},
+	"example": {
+		"attributes": {
+			"displayMode": "table"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

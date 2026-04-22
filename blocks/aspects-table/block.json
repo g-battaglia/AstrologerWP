@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "astrologer-api/aspects-table",
+	"title": "Aspects Table",
+	"category": "astrology",
+	"icon": "list-view",
+	"description": "Table of aspects between planets (type and orb).",
+	"keywords": [ "astrologer", "aspects", "planets", "table" ],
+	"textdomain": "astrologer-api",
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"attributes": {
+		"sourceBlockId": {
+			"type": "string",
+			"default": ""
+		},
+		"displayMode": {
+			"type": "string",
+			"default": "table"
+		}
+	},
+	"example": {
+		"attributes": {
+			"displayMode": "table"
+		}
+	},
+	"editorScript": "file:./build/edit.js",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./build/view.js",
+	"render": "file:./render.php"
+}

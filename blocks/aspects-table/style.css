@@ -1,0 +1,34 @@
+.wp-block-astrologer-api-aspects-table {
+	max-width: 720px;
+}
+
+.wp-block-astrologer-api-aspects-table .astrologer-aspects-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: var(--wp--preset--spacing--20, 0.5rem);
+}
+
+.wp-block-astrologer-api-aspects-table .astrologer-aspects-table th,
+.wp-block-astrologer-api-aspects-table .astrologer-aspects-table td {
+	padding: 0.5em 0.75em;
+	border-bottom: 1px solid #dcdcde;
+	text-align: left;
+}
+
+.wp-block-astrologer-api-aspects-table .astrologer-aspects-table thead th {
+	background: #f6f7f7;
+	font-weight: 600;
+}
+
+.wp-block-astrologer-api-aspects-table .astrologer-aspects-table tbody tr:nth-child(even) {
+	background: #fafafa;
+}
+
+.wp-block-astrologer-api-aspects-table .astrologer-placeholder {
+	padding: var(--wp--preset--spacing--30, 0.75rem);
+	color: #757575;
+	font-style: italic;
+	text-align: center;
+	border: 1px dashed #dcdcde;
+	border-radius: 4px;
+}
