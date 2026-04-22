@@ -82,6 +82,7 @@ final class DocumentationPage implements Bootable {
 				continue;
 			}
 
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local file read, not remote.
 			$markdown = (string) file_get_contents( $file );
 			$html     = $converter->convert( $markdown )->getContent();
 

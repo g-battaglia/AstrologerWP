@@ -1,0 +1,6 @@
+build/
+blocks/*/build/
+node_modules/
+vendor/
+dist/
+_legacy/

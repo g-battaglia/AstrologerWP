@@ -150,7 +150,7 @@ final class ChartController extends AbstractController {
 			$args['s'] = $search;
 		}
 
-		$query  = new WP_Query( $args );
+		$query = new WP_Query( $args );
 		/** @var list<WP_Post> $posts */
 		$posts  = $query->posts;
 		$charts = array_map(

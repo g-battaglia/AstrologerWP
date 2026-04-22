@@ -12,7 +12,7 @@
  * Domain Path: /languages
  * Requires at least: 6.5
  * Requires PHP: 8.1
- * Tested up to: 6.7
+ * Tested up to: 6.9
  *
  * @package Astrologer\Api
  */

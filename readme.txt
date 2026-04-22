@@ -3,7 +3,7 @@ Contributors: astrologerapi
 Donate link: https://github.com/astrologer-api
 Tags: astrology, natal chart, synastry, transits, moon phase
 Requires at least: 6.5
-Tested up to: 6.7
+Tested up to: 6.9
 Stable tag: 1.0.0
 Requires PHP: 8.1
 License: GPLv2 or later
