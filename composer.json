@@ -31,7 +31,10 @@
 	"scripts": {
 		"lint": "phpcs",
 		"analyze": "phpstan analyse --memory-limit=512M",
-		"test": "phpunit"
+		"test": "phpunit",
+		"test:unit": "phpunit -c phpunit-unit.xml.dist",
+		"test:integration": "phpunit -c phpunit.xml.dist",
+		"plugin:check": "wp plugin check astrologer-api --format=table"
 	},
 	"config": {
 		"allow-plugins": {
