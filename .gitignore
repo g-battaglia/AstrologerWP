@@ -43,3 +43,4 @@ coverage/
 # Archives
 *.zip
 *.tar.gz
+dist/

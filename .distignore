@@ -1,22 +1,41 @@
 # Files and directories excluded from the WP.org distribution ZIP.
+# Included: astrologer-api.php, src/, build/, blocks/*/build/, blocks/*/block.json,
+#          blocks/*/render.php, blocks/*/style.css, patterns/, templates/,
+#          languages/, vendor/ (composer production deps), readme.txt, assets/wporg/,
+#          uninstall.php.
 
 # Legacy MVP reference
 _legacy/
 
-# Development dependencies
+# Development node_modules
 node_modules/
-vendor/bin/
+
+# TypeScript/React source (compiled to build/)
+admin-src/
+interactivity-src/
+
+# Block source files (compiled to blocks/*/build/)
+blocks/*/edit.tsx
+blocks/*/edit.ts
+blocks/*/view.tsx
+blocks/*/view.ts
+blocks/*/index.tsx
+blocks/*/index.ts
 
 # Tests
 tests/
 .phpunit.result.cache/
+coverage/
 
 # Tool configs
 .github/
 .wp-env.json
 phpunit.xml.dist
+phpunit-unit.xml.dist
 phpcs.xml.dist
 phpstan.neon.dist
+phpstan-constants.php
+phpstan-stubs/
 jest.config.js
 playwright.config.ts
 .eslintrc.json
@@ -30,6 +49,7 @@ package-lock.json
 composer.json
 composer.lock
 Makefile
+webpack.config.js
 scripts/
 
 # Meta / docs (readme.txt is kept)
@@ -38,6 +58,9 @@ scripts/
 PLAN/
 PROGRESS.md
 PROMPT.md
+CHANGELOG.md
+docs/
+README.dev.md
 
 # IDE / OS
 .idea/
@@ -46,6 +69,9 @@ PROMPT.md
 Thumbs.db
 *.swp
 *.swo
+.gitignore
+.distignore
+.git/
 
 # Archives
 *.zip
@@ -56,5 +82,5 @@ Thumbs.db
 .env.local
 .env.*.local
 
-# Build artifacts
-build/
+# Placeholder text files for WP.org assets (real PNGs replace these)
+assets/wporg/*.placeholder.txt
