@@ -22,6 +22,7 @@
     "admin-src/**/*.tsx",
     "blocks/**/*.ts",
     "blocks/**/*.tsx",
+    "interactivity-src/**/*.ts",
     "tests/Jest/**/*.ts",
     "tests/Jest/**/*.tsx"
   ],

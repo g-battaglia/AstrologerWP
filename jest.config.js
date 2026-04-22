@@ -12,4 +12,9 @@ module.exports = {
 		],
 	},
 	testMatch: [ '**/tests/Jest/**/*.{test,spec}.{js,jsx,ts,tsx}' ],
+	moduleNameMapper: {
+		...( defaultConfig.moduleNameMapper || {} ),
+		'^@wordpress/interactivity$':
+			'<rootDir>/tests/Jest/__mocks__/wp-interactivity.ts',
+	},
 };
