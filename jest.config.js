@@ -19,4 +19,14 @@ module.exports = {
 		'^@wordpress/block-editor$':
 			'<rootDir>/tests/Jest/__mocks__/wp-block-editor.ts',
 	},
+	collectCoverageFrom: [
+		'admin-src/**/*.{ts,tsx}',
+		'blocks/**/*.{ts,tsx}',
+		'interactivity-src/**/*.ts',
+		'!**/*.d.ts',
+		'!**/node_modules/**',
+		'!**/build/**',
+	],
+	coverageDirectory: 'coverage/jest',
+	coverageReporters: [ 'text-summary', 'html', 'clover' ],
 };
