@@ -1,0 +1,8 @@
+Screenshot 4 — Block editor inserting the birth-form block
+
+Target file: assets/wporg/screenshot-4.png
+Dimensions: 1280x800 preferred.
+Subject: The Gutenberg inserter open on the "Astrology" category with
+the Birth Form block highlighted. Show the block canvas on the left
+already containing a natal-chart block so the relationship between the
+form and the renderer is obvious.

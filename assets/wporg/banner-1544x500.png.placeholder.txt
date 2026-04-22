@@ -1,0 +1,9 @@
+WP.org plugin banner — desktop size
+
+Target file: assets/wporg/banner-1544x500.png
+Dimensions: exactly 1544x500 pixels.
+Subject: Brand banner for the Astrologer API plugin. Include the
+plugin name "Astrologer API" set in a large humanist sans-serif,
+a subtle zodiac wheel watermark on the right third of the canvas,
+and the tagline "Birth charts. Synastry. Transits." along the
+bottom edge. Target contrast ratio >= 4.5:1 for text.

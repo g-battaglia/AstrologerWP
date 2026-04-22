@@ -1,0 +1,9 @@
+Screenshot 2 — Setup Wizard
+
+Target file: assets/wporg/screenshot-2.png
+Dimensions: 1280x800 preferred.
+Subject: Step 3 of the setup wizard showing the four school presets
+(Modern Western, Traditional, Vedic, Uranian) as large selectable cards.
+The Modern Western card should be highlighted to illustrate selection.
+Include the progress breadcrumb header so users understand the
+multi-step flow.

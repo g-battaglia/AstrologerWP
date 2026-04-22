@@ -1,0 +1,7 @@
+WP.org plugin icon — standard DPI
+
+Target file: assets/wporg/icon-128x128.png
+Dimensions: exactly 128x128 pixels.
+Subject: 1x downscale of icon-256x256.png. Keep anti-aliasing crisp
+so the glyph remains legible at the smaller size. Same palette:
+indigo background (#1a1b4b), gold glyph (#f4a261).

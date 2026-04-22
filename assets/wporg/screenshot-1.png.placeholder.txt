@@ -1,0 +1,9 @@
+Screenshot 1 — Admin Settings page
+
+Target file: assets/wporg/screenshot-1.png
+Dimensions: 1280x800 (retina) preferred, min 772x250
+Subject: The Astrologer admin Settings page with the five tabs visible
+(API Keys, Chart Defaults, Display, Security, Advanced). Show the API
+Keys tab active with the RapidAPI key field filled with a masked value
+and the "Test connection" button focussed to convey successful wiring.
+Capture on a light WordPress admin theme at 1x DPI.

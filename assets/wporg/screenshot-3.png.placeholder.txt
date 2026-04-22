@@ -1,0 +1,9 @@
+Screenshot 3 — Natal chart block rendered on the frontend
+
+Target file: assets/wporg/screenshot-3.png
+Dimensions: 1280x800 preferred.
+Subject: A published frontend page with the birth-form block (filled
+and submitted) and the paired natal-chart block rendering an SVG wheel
+plus the positions table underneath. Prefer a light theme with the
+default Twenty Twenty-Five styling so the screenshot reads cleanly in
+the WP.org listing carousel.

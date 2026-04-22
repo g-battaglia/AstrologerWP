@@ -1,0 +1,8 @@
+WP.org plugin icon — high DPI
+
+Target file: assets/wporg/icon-256x256.png
+Dimensions: exactly 256x256 pixels.
+Subject: Circular monogram using the initials "AA" set inside a
+stylised natal wheel outline. Dark indigo background (#1a1b4b) with
+a warm gold glyph (#f4a261). PNG with transparent corners so the
+icon sits cleanly on any directory background.

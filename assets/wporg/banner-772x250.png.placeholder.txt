@@ -1,0 +1,8 @@
+WP.org plugin banner — mobile size
+
+Target file: assets/wporg/banner-772x250.png
+Dimensions: exactly 772x250 pixels.
+Subject: Condensed version of the 1544x500 banner. Shows the plugin
+name "Astrologer API" centred horizontally against the same zodiac
+wheel watermark. Omit the tagline to preserve legibility at the
+smaller canvas size.
